@@ -23,7 +23,7 @@ fn permute_bn254<T, RF, RP, T1, RE>(mut state: [Field; T], config: PoseidonBn254
         state = mat_mul(state, config.mds);
     }
     state = vec_add(state, config.opt_round_constants_half_round);
-    state = mat_mul(state, config.mi);
+    state = mat_mul(state, config.mds);
 
     for r in 0..RP - 1 {
         state[0] = sbox_e(state[0]);
@@ -82,8 +82,10 @@ fn sbox<T>(mut state: [Field; T]) -> [Field; T] {
 }
 
 #[field(bn254)]
-fn sbox_e(x: Field) -> Field {
-    x.pow_32(5)
+fn sbox_e(mut x: Field) -> Field {
+    let mut result = x * x;
+    result *= result;
+    result * x
 }
 
 fn vec_add<T>(lhs: [Field; T], rhs: [Field; T]) -> [Field; T] {
