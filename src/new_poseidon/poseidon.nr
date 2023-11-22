@@ -47,7 +47,7 @@ fn permute<M,N,O>(
     state[0] = state[0].pow_32(alpha);
 
     // for r in 0..rf + rp
-    for _ in 1..(ark.len() / state.len())  {
+    for _ in 1..(ark.len() / state.len()) {
         for i in 0..state.len() {
             state[i] = state[i] + ark[count + i];
         }
@@ -61,6 +61,7 @@ fn permute<M,N,O>(
         }
 
         state = apply_matrix(mds, state);
+
         // Apply MDS matrix
         count = count + t;
     }
@@ -68,6 +69,7 @@ fn permute<M,N,O>(
     for i in 0..state.len() {
         state[i] = state[i] + ark[count + i];
     }
+
     // Shift by round constants
     state
 }

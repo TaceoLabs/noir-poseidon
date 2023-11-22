@@ -33,6 +33,7 @@ fn permute<M,N,O>(
         }
 
         state = apply_matrix(mds, state);
+
         // Apply MDS matrix
         count = count + t;
     }
@@ -47,6 +48,7 @@ fn permute<M,N,O>(
         state[0] = state[0].pow_32(alpha);
 
         state = apply_matrix(mds, state);
+
         // Apply MDS matrix
         count = count + t;
     }
@@ -63,6 +65,7 @@ fn permute<M,N,O>(
         }
 
         state = apply_matrix(mds, state);
+
         // Apply MDS matrix
         count = count + t;
     }

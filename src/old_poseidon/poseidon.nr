@@ -55,7 +55,8 @@ fn permute<M,N,O>(
             }
         }
 
-        state = apply_matrix(mds, state);
+        //state = apply_matrix(mds, state);
+
         // Apply MDS matrix
         count = count + t;
     }
