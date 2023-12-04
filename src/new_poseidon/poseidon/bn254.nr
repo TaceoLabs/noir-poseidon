@@ -1,5 +1,6 @@
 // Instantiations of Poseidon constants, permutations and sponge for prime field of the same order as BN254
 mod perm;
+mod perm3;
 mod consts;
 
 use consts::x5_3_config;
@@ -76,7 +77,7 @@ fn mat_mul<T>(mut state: [Field; T], mds: [[Field; T]; T]) -> [Field; T] {
 }
 
 #[field(bn254)]
-fn sbox<T>(mut state: [Field; T]) -> [Field; T] {
+pub(crate) fn sbox<T>(mut state: [Field; T]) -> [Field; T] {
     //TODO play around with that, can we get lower constraints here?
     state.map(|x| sbox_e(x))
 }
@@ -88,7 +89,7 @@ fn sbox_e(mut x: Field) -> Field {
     result * x
 }
 
-fn vec_add<T>(lhs: [Field; T], rhs: [Field; T]) -> [Field; T] {
+pub(crate) fn vec_add<T>(lhs: [Field; T], rhs: [Field; T]) -> [Field; T] {
     let mut result = [0; T];
     for i in 0..T {
         result[i] = lhs[i] + rhs[i];
@@ -97,7 +98,7 @@ fn vec_add<T>(lhs: [Field; T], rhs: [Field; T]) -> [Field; T] {
 }
 
 pub fn x5_3(input: [Field; 3]) -> [Field; 3] {
-    permute_bn254(input, x5_3_config())
+    perm3::permute_3(input)
 }
 
 #[test]
