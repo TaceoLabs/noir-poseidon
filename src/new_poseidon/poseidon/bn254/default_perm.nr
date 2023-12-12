@@ -1,6 +1,9 @@
-use crate::new_poseidon::poseidon::bn254::math::vec_add;
-use crate::new_poseidon::poseidon::bn254::math::sbox;
-use crate::new_poseidon::poseidon::bn254::math::sbox_e;
+use crate::new_poseidon::math::vec_add;
+use crate::new_poseidon::math::sbox;
+use crate::new_poseidon::math::sbox_e;
+use crate::new_poseidon::math::mds_2;
+use crate::new_poseidon::math::mds_4;
+use crate::new_poseidon::math::double;
 
 use crate::new_poseidon::poseidon::bn254::consts;
 
@@ -39,10 +42,6 @@ pub(crate) fn permute<T, R>(mut state: [Field; T], rc: [[Field; T]; R], mds: fn(
     state
 }
 
-fn mds_2(state: [Field; 2])->[Field; 2] {
-    let sum = state[0] + state[1];
-    [sum + state[0], sum + state[1]]
-}
 fn mds_3(state: [Field; 3])->[Field; 3] {
     let sum = state.reduce(|a,b| a + b);
     let mut ret_val = [0; 3];
@@ -50,24 +49,6 @@ fn mds_3(state: [Field; 3])->[Field; 3] {
     ret_val[1] = 2 * state[1] + sum;
     ret_val[2] = state[2] + sum;
     ret_val
-}
-
-fn mds_4(mut state: [Field; 4]) -> [Field; 4] {
-    let t_0 = state[0] + state[1];
-    let t_1 = state[2] + state[3];
-    let t_2 = double(state[1]) + t_1;
-    let t_3 = double(state[3]) + t_0;
-    let t_4 = double(double(t_1)) + t_3;
-    let t_5 = double(double(t_0)) + t_2;
-    state[0] = t_3 + t_5;
-    state[1] = t_5;
-    state[2] = t_2 + t_4;
-    state[3] = t_4;
-    state
-}
-
-fn double(x: Field) -> Field {
-    2 * x
 }
 
 #[test]

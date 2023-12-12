@@ -1,13 +1,12 @@
 // Instantiations of Poseidon constants, permutations and sponge for prime field of the same order as BN254
-mod math;
 mod default_perm;
 mod consts;
 mod sponge;
 
-use crate::new_poseidon::poseidon::bn254::math::vec_add;
-use crate::new_poseidon::poseidon::bn254::math::mat_mul;
-use crate::new_poseidon::poseidon::bn254::math::sbox;
-use crate::new_poseidon::poseidon::bn254::math::sbox_e;
+use crate::new_poseidon::math::vec_add;
+use crate::new_poseidon::math::mat_mul;
+use crate::new_poseidon::math::sbox;
+use crate::new_poseidon::math::sbox_e;
 
 struct PoseidonBn254Config<T, RP, T1> {
     first_half_rc: [[Field; T]; 4],
@@ -20,7 +19,6 @@ struct PoseidonBn254Config<T, RP, T1> {
     w_hat: [[Field; T1]; RP],
 }
 
-#[field(bn254)]
 fn permute_bn254<T, RP, T1>(mut state: [Field; T], config: PoseidonBn254Config<T, RP, T1>) -> [Field; T] {
     for i in 0..4 {
         state = vec_add(state, config.first_half_rc[i]);
