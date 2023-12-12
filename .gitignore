@@ -3,3 +3,6 @@ proofs/
 
 Prover.toml
 Verifier.toml
+
+**/sponge.nr
+scripts/poseidon_constants.sage.py

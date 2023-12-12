@@ -462,7 +462,7 @@ def print_rust(state_size, rc, mds, f):
       f.write("vec![")
       r = rc[off:off+state_size]
       for e in r:
-          f.write("from_hex(\"{}\").unwrap(), ".format(hex(e)))
+          f.write("from_hex(\"{0:#0{1}x}\").unwrap(), ".format(e,int(66)))
       f.write("], ")
   f.write("];")
 
@@ -472,9 +472,12 @@ def print_rust(state_size, rc, mds, f):
   for i in range(0, mds.nrows()):
       f.write("vec![")
       for j in range(0, mds.ncols()):
-          f.write("from_hex(\"{}\").unwrap(), ".format(hex(mds[i][j])))
+          f.write("from_hex(\"{0:#0{1}x}\").unwrap(), ".format(int(mds[i][j]), int(66)))
       f.write("], ")
   f.write("];")
+  f.write("\n\n")
+  f.write("pub static ref POSEIDON_BN_{}_PARAMS: Arc<PoseidonParams<Scalar>> =".format(state_size))
+  f.write("Arc::new(PoseidonParams::new({0}, 5, 8, {1}, &MDS{0}, &RC{0}));".format(state_size, steps - 8))
 
 for t in range(2, 17):
   p = 21888242871839275222246405745257275088548364400416034343698204186575808495617 # BN254/BN256
