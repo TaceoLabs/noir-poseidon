@@ -130,7 +130,6 @@ pub fn x5_16(input: [Field; 16]) -> [Field; 16] {
     permute_bn254(input, consts::x5_16_config())
 }
 
-
 #[test]
 fn test_perm_5() {
     assert(x5_5([0x0d1dbd21b6da2e17e837f4ca542f7da081cf88696e33c32dcdc1ca3a020fc4d6,
