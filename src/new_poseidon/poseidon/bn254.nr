@@ -1,7 +1,6 @@
 // Instantiations of Poseidon constants, permutations and sponge for prime field of the same order as BN254
 mod default_perm;
 mod consts;
-mod sponge;
 
 use crate::new_poseidon::math::vec_add;
 use crate::new_poseidon::math::mat_mul;
