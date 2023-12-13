@@ -80,32 +80,32 @@ fn diag_mat_mul<T>(mut state: [Field; T], diag: [Field; T]) -> [Field; T] {
 
 #[field(bn254)]
 pub fn x5_2(input: [Field; 2]) -> [Field; 2] {
-    permute_bn254(input, consts::round_constants_2, poseidon::mds_2, internal_2)
+    permute_bn254(input, poseidon::mds_2, internal_2, consts::x5_2_config())
 }
 
 #[field(bn254)]
 pub fn x5_3(input: [Field; 3]) -> [Field; 3] {
-    permute_bn254(input, consts::round_constants_3, external_3, internal_3)
+    permute_bn254(input, external_3, internal_3, consts::x5_3_config())
 }
 
 #[field(bn254)]
 pub fn x5_4(input: [Field; 4]) -> [Field; 4] {
-    permute_bn254(input, consts::round_constants_4, poseidon::mds_4, internal_4)
+    permute_bn254(input, poseidon::mds_4, internal_4, consts::x5_4_config())
 }
 
 #[field(bn254)]
 pub fn x5_8(input: [Field; 8]) -> [Field; 8] {
-    permute_bn254(input, consts::round_constants_8, external, internal_8)
+    permute_bn254(input, external, internal_8, consts::x5_8_config())
 }
 
 #[field(bn254)]
 pub fn x5_12(input: [Field; 12]) -> [Field; 12] {
-    permute_bn254(input, consts::round_constants_12, external, internal_12)
+    permute_bn254(input, external, internal_12, consts::x5_12_config())
 }
 
 #[field(bn254)]
 pub fn x5_16(input: [Field; 16]) -> [Field; 16] {
-    permute_bn254(input, consts::round_constants_16, external, internal_16)
+    permute_bn254(input, external, internal_16, consts::x5_16_config())
 }
 
 #[test]

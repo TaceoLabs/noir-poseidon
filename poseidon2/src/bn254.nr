@@ -3,21 +3,27 @@ mod perm;
 use dep::crypto_math;
 use dep::crypto_math::poseidon;
 
-fn permute_bn254<T, R>(mut state: [Field; T], rc: [[Field; T]; R], mm_external: fn([Field; T]) -> [Field; T], mm_internal: fn([Field; T]) -> [Field; T]) -> [Field; T] {
+struct Poseidon2Bn254Config<T, R> {
+    first_full_rc: [[Field; T]; 4],
+    half_rc: [Field; R],
+    second_full_rc: [[Field; T]; 4],
+}
+
+fn permute_bn254<T, R>(mut state: [Field; T], mm_external: fn([Field; T]) -> [Field; T], mm_internal: fn([Field; T]) -> [Field; T], config: Poseidon2Bn254Config<T,R>) -> [Field; T] {
     state = mm_external(state);
     for r in 0..4 {
-        state = crypto_math::vec_add(state, rc[r]);
+        state = crypto_math::vec_add(state, config.first_full_rc[r]);
         state = poseidon::sbox(state);
         state = mm_external(state);
     }
 
-    for r in 4..R - 4 {
-        state[0] += rc[r][0];
+    for r in 0..R  {
+        state[0] += config.half_rc[r];
         state[0] = poseidon::sbox_e(state[0]);
         state = mm_internal(state);
     }
-    for r in R - 4..R {
-        state = crypto_math::vec_add(state, rc[r]);
+    for r in 0..4 {
+        state = crypto_math::vec_add(state, config.second_full_rc[r]);
         state = poseidon::sbox(state);
         state = mm_external(state);
     }
