@@ -43,6 +43,15 @@ Similar to the Poseidon implementation in Noir's standard library, we provide a 
 
 Have a look in the respective sub-folders for instructions on how to use the libraries and installation.
 
+## Testing
+
+We provide a justfile in the root of the repository. Write `just` in your terminal to execute the tests. In case you do not have an installation of `just`, you can `cd` into the directories and write
+
+```bash
+nargo test
+``
+
 ## Disclaimer
 
 This is **experimental software** and is provided on an "as is" and "as available" basis. We do **not give any warranties** and will **not be liable for any losses** incurred through any use of this code base.
+```
