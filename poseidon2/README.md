@@ -1,6 +1,6 @@
 # Noir-Poseidon2 for BN254
 
-This folder contains a Noir crate implementing the zk-friendly hash function Poseidon2 for Noir's native curve BN254. Poseidon2, similar to [Poseidon](../poseidon), utilizes a low-degree round function (S-box) $x^d$ to minimize the necessary constraints inside a zk-circuit. In the case of BN254, the exponent in the round function is $d=5$.
+This folder contains a Noir crate implementing the zk-friendly hash function Poseidon2 for Noir's native curve BN254. Poseidon2, similar to [Poseidon](poseidon), utilizes a low-degree round function (S-box) $x^d$ to minimize the necessary constraints inside a zk-circuit. In the case of BN254, the exponent in the round function is $d=5$.
 
 Poseidon2 improves on Poseidon in two parts. It needs fewer constraints inside a zk-circuit than Poseidon (see [Performance Section](#performance)). Additionally, Poseidon2 heavily improves the plain (@Daniel, Roman - sagen nur wir plain dazu oder versteht man was ich hier mein????) implementation in contrast to Poseidon, making it a much needed alternative to Poseidon, as the plain execution of Poseidon is often a bottleneck in real-world scenarios.
 
@@ -8,7 +8,7 @@ For further information, we refer to the [Poseidon2 Paper](https://eprint.iacr.o
 
 ## Performance
 
-Poseidon2 has an internal state size $t\in \\{2,3,4t^\prime,\dots,24\\} \text{ for } t^\prime \in \mathbb{N}$. We provide an implementation for state sizes $t\in \\{2,3,4,8,12,16\\}$, mirroring the Poseidon implementation in Noir's standard library. The following table shows the constraints obtained by `nargo info` for this Poseidon2 implementation, Noir's standard library Poseidon, and the Poseidon implementation found [in this repository](../poseidon).
+Poseidon2 has an internal state size $t\in \\{2,3,4t^\prime,\dots,24\\} \text{ for } t^\prime \in \mathbb{N}$. We provide an implementation for state sizes $t\in \\{2,3,4,8,12,16\\}$, mirroring the Poseidon implementation in Noir's standard library. The following table shows the constraints obtained by `nargo info` for this Poseidon2 implementation, Noir's standard library Poseidon, and the Poseidon implementation found [in this repository](poseidon).
 
 | #   | Poseidon old | Poseidon new | Poseidon2 |
 | --- | ------------ | ------------ | --------- |
@@ -48,7 +48,7 @@ For further examples on how to use the Poseidon2 crate, have a look at the [test
 
 ## Round Constants
 
-We used the same round constants as the official [Poseidon2 implementation](https://github.com/HorizenLabs/poseidon2/tree/main). We added the script that produces the round constants [in the repository](../scripts/poseidon2_constants.sage). You can generate the round constants by executing the following command in the root of the repository and setting the parameter $t$ at the top of the file:
+We used the same round constants as the official [Poseidon2 implementation](https://github.com/HorizenLabs/poseidon2/tree/main). We added the script that produces the round constants [in the repository](scripts/poseidon2_constants.sage). You can generate the round constants by executing the following command in the root of the repository and setting the parameter $t$ at the top of the file:
 
 ```bash
 cd scripts && sage poseidon2_constants.sage
