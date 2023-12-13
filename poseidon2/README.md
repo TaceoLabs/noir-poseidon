@@ -48,7 +48,7 @@ For further examples on how to use the Poseidon2 crate, have a look at the [test
 
 ## Round Constants
 
-We used the same round constants as the official [Poseidon2 implementation](https://github.com/HorizenLabs/poseidon2/tree/main). We added the script that produces the round constants [in the repository](scripts/poseidon2_constants.sage). You can generate the round constants by executing the following command in the root of the repository and setting the parameter $t$ at the top of the file:
+We used the same round constants as the official [Poseidon2 implementation](https://github.com/HorizenLabs/poseidon2/tree/main). We added the script that produces the round constants [in the repository](../scripts/poseidon2_constants.sage). You can generate the round constants by executing the following command in the root of the repository and setting the parameter $t$ at the top of the file:
 
 ```bash
 cd scripts && sage poseidon2_constants.sage
