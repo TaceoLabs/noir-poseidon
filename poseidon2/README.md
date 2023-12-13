@@ -1,6 +1,6 @@
 # Noir-Poseidon2 for BN254
 
-This folder contains a Noir crate implementing the zk-friendly hash function Poseidon2 for Noir's native curve BN254. Poseidon2, similar to [Poseidon](https://github.com/TaceoLabs/noir-poseidon/blob/f11787c2d2c42f7fb8757aafd98ac5ba61217fc7/poseidon/README.md), utilizes a low-degree round function (S-box) $x^d$ to minimize the necessary constraints inside a zk-circuit. In the case of BN254, the exponent in the round function is $d=5$.
+This folder contains a Noir crate implementing the zk-friendly hash function Poseidon2 for Noir's native curve BN254. Poseidon2, similar to [Poseidon](../poseidon/README.md), utilizes a low-degree round function (S-box) $x^d$ to minimize the necessary constraints inside a zk-circuit. In the case of BN254, the exponent in the round function is $d=5$.
 
 Poseidon2 improves on Poseidon in two parts. It needs fewer constraints inside a zk-circuit than Poseidon (see [Performance Section](#performance)). Additionally, Poseidon2 heavily improves the plain (@Daniel, Roman - sagen nur wir plain dazu oder versteht man was ich hier mein????) implementation in contrast to Poseidon, making it a much needed alternative to Poseidon, as the plain execution of Poseidon is often a bottleneck in real-world scenarios.
 
