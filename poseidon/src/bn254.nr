@@ -7,10 +7,10 @@ use dep::crypto_math;
 use dep::crypto_math::poseidon;
 
 struct PoseidonBn254Config<T, RP, T1> {
-    first_half_rc: [[Field; T]; 4],
-    opt_half_rc: [Field; T],
-    opt_full_rc: [Field; RP],
-    second_half_rc: [[Field; T]; 4],
+    first_full_rc: [[Field; T]; 4],
+    opt_rc_outer: [Field; T],
+    opt_half_rc: [Field; RP],
+    second_full_rc: [[Field; T]; 4],
     mds: [[Field; T]; T],
     m_i: [[Field; T]; T],
     v: [[Field; T1]; RP],
@@ -19,20 +19,20 @@ struct PoseidonBn254Config<T, RP, T1> {
 
 fn permute_bn254<T, RP, T1>(mut state: [Field; T], config: PoseidonBn254Config<T, RP, T1>) -> [Field; T] {
     for i in 0..4 {
-        state = crypto_math::vec_add(state, config.first_half_rc[i]);
+        state = crypto_math::vec_add(state, config.first_full_rc[i]);
         state = poseidon::sbox(state);
         state = crypto_math::mat_mul(state, config.mds);
     }
-    state =crypto_math::vec_add(state, config.opt_half_rc);
+    state =crypto_math::vec_add(state, config.opt_rc_outer);
     state =crypto_math::mat_mul(state, config.m_i);
 
     for r in 0..RP {
         state[0] = poseidon::sbox_e(state[0]);
-        state[0] = state[0] + config.opt_full_rc[r];
+        state[0] = state[0] + config.opt_half_rc[r];
         state = cheap_matmul(state, config.v[RP - r -1], config.w_hat[RP - r -1], config.mds[0][0]);
     }
     for r in 0..4 {
-        state =crypto_math::vec_add(state, config.second_half_rc[r]);
+        state =crypto_math::vec_add(state, config.second_full_rc[r]);
         state =poseidon::sbox(state);
         state =crypto_math::mat_mul(state, config.mds);
     }
