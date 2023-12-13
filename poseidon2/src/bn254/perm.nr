@@ -1,6 +1,6 @@
 use crate::bn254::permute_bn254;
 use crate::bn254::consts;
-use dep::crypto_math::poseidon;
+use dep::hash_utils::poseidon;
 use dep::std::collections::vec::Vec;
 
 fn internal_2(state: [Field; 2]) -> [Field; 2] {

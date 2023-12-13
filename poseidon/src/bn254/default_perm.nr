@@ -1,5 +1,5 @@
-use dep::crypto_math;
-use dep::crypto_math::poseidon;
+use dep::hash_utils;
+use dep::hash_utils::poseidon;
 
 use crate::bn254::consts;
 
@@ -17,17 +17,17 @@ pub(crate) fn x5_4(input: [Field; 4]) -> [Field; 4] {
 
 pub(crate) fn permute<T, R>(mut state: [Field; T], rc: [[Field; T]; R], mds: fn([Field; T]) -> [Field; T]) -> [Field; T] {
     for r in 0..4 {
-        state =crypto_math::vec_add(state, rc[r]);
+        state =hash_utils::vec_add(state, rc[r]);
         state =poseidon::sbox(state);
         state = mds(state);
     }
     for r in 4..R - 4 {
-        state = crypto_math::vec_add(state, rc[r]);
+        state = hash_utils::vec_add(state, rc[r]);
         state[0] = poseidon::sbox_e(state[0]);
         state = mds(state);
     }
     for r in R - 4..R {
-        state =crypto_math::vec_add(state, rc[r]);
+        state =hash_utils::vec_add(state, rc[r]);
         state =poseidon::sbox(state);
         state = mds(state);
     }

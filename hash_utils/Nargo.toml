@@ -1,5 +1,5 @@
 [package]
-name = "crypto_math"
+name = "hash_utils"
 type = "lib"
 authors = [""]
 compiler_version = ">=0.19.2"

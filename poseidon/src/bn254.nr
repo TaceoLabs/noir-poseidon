@@ -3,8 +3,8 @@ mod default_perm;
 mod perm;
 mod consts;
 
-use dep::crypto_math;
-use dep::crypto_math::poseidon;
+use dep::hash_utils;
+use dep::hash_utils::poseidon;
 
 struct PoseidonBn254Config<T, RP, T1> {
     first_full_rc: [[Field; T]; 4],
@@ -19,12 +19,12 @@ struct PoseidonBn254Config<T, RP, T1> {
 
 fn permute_bn254<T, RP, T1>(mut state: [Field; T], config: PoseidonBn254Config<T, RP, T1>) -> [Field; T] {
     for i in 0..4 {
-        state = crypto_math::vec_add(state, config.first_full_rc[i]);
+        state = hash_utils::vec_add(state, config.first_full_rc[i]);
         state = poseidon::sbox(state);
-        state = crypto_math::mat_mul(state, config.mds);
+        state = hash_utils::mat_mul(state, config.mds);
     }
-    state =crypto_math::vec_add(state, config.opt_rc_outer);
-    state =crypto_math::mat_mul(state, config.m_i);
+    state =hash_utils::vec_add(state, config.opt_rc_outer);
+    state =hash_utils::mat_mul(state, config.m_i);
 
     for r in 0..RP {
         state[0] = poseidon::sbox_e(state[0]);
@@ -32,9 +32,9 @@ fn permute_bn254<T, RP, T1>(mut state: [Field; T], config: PoseidonBn254Config<T
         state = cheap_matmul(state, config.v[RP - r -1], config.w_hat[RP - r -1], config.mds[0][0]);
     }
     for r in 0..4 {
-        state =crypto_math::vec_add(state, config.second_full_rc[r]);
+        state =hash_utils::vec_add(state, config.second_full_rc[r]);
         state =poseidon::sbox(state);
-        state =crypto_math::mat_mul(state, config.mds);
+        state =hash_utils::mat_mul(state, config.mds);
     }
     state
 }

@@ -6,7 +6,7 @@ This repository contains the following Noir crates in the respective folders:
 
 - [poseidon](poseidon): An implementation of the zk-friendly hash function [Poseidon](https://eprint.iacr.org/2019/458.pdf)
 - [poseidon2](poseidon2): An implementation of Poseidon's successor, [Poseidon2](https://eprint.iacr.org/2023/323.pdf)
-- [crypto_math](crypto_math) (weiß jemand nen besseren namen :'( ): A library crate that implements helper functions for cryptographic primitives
+- [hash_utils](hash_utils): A library crate that implements helper functions for cryptographic primitives
 
 Poseidon and Poseidon2, in contrast to traditional hash constructions like SHA-256, utilize low-degree round functions with the $x^d$ S-box to minimize the necessary constraints inside a zk-circuit. In the case of Noir's native curve BN254, the exponent in the round function is $d=5$. The implementations utilize modern optimizations (in contrast to the existing Poseidon implementation in Noir's standard library) with all advances in cryptanalysis in mind.
 

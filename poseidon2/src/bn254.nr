@@ -1,7 +1,7 @@
 mod consts;
 mod perm;
-use dep::crypto_math;
-use dep::crypto_math::poseidon;
+use dep::hash_utils;
+use dep::hash_utils::poseidon;
 
 struct Poseidon2Bn254Config<T, R> {
     first_full_rc: [[Field; T]; 4],
@@ -12,7 +12,7 @@ struct Poseidon2Bn254Config<T, R> {
 fn permute_bn254<T, R>(mut state: [Field; T], mm_external: fn([Field; T]) -> [Field; T], mm_internal: fn([Field; T]) -> [Field; T], config: Poseidon2Bn254Config<T,R>) -> [Field; T] {
     state = mm_external(state);
     for r in 0..4 {
-        state = crypto_math::vec_add(state, config.first_full_rc[r]);
+        state = hash_utils::vec_add(state, config.first_full_rc[r]);
         state = poseidon::sbox(state);
         state = mm_external(state);
     }
@@ -23,7 +23,7 @@ fn permute_bn254<T, R>(mut state: [Field; T], mm_external: fn([Field; T]) -> [Fi
         state = mm_internal(state);
     }
     for r in 0..4 {
-        state = crypto_math::vec_add(state, config.second_full_rc[r]);
+        state = hash_utils::vec_add(state, config.second_full_rc[r]);
         state = poseidon::sbox(state);
         state = mm_external(state);
     }
