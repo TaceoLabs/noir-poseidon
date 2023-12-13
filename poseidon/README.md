@@ -26,7 +26,7 @@ Similar to Noir's standard library, we provide an implementation for state sizes
 | 15    | 5495          | 5813                             |
 | 16    | 5875          | 6581                             |
 
-It shows that thanks to the implemented optimizations and the fewer rounds of our implementation (see Section [Round Constants](#round-constants)), we can improve on the necessary constraints for all state sizes $\ge 3$, whereas for state size $t=2$ the constraints are equivalent.
+The table shows that thanks to optimizations and fewer rounds of our implementation (see Section [Round Constants](#round-constants)), we can improve on the necessary constraints for all state sizes $\ge 3$, whereas for state size $t=2$ the constraints are equivalent.
 
 For state sizes $t \le 4$, we use optimized MDS matrices for the linear layer. This improves performance without sacrificing security. For all other state sizes, we used equivalent transformations to the linear layer in the half rounds, improving on constraints of the matrix multiplication, as seen in [the rust implementation](https://extgit.iaik.tugraz.at/krypto/zkfriendlyhashzoo/-/tree/master/bellman/src/poseidon?ref_type=heads).
 
@@ -78,7 +78,7 @@ $$
 $$
 
 $$
-\text{MDS}_4 = 
+\text{MDS}_4 =
 \begin{pmatrix}
 5 & 7 & 1 & 3\\
 4 & 6 & 1 & 1\\
