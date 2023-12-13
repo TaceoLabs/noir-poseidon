@@ -8,25 +8,25 @@ For further information, we refer to the [Poseidon Paper](https://eprint.iacr.or
 
 Similar to Noir's standard library, we provide an implementation for state sizes $t \in [2, 16]$. The following table shows the constraints obtained by `nargo info` for our implementation and the corresponding hashes from the standard library.
 
-| Input | This Poseidon | Noir's standard library Poseidon |
-| ----- | ------------- | -------------------------------- |
-| 2     | 586           | 586                              |
-| 3     | 2098          | 2183                             |
-| 4     | 2305          | 2353                             |
-| 5     | 2507          | 2833                             |
-| 6     | 2795          | 3059                             |
-| 7     | 3031          | 3532                             |
-| 8     | 3283          | 3877                             |
-| 9     | 3551          | 4076                             |
-| 10    | 3835          | 4123                             |
-| 11    | 4135          | 4948                             |
-| 12    | 4451          | 4751                             |
-| 13    | 4783          | 5539                             |
-| 14    | 5131          | 6388                             |
-| 15    | 5495          | 5813                             |
-| 16    | 5875          | 6581                             |
+| Input | Noir's standard library Poseidon | This Poseidon |
+| ----- | -------------------------------- | ------------- |
+| 2     | 586                              | 586           |
+| 3     | 2183                             | 2098          |
+| 4     | 2353                             | 2305          |
+| 5     | 2833                             | 2507          |
+| 6     | 3059                             | 2795          |
+| 7     | 3532                             | 3031          |
+| 8     | 3877                             | 3283          |
+| 9     | 4076                             | 3551          |
+| 10    | 4123                             | 3835          |
+| 11    | 4948                             | 4135          |
+| 12    | 4751                             | 4451          |
+| 13    | 5539                             | 4783          |
+| 14    | 6388                             | 5131          |
+| 15    | 5813                             | 5495          |
+| 16    | 6581                             | 5875          |
 
-The table shows that thanks to optimizations and fewer rounds of our implementation (see Section [Round Constants](#round-constants)), we can improve on the necessary constraints for all state sizes $\ge 3$, whereas for state size $t=2$ we produce equivalent results.
+The table shows that thanks to optimizations and fewer rounds of our implementation (see Section [Round Constants](#round-constants)), we can improve on the necessary constraints for all state sizes $\ge 3$, whereas for state size $t=2$ the constraints are equivalent.
 
 For state sizes $t \le 4$, we use optimized MDS matrices for the linear layer. This improves performance without sacrificing security. For all other state sizes, we use equivalent transformations to the linear layer in the half rounds, improving on constraints of the matrix multiplication, as seen in [the rust implementation](https://extgit.iaik.tugraz.at/krypto/zkfriendlyhashzoo/-/tree/master/bellman/src/poseidon?ref_type=heads).
 
