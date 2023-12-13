@@ -4,14 +4,14 @@
 
 This repository contains the following Noir crates in the respective folders:
 
-- [poseidon](https://github.com/TaceoLabs/noir-poseidon/tree/baff2f7cb79fb18569b87765031bf28bf10c06d4/poseidon): An implementation of the zk-friendly hash function [Poseidon](https://eprint.iacr.org/2019/458.pdf)
-- [poseidon2](https://github.com/TaceoLabs/noir-poseidon/tree/baff2f7cb79fb18569b87765031bf28bf10c06d4/poseidon2): An implementation of Poseidon's successor, [Poseidon2](https://eprint.iacr.org/2023/323.pdf)
-- crypto_math (weiß jemand nen besseren namen :'( ): A library crate that implements helper functions for cryptographic primitives
+- [poseidon](poseidon): An implementation of the zk-friendly hash function [Poseidon](https://eprint.iacr.org/2019/458.pdf)
+- [poseidon2](poseidon2): An implementation of Poseidon's successor, [Poseidon2](https://eprint.iacr.org/2023/323.pdf)
+- [crypto_math](crypto_math) (weiß jemand nen besseren namen :'( ): A library crate that implements helper functions for cryptographic primitives
 
 Poseidon and Poseidon2, in contrast to traditional hash constructions like SHA-256, utilize low-degree round functions (S-box) $x^d$ to minimize the necessary constraints inside a zk-circuit. In the case of Noir's native curve BN254, the exponent in the round function is $d=5$. The implementations utilize modern optimizations (in contrast to the existing Poseidon implementation in Noir's standard library) with all advances in cryptoanalysis in mind.
 
 You can see the designs and the difference of Poseidon and Poseidon2 in the following picture:
-![Poseidon2Design](https://github.com/TaceoLabs/noir-poseidon/blob/2f6201fb05b4e8872378a6445b4d3221fd18b63f/assets/poseidon_poseidon2.png)
+![Poseidon2Design](assets/poseidon_poseidon2.png)
 
 > we obtained the picture from the [Poseidon2 Paper](https://eprint.iacr.org/2023/323.pdf)
 

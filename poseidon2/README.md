@@ -44,11 +44,11 @@ fn main(plains: [Field; 8]) -> pub Field {
 
 As already mentioned, we also provide function calls for state sizes $t\in {2,3,4,8,12,16}$, with the respective functions `poseidon2::bn254::hash_2([..])`, `poseidon2::bn254::hash_3([..])`, etc.
 
-For further examples on how to use the Poseidon2 crate, have a look at the [tests](https://github.com/TaceoLabs/noir-poseidon/blob/89713b19ea1b0726d6661a9566a05bd922e9518e/poseidon2/src/bn254/perm.nr).
+For further examples on how to use the Poseidon2 crate, have a look at the [tests](src/bn254/perm.nr).
 
 ## Round Constants
 
-We used the same round constants as the official [Poseidon2 implementation](https://github.com/HorizenLabs/poseidon2/tree/main). We added the script that produces the round constants [in the repository](https://github.com/TaceoLabs/noir-poseidon/blob/db5ed1f0eaa1b59895dd5d76967c44b11a5ec578/scripts/poseidon_constants.sage). You can generate the round constants by executing the following command in the root of the repository and setting the parameter $t$ at the top of the file:
+We used the same round constants as the official [Poseidon2 implementation](https://github.com/HorizenLabs/poseidon2/tree/main). We added the script that produces the round constants [in the repository](scripts/poseidon_constants.sage). You can generate the round constants by executing the following command in the root of the repository and setting the parameter $t$ at the top of the file:
 
 ```bash
 cd scripts && sage poseidon2_constants.sage
