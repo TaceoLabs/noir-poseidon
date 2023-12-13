@@ -1,6 +1,6 @@
 [package]
-name = "poseidon"
-type = "bin"
+name = "crypto_math"
+type = "lib"
 authors = [""]
 compiler_version = ">=0.19.2"
 

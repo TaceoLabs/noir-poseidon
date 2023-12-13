@@ -2,10 +2,8 @@
 mod default_perm;
 mod consts;
 
-use crate::new_poseidon::math::vec_add;
-use crate::new_poseidon::math::mat_mul;
-use crate::new_poseidon::math::sbox;
-use crate::new_poseidon::math::sbox_e;
+use dep::crypto_math;
+use dep::crypto_math::poseidon;
 
 struct PoseidonBn254Config<T, RP, T1> {
     first_half_rc: [[Field; T]; 4],
@@ -20,22 +18,22 @@ struct PoseidonBn254Config<T, RP, T1> {
 
 fn permute_bn254<T, RP, T1>(mut state: [Field; T], config: PoseidonBn254Config<T, RP, T1>) -> [Field; T] {
     for i in 0..4 {
-        state = vec_add(state, config.first_half_rc[i]);
-        state = sbox(state);
-        state = mat_mul(state, config.mds);
+        state = crypto_math::vec_add(state, config.first_half_rc[i]);
+        state = poseidon::sbox(state);
+        state = crypto_math::mat_mul(state, config.mds);
     }
-    state = vec_add(state, config.opt_half_rc);
-    state = mat_mul(state, config.m_i);
+    state =crypto_math::vec_add(state, config.opt_half_rc);
+    state =crypto_math::mat_mul(state, config.m_i);
 
     for r in 0..RP {
-        state[0] = sbox_e(state[0]);
+        state[0] = poseidon::sbox_e(state[0]);
         state[0] = state[0] + config.opt_full_rc[r];
         state = cheap_matmul(state, config.v[RP - r -1], config.w_hat[RP - r -1], config.mds[0][0]);
     }
     for r in 0..4 {
-        state = vec_add(state, config.second_half_rc[r]);
-        state = sbox(state);
-        state = mat_mul(state, config.mds);
+        state =crypto_math::vec_add(state, config.second_half_rc[r]);
+        state =poseidon::sbox(state);
+        state =crypto_math::mat_mul(state, config.mds);
     }
     state
 }

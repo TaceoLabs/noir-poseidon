@@ -1,27 +1,24 @@
 mod consts;
 use dep::std::collections::vec::Vec;
-use crate::new_poseidon::math::vec_add;
-use crate::new_poseidon::math::sbox;
-use crate::new_poseidon::math::sbox_e;
-use crate::new_poseidon::math::mds_2;
-use crate::new_poseidon::math::mds_4;
+use dep::crypto_math;
+use dep::crypto_math::poseidon;
 
 fn permute_bn254<T, R>(mut state: [Field; T], rc: [[Field; T]; R], mm_external: fn([Field; T]) -> [Field; T], mm_internal: fn([Field; T]) -> [Field; T]) -> [Field; T] {
     state = mm_external(state);
     for r in 0..4 {
-        state = vec_add(state, rc[r]);
-        state = sbox(state);
+        state = crypto_math::vec_add(state, rc[r]);
+        state = poseidon::sbox(state);
         state = mm_external(state);
     }
 
     for r in 4..R - 4 {
         state[0] += rc[r][0];
-        state[0] = sbox_e(state[0]);
+        state[0] = poseidon::sbox_e(state[0]);
         state = mm_internal(state);
     }
     for r in R - 4..R {
-        state = vec_add(state, rc[r]);
-        state = sbox(state);
+        state = crypto_math::vec_add(state, rc[r]);
+        state = poseidon::sbox(state);
         state = mm_external(state);
     }
     state
@@ -53,7 +50,7 @@ fn external<T>(mut state: [Field; T])->[Field; T] {
     let mut mds_parts: Vec<[Field; 4]> = Vec::new();
     for i in 0..T / 4 {
         let offset = (4 * i);
-        mds_parts.push(mds_4([state[0 + offset], state[1 + offset], state[2 + offset], state[3 + offset]]))
+        mds_parts.push(poseidon::mds_4([state[0 + offset], state[1 + offset], state[2 + offset], state[3 + offset]]))
     }
     for i in 0..T / 4 {
         for j in 0..4 {
@@ -104,7 +101,7 @@ fn diag_mat_mul<T>(mut state: [Field; T], diag: [Field; T]) -> [Field; T] {
 
 #[field(bn254)]
 pub fn x5_2(input: [Field; 2]) -> [Field; 2] {
-    permute_bn254(input, consts::round_constants_2, mds_2, internal_2)
+    permute_bn254(input, consts::round_constants_2, poseidon::mds_2, internal_2)
 }
 
 #[field(bn254)]
@@ -114,7 +111,7 @@ pub fn x5_3(input: [Field; 3]) -> [Field; 3] {
 
 #[field(bn254)]
 pub fn x5_4(input: [Field; 4]) -> [Field; 4] {
-    permute_bn254(input, consts::round_constants_4, mds_4, internal_4)
+    permute_bn254(input, consts::round_constants_4, poseidon::mds_4, internal_4)
 }
 
 #[field(bn254)]

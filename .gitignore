@@ -5,5 +5,3 @@ Prover.toml
 Verifier.toml
 
 **/sponge.nr
-scripts/poseidon_constants.sage.py
-scripts/poseidon2_constants.sage.py

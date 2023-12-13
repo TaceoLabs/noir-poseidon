@@ -1,4 +1,4 @@
-use crate::new_poseidon::poseidon::bn254::PoseidonBn254Config;
+use crate::bn254::PoseidonBn254Config;
 
 global round_constants_2: [[Field; 2]; 64] = [[0x09c46e9ec68e9bd4fe1faaba294cba38a71aa177534cdd1b6c7dc0dbd0abd7a7, 0x0c0356530896eec42a97ed937f3135cfc5142b3ae405b8343c1d83ffa604cb81],
 [0x1e28a1d935698ad1142e51182bb54cf4a00ea5aabd6268bd317ea977cc154a30, 0x27af2d831a9d2748080965db30e298e40e5757c3e008db964cf9e2b12b91251f,], 
