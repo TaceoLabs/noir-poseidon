@@ -57,7 +57,7 @@ For further examples on how to use the Poseidon crate, have a look at the [tests
 
 In contrast to Noir's standard libraries' Poseidon implementation, we used the same round constants as the [reference implementation](https://extgit.iaik.tugraz.at/krypto/hadeshash/-/tree/master/code?ref_type=heads). We added the script that produces the round constants [in the repository](https://github.com/TaceoLabs/noir-poseidon/blob/db5ed1f0eaa1b59895dd5d76967c44b11a5ec578/scripts/poseidon_constants.sage).
 
-The old implementation sacrificed performance for interoperability with the Circom implementation, hence using more rounds for certain instantiations than necessary. Our implementation is not conformant to Circom, but to the reference implementation in Sage.
+The old implementation sacrificed performance for interoperability with the Circom implementation, hence using more rounds for certain instantiations than necessary. Our implementation is not conformant to Circom, but to the reference implementation in Sage. On top of the implemented optimizations, we can also improve the performance due to fewer rounds.
 
 ## Disclaimer
 
