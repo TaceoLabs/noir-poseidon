@@ -19,9 +19,7 @@ Poseidon2 has an internal state size $t\in {2,3,4t\prime,\dots,24} \text{ for } 
 | 12  | 4751         | 4451         | 3995      |
 | 16  | 6581         | 5875         | 4883      |
 
-The table shows that thanks to optimizations and fewer rounds of our implementation (see Section [Round Constants](#round-constants)), we can improve on the necessary constraints for all state sizes $\ge 3$, whereas for state size $t=2$ the constraints are equivalent.
-
-For state sizes $t \le 4$, we use optimized MDS matrices for the linear layer. This improves performance without sacrificing security. For all other state sizes, we use equivalent transformations to the linear layer in the half rounds, improving on constraints of the matrix multiplication, as seen in [the rust implementation](https://extgit.iaik.tugraz.at/krypto/zkfriendlyhashzoo/-/tree/master/bellman/src/poseidon?ref_type=heads).
+The table shows that for $t=2$ all implementations produce the same number of constraints. For $t=4$, the new Poseidon implementation in this repository actually outperforms Poseidon2 with respect to constraint sizes, but for all other state sizes, Poseidon2 produces fewer constraints. **Note** that table only depicts the amount of constraints (rows in a plonkish proof system), impacting the computation when computing FFTs. What this table does not show is the plain speed improvement of Poseidon2 in contrast to Poseidon, which is necessary for filling the trace and out of circuit hashing. (Soll ich den absatz weg tun und nur sagen "he aber eig ist poseidon2 auch viel schneller in plain ohne erklärung warum das interessant ist")
 
 ## Installation
 
