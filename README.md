@@ -1,16 +1,16 @@
-# Noir-Griffin for BN254
+# Poseidon and Poseidon2 for Noir
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This repository contains a Noir crate implementing the zk-friendly hash function Griffin for Noir's native curve BN254.
+This repository contains the following Noir crates in the respective folders:
 
-Griffin utilizes low-degree equivalence, optimized for fast prover times. These designs rely on the observation that it is possible to prove the heavy computation $y=x^{1/d}$ by constraining $y^d=x$. If $d$ is small (5 for this implementation) and the prime field is large, then $1/d$ is a considerably large exponent with many multiplications involved. Using the power map $y=x^{1/d}$ leads to fewer rounds necessary to achieve a target security threshold.
+- poseidon: An implementation of the zk-friendly hash function [Poseidon](https://eprint.iacr.org/2019/458.pdf)
+- poseidon2: An implementation of Poseidon's successor, [Poseidon2](https://eprint.iacr.org/2023/323.pdf)
+- crypto_math (weiß jemand nen besseren namen :'( ): A library crate that implements helper functions for cryptographic primitives
 
-Especially in contrast to older designs, which use the power map $y=x^d$ with a relatively small exponent (like Poseidon), Griffin has a drastically improved prover time. See the Performance section below.
+Poseidon and Poseidon2 utilize, in contrast to traditional hash constructions like SHA-256, low-degree round functions (S-box) $x^d$ to minimize the necessary constraints inside a zk-circuit. In the case of Noir's native curve BN254, the exponent in the round function is $d=5$. The implementations utilize modern optimizations (in contrast to the existing Poseidon implementation in Noir's standard library) with all advances in cryptoanalysis in mind.
 
-As proposed in the Griffin paper, we provide an API for using Griffin in sponge mode. We use the instantiation with state size 3, bitrate $r=2$, and capacity $c=1$.
-
-For further information, we refer to the [Griffin Paper](https://eprint.iacr.org/2022/403.pdf).
+For a more in-depth discussions of the two algorithms, have a look in the sub-folders.
 
 ## Performance
 

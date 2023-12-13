@@ -46,43 +46,15 @@ fn main(plains: [Field; 8]) -> pub Field {
 
 As already mentioned, we also provide function calls for state sizes $t\in {2,3,4,8,12,16}$, with the respective functions `poseidon2::bn254::hash_2([..])`, `poseidon2::bn254::hash_3([..])`, etc.
 
-For further examples on how to use the Poseidon2 crate, have a look at the [tests](https://github.com/TaceoLabs/noir-poseidon/blob/db5ed1f0eaa1b59895dd5d76967c44b11a5ec578/poseidon/src/bn254/perm.nr).
+For further examples on how to use the Poseidon2 crate, have a look at the [tests](https://github.com/TaceoLabs/noir-poseidon/blob/89713b19ea1b0726d6661a9566a05bd922e9518e/poseidon2/src/bn254/perm.nr).
 
 ## Round Constants
 
-In contrast to Noir's standard libraries' Poseidon implementation, we use the same round constants as the [reference implementation](https://extgit.iaik.tugraz.at/krypto/hadeshash/-/tree/master/code?ref_type=heads). We added the script that produces the round constants [in the repository](https://github.com/TaceoLabs/noir-poseidon/blob/db5ed1f0eaa1b59895dd5d76967c44b11a5ec578/scripts/poseidon_constants.sage). You can generate the round constants (except the MDS matrices for $t \in [2,4]$) by executing the following command in the root of the repository:
+We used the same round constants as the official [Poseidon2 implementation](https://github.com/HorizenLabs/poseidon2/tree/main). We added the script that produces the round constants [in the repository](https://github.com/TaceoLabs/noir-poseidon/blob/db5ed1f0eaa1b59895dd5d76967c44b11a5ec578/scripts/poseidon_constants.sage). You can generate the round constants by executing the following command in the root of the repository and setting the parameter $t$ at the top of the file:
 
 ```bash
-cd scripts && sage poseidon_constants.sage
+cd scripts && sage poseidon2_constants.sage
 ```
-
-We give the MDS matrices for the remaining state sizes here:
-
-$$
-\text{MDS}_2 = \text{circ}(2\text{ }1)
-$$
-
-$$
-\text{MDS}_3 = \begin{pmatrix}
-2 & 1 & 1\\
-1 & 3 & 1\\
-1 & 1 & 2
-\end{pmatrix}
-$$
-
-$$
-\text{MDS}_4 =
-\begin{pmatrix}
-5 & 7 & 1 & 3\\
-4 & 6 & 1 & 1\\
-1 & 3 & 5 & 7\\
-1 & 1 & 4 & 6
-\end{pmatrix}
-$$
-
-We use the already mentioned [rust implementation](https://extgit.iaik.tugraz.at/krypto/zkfriendlyhashzoo/-/tree/master/bellman/src/poseidon?ref_type=heads) to compute the constants for the transformed linear layer in the half rounds.
-
-The old implementation sacrificed performance for interoperability with the Circom implementation, hence using more rounds for certain instantiations than necessary. Our implementation is not conformant to Circom, but to the reference implementation from the authors of Poseidon. On top of the implemented optimizations, we can also improve the performance due to fewer rounds.
 
 ## Disclaimer
 
