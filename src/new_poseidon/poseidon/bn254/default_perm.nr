@@ -7,22 +7,18 @@ use crate::new_poseidon::math::double;
 
 use crate::new_poseidon::poseidon::bn254::consts;
 
-#[field(bn254)]
 pub(crate) fn x5_2(input: [Field; 2]) -> [Field; 2] {
     permute(input, consts::round_constants_2, mds_2)
 }
 
-#[field(bn254)]
 pub(crate) fn x5_3(input: [Field; 3]) -> [Field; 3] {
     permute(input, consts::round_constants_3, mds_3)
 }
 
-#[field(bn254)]
 pub(crate) fn x5_4(input: [Field; 4]) -> [Field; 4] {
     permute(input, consts::round_constants_4, mds_4)
 }
 
-#[field(bn254)]
 pub(crate) fn permute<T, R>(mut state: [Field; T], rc: [[Field; T]; R], mds: fn([Field; T]) -> [Field; T]) -> [Field; T] {
     for r in 0..4 {
         state = vec_add(state, rc[r]);

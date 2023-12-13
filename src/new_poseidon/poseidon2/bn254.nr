@@ -32,14 +32,6 @@ fn internal_2(state: [Field; 2]) -> [Field; 2] {
     [sum + state[0], sum + 2 * state[1]]
 }
 
-fn external_3(mut state: [Field; 3])->[Field; 3] {
-    let sum = state.reduce(|a,b| a + b);
-    state[0] += sum;
-    state[1] += sum;
-    state[2] += sum;
-    state
-}
-
 fn internal_3(state: [Field; 3])->[Field; 3] {
     let sum = state.reduce(|a,b| a + b);
     let mut ret_val = [0; 3];
@@ -49,41 +41,12 @@ fn internal_3(state: [Field; 3])->[Field; 3] {
     ret_val
 }
 
-fn internal_4(mut state: [Field; 4]) -> [Field; 4] {
-    diag_mat_mul(state, consts::internal_diag4)
-}
-
-fn external_8(mut state: [Field; 8])->[Field; 8] {
-    let mut first_four = mds_4([state[0], state[1], state[2], state[3]]);
-    let second_four = mds_4([state[4], state[5], state[6], state[7]]);
-    state = [
-        first_four[0],
-        first_four[1],
-        first_four[2],
-        first_four[3],
-        second_four[0],
-        second_four[1],
-        second_four[2],
-        second_four[3],
-    ];
-
-    //second matrix
-    first_four[0] += second_four[0];
-    first_four[1] += second_four[1];
-    first_four[2] += second_four[2];
-    first_four[3] += second_four[3];
-    [state[0] + first_four[0],
-        state[1] + first_four[1],
-        state[2] + first_four[2],
-        state[3] + first_four[3],
-        state[4] + first_four[0],
-        state[5] + first_four[1],
-        state[6] + first_four[2],
-        state[7] + first_four[3]]
-}
-
-fn internal_8(mut state: [Field; 8])->[Field; 8] {
-    diag_mat_mul(state, consts::internal_diag8)
+fn external_3(mut state: [Field; 3])->[Field; 3] {
+    let sum = state.reduce(|a,b| a + b);
+    state[0] += sum;
+    state[1] += sum;
+    state[2] += sum;
+    state
 }
 
 fn external<T>(mut state: [Field; T])->[Field; T] {
@@ -114,37 +77,12 @@ fn external<T>(mut state: [Field; T])->[Field; T] {
     state
 }
 
-fn external_12(mut state: [Field; 12])->[Field; 12] {
-    let first_four = mds_4([state[0], state[1], state[2], state[3]]);
-    let second_four = mds_4([state[4], state[5], state[6], state[7]]);
-    let third_four = mds_4([state[8], state[9], state[10], state[11]]);
-    state = [first_four[0],first_four[1],first_four[2],first_four[3], 
-             second_four[0],second_four[1],second_four[2],second_four[3], 
-             third_four[0],third_four[1],third_four[2],third_four[3]];
+fn internal_4(mut state: [Field; 4]) -> [Field; 4] {
+    diag_mat_mul(state, consts::internal_diag4)
+}
 
-    let mut stored = [0; 4];
-    for l in 0..4 {
-        stored[l] = first_four[l];
-        for j in 1..3 {
-            stored[l] += state[4 * j + l];
-        }
-    }
-   for i in 0..12 {
-       state[i] += stored[i as u8 %4]; // same constraints as explicit
-   }
-   //state[0] += stored[0];
-   //state[1] += stored[1];
-   //state[2] += stored[2];
-   //state[3] += stored[3];
-   //state[4] += stored[0];
-   //state[5] += stored[1];
-   //state[6] += stored[2];
-   //state[7] += stored[3];
-   //state[8] += stored[0];
-   //state[9] += stored[1];
-   //state[10] += stored[2];
-   //state[11] += stored[3];
-   state
+fn internal_8(mut state: [Field; 8])->[Field; 8] {
+    diag_mat_mul(state, consts::internal_diag8)
 }
 
 fn internal_12(mut state: [Field; 12])->[Field; 12] {
@@ -164,10 +102,12 @@ fn diag_mat_mul<T>(mut state: [Field; T], diag: [Field; T]) -> [Field; T] {
 pub fn x5_2(input: [Field; 2]) -> [Field; 2] {
     permute_bn254(input, consts::round_constants_2, mds_2, internal_2)
 }
+
 #[field(bn254)]
 pub fn x5_3(input: [Field; 3]) -> [Field; 3] {
     permute_bn254(input, consts::round_constants_3, external_3, internal_3)
 }
+
 #[field(bn254)]
 pub fn x5_4(input: [Field; 4]) -> [Field; 4] {
     permute_bn254(input, consts::round_constants_4, mds_4, internal_4)
@@ -182,7 +122,6 @@ pub fn x5_8(input: [Field; 8]) -> [Field; 8] {
 pub fn x5_12(input: [Field; 12]) -> [Field; 12] {
     permute_bn254(input, consts::round_constants_12, external, internal_12)
 }
-
 
 #[test]
 fn test_x5_2() {
