@@ -63,7 +63,7 @@ In contrast to Noir's standard libraries' Poseidon implementation, we use the sa
 cd scripts && sage poseidon_constants.sage
 ```
 
-We give the MDS for the remaining state sizes here:
+We give the MDS matrices for the remaining state sizes here:
 
 $$
 \text{MDS}_2 = \text{circ}(2\text{ }1)
