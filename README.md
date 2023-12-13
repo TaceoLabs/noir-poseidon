@@ -49,9 +49,9 @@ We provide a justfile in the root of the repository. Write `just` in your termin
 
 ```bash
 nargo test
-``
+```
 
 ## Disclaimer
 
 This is **experimental software** and is provided on an "as is" and "as available" basis. We do **not give any warranties** and will **not be liable for any losses** incurred through any use of this code base.
-```
+
