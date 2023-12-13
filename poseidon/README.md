@@ -53,7 +53,7 @@ As already mentioned, we also provide function calls for state sizes $t \in [2..
 
 For further examples on how to use the Poseidon crate, have a look at the [tests](https://github.com/TaceoLabs/noir-poseidon/blob/db5ed1f0eaa1b59895dd5d76967c44b11a5ec578/poseidon/src/bn254/perm.nr).
 
-## Rounds constants
+## Round Constants
 
 In contrast to Noir's standard libraries' Poseidon implementation, we used the same round constants as the [reference implementation](https://extgit.iaik.tugraz.at/krypto/hadeshash/-/tree/master/code?ref_type=heads). We added the script that produces the round constants [in the repository](https://github.com/TaceoLabs/noir-poseidon/blob/db5ed1f0eaa1b59895dd5d76967c44b11a5ec578/scripts/poseidon_constants.sage).
 
