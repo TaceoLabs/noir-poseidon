@@ -28,7 +28,8 @@ Similar to Noir's standard library, we provide an implementation for state sizes
 
 The table shows that, thanks to optimizations and fewer rounds of our implementation (see Section [Round Constants](#round-constants)), we can improve on the necessary constraints for all state sizes $\ge 3$, whereas for state size $t=2$ the constraints are equivalent.
 
-For state sizes $t \le 4$, we use optimized MDS matrices for the linear layer. This improves performance without sacrificing security. For all other state sizes, we use equivalent transformations to the linear layer in the half rounds, improving on constraints of the matrix multiplication, as seen in [the rust implementation](https://extgit.iaik.tugraz.at/krypto/zkfriendlyhashzoo/-/tree/master/bellman/src/poseidon?ref_type=heads). Furthermore, the optimized MDS matrices and equivalent transformation improve native hashing performance.
+For state sizes $t \le 4$, we use optimized MDS matrices for the linear layer. This improves performance without sacrificing security. For all other state sizes, we use equivalent transformations to the linear layer in the partial rounds, improving on constraints of the matrix multiplication, as seen in [the rust implementation](https://extgit.iaik.tugraz.at/krypto/zkfriendlyhashzoo/-/tree/master/bellman/src/poseidon?ref_type=heads). Furthermore, the optimized MDS matrices and equivalent transformation improve native hashing performance.
+However, due to the changes in the matrices, this implementation of Poseidon is not compatible with the one from the Noir standard library.
 
 ## Installation
 
@@ -89,7 +90,7 @@ $$
 
 We use the already mentioned [rust implementation](https://extgit.iaik.tugraz.at/krypto/zkfriendlyhashzoo/-/tree/master/bellman/src/poseidon?ref_type=heads) to compute the constants for the transformed linear layer in the partial rounds.
 
-The old implementation sacrificed performance for interoperability with the Circom implementation, hence using more rounds for certain instantiations than required for security. Our implementation is not conformant to Circom, but has the same number of rounds and round constants as the reference implementation from the authors of Poseidon. The only difference is the matrices for $t \in [2,4]$, which are chosen to provide the same security, but faster implementation as in the reference implementation. Thus, our implementation is faster compared to the Circom instances due to having fewer rounds and the implemented optimizations.
+The old implementation sacrificed performance for interoperability with a public Circom implementation, hence using more rounds for certain instantiations than required for security. Our implementation is not compatible with said Circom implementation, but has the same number of rounds and round constants as the reference implementation from the authors of Poseidon. The only difference is the matrices for $t \in [2,4]$, which are chosen to provide the same security, but faster implementation as in the reference implementation. Thus, our implementation is faster compared to the Circom instances due to having fewer rounds and the implemented optimizations.
 
 ## Disclaimer
 

@@ -2,13 +2,13 @@
 
 This folder contains a Noir crate implementing the zk-friendly hash function Poseidon2 for Noir's native curve BN254. Poseidon2, similar to [Poseidon](poseidon), utilizes a low-degree round function with the $x^d$ S-box to minimize the necessary constraints inside a zk-circuit. In the case of BN254, the exponent in the round function is $d=5$.
 
-Poseidon2 improves on Poseidon by changing the linear layers to use different matrices in the partial and full rounds. These matrices provide faster hashing performance (even faster as using the optimized partial layer implementation of Poseidon) and smaller Noir circuit representation, while providing the same security. Thus Poseidon2 is a much needed alternative to Poseidon, as the plain execution of Poseidon is often a bottleneck in real-world scenarios.
+Poseidon2 improves on Poseidon by changing the linear layers to use different matrices in the partial and full rounds. These matrices provide faster hashing performance (even faster than using the optimized partial layer implementation of Poseidon) and smaller Noir circuit representation, while providing the same security. Thus Poseidon2 provides a much needed improvement to Poseidon, as the plain execution of Poseidon (i.e., outside of proof systems) is often a bottleneck in real-world scenarios.
 
 For further information, we refer to the [Poseidon2 Paper](https://eprint.iacr.org/2023/323.pdf).
 
 ## Performance
 
-Poseidon2 has an internal state size $t\in \\{2,3,4t^\prime,\dots,24\\} \text{ for } t^\prime \in \mathbb{N}$. We provide an implementation for state sizes $t\in \\{2,3,4,8,12,16\\}$, mirroring the Poseidon implementation in Noir's standard library. The following table shows the constraints obtained by `nargo info` for this Poseidon2 implementation, Noir's standard library Poseidon, and the Poseidon implementation found [in this repository](poseidon).
+Poseidon2 has an internal state size $t\in \\{2,3,4t^\prime,\dots,24\\} \text{ for } t^\prime \in \mathbb{N}$. We provide an implementation for state sizes $t\in \\{2,3,4,8,12,16\\}$, mirroring the Poseidon implementation in Noir's standard library. The following table shows the constraints obtained by `nargo info` for this Poseidon2 implementation, Noir's standard library Poseidon implementation, and the Poseidon implementation found [in this repository](poseidon).
 
 | #   | Poseidon (stdlib) | Poseidon | Poseidon2 |
 | --- | ----------------- | -------- | --------- |
