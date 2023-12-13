@@ -57,7 +57,7 @@ For further examples on how to use the Poseidon crate, have a look at the [tests
 
 ## Round Constants
 
-In contrast to Noir's standard libraries' Poseidon implementation, we use the same round constants as the [reference implementation](https://extgit.iaik.tugraz.at/krypto/hadeshash/-/tree/master/code?ref_type=heads). We added the script that produces the round constants [in the repository](/scripts/poseidon_constants.sage). You can generate the round constants (except the MDS matrices for $t \in [2,4]$) by executing the following command in the root of the repository:
+In contrast to Noir's standard libraries' Poseidon implementation, we use the same round constants as the [reference implementation](https://extgit.iaik.tugraz.at/krypto/hadeshash/-/tree/master/code?ref_type=heads). We added the script that produces the round constants [in the repository](../scripts/poseidon_constants.sage). You can generate the round constants (except the MDS matrices for $t \in [2,4]$) by executing the following command in the root of the repository:
 
 ```bash
 cd scripts && sage poseidon_constants.sage
