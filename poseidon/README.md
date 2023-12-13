@@ -65,29 +65,27 @@ cd scripts && sage poseidon_constants.sage
 
 We give the MDS for the remaining state sizes here:
 
-\[
-poseidonperm_x5_2 = \text{circ}(2 1)
-\]
+$$
+\text{MDS}_2 = \text{circ}(2\text{ }1)
+$$
 
-\[
-poseidonperm_x5_3 =
-\begin{pmatrix}
+$$
+\text{MDS}_3 = \begin{pmatrix}
 2 & 1 & 1\\
 1 & 3 & 1\\
 1 & 1 & 2
 \end{pmatrix}
-\]
+$$
 
-\[
-poseidonperm_x5_4 =
+$$
+\text{MDS}_4 = 
 \begin{pmatrix}
 5 & 7 & 1 & 3\\
 4 & 6 & 1 & 1\\
 1 & 3 & 5 & 7\\
 1 & 1 & 4 & 6
 \end{pmatrix}
-
-\]
+$$
 
 We use the already mentioned [rust implementation](https://extgit.iaik.tugraz.at/krypto/zkfriendlyhashzoo/-/tree/master/bellman/src/poseidon?ref_type=heads) to compute the constants for the transformed linear layer in the half rounds.
 
