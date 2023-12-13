@@ -34,12 +34,12 @@ In your `Nargo.toml` file, add the following dependency:
 
 ```toml
 [dependencies]
-poseidon = { tag = "v0.1.0", git = "https://github.com/TaceoLabs/noir-poseidon", directory = "poseidon"} }
+poseidon = { tag = "v0.1.0", git = "https://github.com/TaceoLabs/noir-poseidon", directory = "poseidon"}
 ```
 
 ## Examples
 
-To compute a hash from three Field elements, write:
+To compute a hash from eight Field elements, write:
 
 ```Rust
 use dep::poseidon;
