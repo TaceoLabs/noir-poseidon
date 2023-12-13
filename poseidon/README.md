@@ -6,7 +6,7 @@ For further information, we refer to the [Poseidon Paper](https://eprint.iacr.or
 
 ## Performance
 
-As the Noir's standard library, we provide an implementation for state sizes $t \in [2, 16]$. The following table shows the constraints obtained by `nargo info` for our implementation and the corresponding hashes from the standard library.
+Similar to Noir's standard library, we provide an implementation for state sizes $t \in [2, 16]$. The following table shows the constraints obtained by `nargo info` for our implementation and the corresponding hashes from the standard library.
 
 | Input | This Poseidon | Noir's standard library Poseidon |
 | ----- | ------------- | -------------------------------- |
@@ -28,7 +28,7 @@ As the Noir's standard library, we provide an implementation for state sizes $t 
 
 It shows that thanks to the implemented optimizations and the fewer rounds of our implementation (see Section [Round Constants](#round-constants)), we can improve on the necessary constraints for all state sizes $\ge 3$, whereas for state size $t=2$ the constraints are equivalent.
 
-For state sizes $t \le 4$, we use optimized MDS matrices for the linear layer. This improves performance without sacrificing security. For all other state sizes, we used equivalent transformations to the linear layer in the half rounds, improving on the matrix multiplication, as seen in [the Rust implementation](https://extgit.iaik.tugraz.at/krypto/zkfriendlyhashzoo/-/tree/master/bellman/src/poseidon?ref_type=heads).
+For state sizes $t \le 4$, we use optimized MDS matrices for the linear layer. This improves performance without sacrificing security. For all other state sizes, we used equivalent transformations to the linear layer in the half rounds, improving on constraints of the matrix multiplication, as seen in [the rust implementation](https://extgit.iaik.tugraz.at/krypto/zkfriendlyhashzoo/-/tree/master/bellman/src/poseidon?ref_type=heads).
 
 ## Installation
 
@@ -57,15 +57,41 @@ For further examples on how to use the Poseidon crate, have a look at the [tests
 
 ## Round Constants
 
-In contrast to Noir's standard libraries' Poseidon implementation, we used the same round constants as the [reference implementation](https://extgit.iaik.tugraz.at/krypto/hadeshash/-/tree/master/code?ref_type=heads). We added the script that produces the round constants [in the repository](https://github.com/TaceoLabs/noir-poseidon/blob/db5ed1f0eaa1b59895dd5d76967c44b11a5ec578/scripts/poseidon_constants.sage). You can generate the round constants by executing the following command in the root of the repository:
+In contrast to Noir's standard libraries' Poseidon implementation, we used the same round constants as the [reference implementation](https://extgit.iaik.tugraz.at/krypto/hadeshash/-/tree/master/code?ref_type=heads). We added the script that produces the round constants [in the repository](https://github.com/TaceoLabs/noir-poseidon/blob/db5ed1f0eaa1b59895dd5d76967c44b11a5ec578/scripts/poseidon_constants.sage). You can generate the round constants (except the MDS matrices for $t \in [2,4]$) by executing the following command in the root of the repository:
 
 ```bash
 cd scripts && sage poseidon_constants.sage
 ```
 
-We use the already mentioned [Rust implementation](https://extgit.iaik.tugraz.at/krypto/zkfriendlyhashzoo/-/tree/master/bellman/src/poseidon?ref_type=heads) to compute the constants for the transformed linear layer in the half rounds.
+We give the MDS for the remaining state sizes here:
 
-The old implementation sacrificed performance for interoperability with the Circom implementation, hence using more rounds for certain instantiations than necessary. Our implementation is not conformant to Circom, but to the reference implementation in Sage. On top of the implemented optimizations, we can also improve the performance due to fewer rounds.
+\[
+poseidonperm_x5_2 = \text{circ}(2 1)
+\]
+
+\[
+poseidonperm_x5_3 =
+\begin{pmatrix}
+2 & 1 & 1\\
+1 & 3 & 1\\
+1 & 1 & 2
+\end{pmatrix}
+\]
+
+\[
+poseidonperm_x5_4 =
+\begin{pmatrix}
+5 & 7 & 1 & 3\\
+4 & 6 & 1 & 1\\
+1 & 3 & 5 & 7\\
+1 & 1 & 4 & 6
+\end{pmatrix}
+
+\]
+
+We use the already mentioned [rust implementation](https://extgit.iaik.tugraz.at/krypto/zkfriendlyhashzoo/-/tree/master/bellman/src/poseidon?ref_type=heads) to compute the constants for the transformed linear layer in the half rounds.
+
+The old implementation sacrificed performance for interoperability with the Circom implementation, hence using more rounds for certain instantiations than necessary. Our implementation is not conformant to Circom, but to the reference implementation from the authors of Poseidon. On top of the implemented optimizations, we can also improve the performance due to fewer rounds.
 
 ## Disclaimer
 
