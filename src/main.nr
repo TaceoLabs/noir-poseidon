@@ -3,9 +3,7 @@ mod new_poseidon;
 use new_poseidon::poseidon2::bn254::x5_4;
 use dep::std::println;
 
-fn main() {
-    let test = x5_4([1, 0, 0, 0]);
-    println(test);
+fn main(input: [Field; 8]) -> pub [Field; 8] {
     //old_poseidon::poseidon::bn254::perm::x5_2(input)
     //new_poseidon::poseidon::bn254::x5_2(input)
     //old_poseidon::poseidon::bn254::perm::x5_3(input)
@@ -18,4 +16,5 @@ fn main() {
     //new_poseidon::poseidon::bn254::x5_6(input)
     //old_poseidon::poseidon::bn254::perm::x5_8(input)
     //new_poseidon::poseidon::bn254::x5_8(input)
+    new_poseidon::poseidon2::bn254::x5_8(input)
 }
