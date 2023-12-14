@@ -35,14 +35,14 @@ poseidon2 = { tag = "v0.1.0", git = "https://github.com/TaceoLabs/noir-poseidon"
 To compute a hash from eight Field elements, write:
 
 ```Rust
-use dep::poseidon;
+use dep::poseidon2;
 
 fn main(plains: [Field; 8]) -> pub Field {
     poseidon2::bn254::hash_8(plains)
 }
 ```
 
-As already mentioned, we also provide function calls for state sizes $t\in {2,3,4,8,12,16}$, with the respective functions `poseidon2::bn254::hash_2([..])`, `poseidon2::bn254::hash_3([..])`, etc.
+As already mentioned, we also provide function calls for state sizes $t\in \\{2,3,4,8,12,16\\}$, with the respective functions `poseidon2::bn254::hash_2([..])`, `poseidon2::bn254::hash_3([..])`, etc.
 
 For further examples on how to use the Poseidon2 crate, have a look at the [tests](src/bn254/perm.nr).
 
