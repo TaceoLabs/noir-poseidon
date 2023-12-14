@@ -44,7 +44,7 @@ fn main(plains: [Field; 8]) -> pub Field {
 
 As already mentioned, we also provide function calls for state sizes $t\in \\{2,3,4,8,12,16\\}$, with the respective functions `poseidon2::bn254::hash_2([..])`, `poseidon2::bn254::hash_3([..])`, etc.
 
-For further examples on how to use the Poseidon2 crate, have a look at the [tests](src/bn254/perm.nr).
+For further examples on how to use the Poseidon2 crate, have a look at the [tests](src/bn254/perm.nr). Furthermore, you can find a merkle proof in [lib.nr](src/lib.nr). We used the [official Rust Poseidon2 implementation](https://github.com/HorizenLabs/poseidon2/tree/main/plain_implementations/src/merkle_tree) to compute the merkle root.
 
 ## Round Constants
 
