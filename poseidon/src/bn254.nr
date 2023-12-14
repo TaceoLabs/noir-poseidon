@@ -9,7 +9,7 @@ use dep::hash_utils::poseidon;
 struct PoseidonBn254Config<T, RP, T1> {
     first_full_rc: [[Field; T]; 4],
     opt_rc_outer: [Field; T],
-    opt_half_rc: [Field; RP],
+    opt_partial_rc: [Field; RP],
     second_full_rc: [[Field; T]; 4],
     mds: [[Field; T]; T],
     m_i: [[Field; T]; T],
@@ -28,7 +28,7 @@ fn permute_bn254<T, RP, T1>(mut state: [Field; T], config: PoseidonBn254Config<T
 
     for r in 0..RP {
         state[0] = poseidon::sbox_e(state[0]);
-        state[0] = state[0] + config.opt_half_rc[r];
+        state[0] = state[0] + config.opt_partial_rc[r];
         state = cheap_matmul(state, config.v[RP - r -1], config.w_hat[RP - r -1], config.mds[0][0]);
     }
     for r in 0..4 {

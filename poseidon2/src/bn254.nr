@@ -5,7 +5,7 @@ use dep::hash_utils::poseidon;
 
 struct Poseidon2Bn254Config<T, R> {
     first_full_rc: [[Field; T]; 4],
-    half_rc: [Field; R],
+    partial_rc: [Field; R],
     second_full_rc: [[Field; T]; 4],
 }
 
@@ -17,8 +17,8 @@ fn permute_bn254<T, R>(mut state: [Field; T], mm_external: fn([Field; T]) -> [Fi
         state = mm_external(state);
     }
 
-    for r in 0..R  {
-        state[0] += config.half_rc[r];
+    for r in 0..R {
+        state[0] += config.partial_rc[r];
         state[0] = poseidon::sbox_e(state[0]);
         state = mm_internal(state);
     }
