@@ -35,7 +35,7 @@ poseidon2 = { tag = "v0.1.0", git = "https://github.com/TaceoLabs/noir-poseidon"
 To compute a hash from eight Field elements, write:
 
 ```Rust
-use dep::poseidon;
+use dep::poseidon2;
 
 fn main(plains: [Field; 8]) -> pub Field {
     poseidon2::bn254::hash_8(plains)
