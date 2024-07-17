@@ -2,7 +2,7 @@
 name = "poseidon"
 type = "lib"
 authors = [""]
-compiler_version = ">=0.19.2"
+compiler_version = ">=0.30.0"
 
 [dependencies]
 hash_utils = { path = "../hash_utils" }

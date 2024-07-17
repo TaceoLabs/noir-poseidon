@@ -2,6 +2,6 @@
 name = "hash_utils"
 type = "lib"
 authors = [""]
-compiler_version = ">=0.19.2"
+compiler_version = ">=0.30.0"
 
 [dependencies]
