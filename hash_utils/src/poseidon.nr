@@ -13,9 +13,18 @@ pub fn sbox_e(mut x: Field) -> Field {
 }
 
 #[field(bn254)]
-pub fn mds_2(state: [Field; 2])->[Field; 2] {
+pub fn mds_2(state: [Field; 2]) -> [Field; 2] {
     let sum = state[0] + state[1];
     [sum + state[0], sum + state[1]]
+}
+
+fn mds_3(state: [Field; 3]) -> [Field; 3] {
+    let sum = state.reduce(|a,b| a + b);
+    let mut ret_val = [0; 3];
+    ret_val[0] = state[0] + sum;
+    ret_val[1] = 2 * state[1] + sum;
+    ret_val[2] = state[2] + sum;
+    ret_val
 }
 
 #[field(bn254)]
@@ -32,3 +41,4 @@ pub fn mds_4(mut state: [Field; 4]) -> [Field; 4] {
     state[3] = t_4;
     state
 }
+

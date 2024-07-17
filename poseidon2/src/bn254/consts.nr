@@ -2,15 +2,26 @@ use crate::bn254::Poseidon2Bn254Config;
 
 pub(crate) fn x5_2_config() -> Poseidon2Bn254Config<2, 56> {
     Poseidon2Bn254Config {
-        first_full_rc: [[0x09c46e9ec68e9bd4fe1faaba294cba38a71aa177534cdd1b6c7dc0dbd0abd7a7,
-                0x0c0356530896eec42a97ed937f3135cfc5142b3ae405b8343c1d83ffa604cb81],
-            [0x1e28a1d935698ad1142e51182bb54cf4a00ea5aabd6268bd317ea977cc154a30,
-                0x27af2d831a9d2748080965db30e298e40e5757c3e008db964cf9e2b12b91251f],
-            [0x1e6f11ce60fc8f513a6a3cfe16ae175a41291462f214cd0879aaf43545b74e03,
-                0x2a67384d3bbd5e438541819cb681f0be04462ed14c3613d8f719206268d142d3],
-            [0x0b66fdf356093a611609f8e12fbfecf0b985e381f025188936408f5d5c9f45d0,
-                0x012ee3ec1e78d470830c61093c2ade370b26c83cc5cebeeddaa6852dbdb09e21]],
-        partial_rc: [0x0252ba5f6760bfbdfd88f67f8175e3fd6cd1c431b099b6bb2d108e7b445bb1b9,
+        first_full_rc: [
+            [
+                0x09c46e9ec68e9bd4fe1faaba294cba38a71aa177534cdd1b6c7dc0dbd0abd7a7,
+                0x0c0356530896eec42a97ed937f3135cfc5142b3ae405b8343c1d83ffa604cb81
+            ],
+            [
+                0x1e28a1d935698ad1142e51182bb54cf4a00ea5aabd6268bd317ea977cc154a30,
+                0x27af2d831a9d2748080965db30e298e40e5757c3e008db964cf9e2b12b91251f
+            ],
+            [
+                0x1e6f11ce60fc8f513a6a3cfe16ae175a41291462f214cd0879aaf43545b74e03,
+                0x2a67384d3bbd5e438541819cb681f0be04462ed14c3613d8f719206268d142d3
+            ],
+            [
+                0x0b66fdf356093a611609f8e12fbfecf0b985e381f025188936408f5d5c9f45d0,
+                0x012ee3ec1e78d470830c61093c2ade370b26c83cc5cebeeddaa6852dbdb09e21
+            ]
+        ],
+        partial_rc: [
+            0x0252ba5f6760bfbdfd88f67f8175e3fd6cd1c431b099b6bb2d108e7b445bb1b9,
             0x179474cceca5ff676c6bec3cef54296354391a8935ff71d6ef5aeaad7ca932f1,
             0x2c24261379a51bfa9228ff4a503fd4ed9c1f974a264969b37e1a2589bbed2b91,
             0x1cc1d7b62692e63eac2f288bd0695b43c2f63f5001fc0fc553e66c0551801b05,
@@ -65,33 +76,55 @@ pub(crate) fn x5_2_config() -> Poseidon2Bn254Config<2, 56> {
             0x2a115439607f335a5ea83c3bc44a9331d0c13326a9a7ba3087da182d648ec72f,
             0x23f9b6529b5d040d15b8fa7aee3e3410e738b56305cd44f29535c115c5a4c060,
             0x05872c16db0f72a2249ac6ba484bb9c3a3ce97c16d58b68b260eb939f0e6e8a7,
-            0x1300bdee08bb7824ca20fb80118075f40219b6151d55b5c52b624a7cdeddf6a7] ,
-        second_full_rc: [[0x19b9b63d2f108e17e63817863a8f6c288d7ad29916d98cb1072e4e7b7d52b376,
-                0x015bee1357e3c015b5bda237668522f613d1c88726b5ec4224a20128481b4f7f],
-            [0x2953736e94bb6b9f1b9707a4f1615e4efe1e1ce4bab218cbea92c785b128ffd1,
-                0x0b069353ba091618862f806180c0385f851b98d372b45f544ce7266ed6608dfc],
-            [0x304f74d461ccc13115e4e0bcfb93817e55aeb7eb9306b64e4f588ac97d81f429,
-                0x15bbf146ce9bca09e8a33f5e77dfe4f5aad2a164a4617a4cb8ee5415cde913fc],
-            [0x0ab4dfe0c2742cde44901031487964ed9b8f4b850405c10ca9ff23859572c8c6,
-                0x0e32db320a044e3197f45f7649a19675ef5eedfea546dea9251de39f9639779a]]
+            0x1300bdee08bb7824ca20fb80118075f40219b6151d55b5c52b624a7cdeddf6a7
+        ] ,
+        second_full_rc: [
+            [
+                0x19b9b63d2f108e17e63817863a8f6c288d7ad29916d98cb1072e4e7b7d52b376,
+                0x015bee1357e3c015b5bda237668522f613d1c88726b5ec4224a20128481b4f7f
+            ],
+            [
+                0x2953736e94bb6b9f1b9707a4f1615e4efe1e1ce4bab218cbea92c785b128ffd1,
+                0x0b069353ba091618862f806180c0385f851b98d372b45f544ce7266ed6608dfc
+            ],
+            [
+                0x304f74d461ccc13115e4e0bcfb93817e55aeb7eb9306b64e4f588ac97d81f429,
+                0x15bbf146ce9bca09e8a33f5e77dfe4f5aad2a164a4617a4cb8ee5415cde913fc
+            ],
+            [
+                0x0ab4dfe0c2742cde44901031487964ed9b8f4b850405c10ca9ff23859572c8c6,
+                0x0e32db320a044e3197f45f7649a19675ef5eedfea546dea9251de39f9639779a
+            ]
+        ]
     }
 }
 
 pub(crate) fn x5_3_config() -> Poseidon2Bn254Config<3, 56> {
     Poseidon2Bn254Config {
-        first_full_rc: [[0x1d066a255517b7fd8bddd3a93f7804ef7f8fcde48bb4c37a59a09a1a97052816,
+        first_full_rc: [
+            [
+                0x1d066a255517b7fd8bddd3a93f7804ef7f8fcde48bb4c37a59a09a1a97052816,
                 0x29daefb55f6f2dc6ac3f089cebcc6120b7c6fef31367b68eb7238547d32c1610,
-                0x1f2cb1624a78ee001ecbd88ad959d7012572d76f08ec5c4f9e8b7ad7b0b4e1d1],
-            [0x0aad2e79f15735f2bd77c0ed3d14aa27b11f092a53bbc6e1db0672ded84f31e5,
+                0x1f2cb1624a78ee001ecbd88ad959d7012572d76f08ec5c4f9e8b7ad7b0b4e1d1
+            ],
+            [
+                0x0aad2e79f15735f2bd77c0ed3d14aa27b11f092a53bbc6e1db0672ded84f31e5,
                 0x2252624f8617738cd6f661dd4094375f37028a98f1dece66091ccf1595b43f28,
-                0x1a24913a928b38485a65a84a291da1ff91c20626524b2b87d49f4f2c9018d735],
-            [0x22fc468f1759b74d7bfc427b5f11ebb10a41515ddff497b14fd6dae1508fc47a,
+                0x1a24913a928b38485a65a84a291da1ff91c20626524b2b87d49f4f2c9018d735
+            ],
+            [
+                0x22fc468f1759b74d7bfc427b5f11ebb10a41515ddff497b14fd6dae1508fc47a,
                 0x1059ca787f1f89ed9cd026e9c9ca107ae61956ff0b4121d5efd65515617f6e4d,
-                0x02be9473358461d8f61f3536d877de982123011f0bf6f155a45cbbfae8b981ce],
-            [0x0ec96c8e32962d462778a749c82ed623aba9b669ac5b8736a1ff3a441a5084a4,
+                0x02be9473358461d8f61f3536d877de982123011f0bf6f155a45cbbfae8b981ce
+            ],
+            [
+                0x0ec96c8e32962d462778a749c82ed623aba9b669ac5b8736a1ff3a441a5084a4,
                 0x292f906e073677405442d9553c45fa3f5a47a7cdb8c99f9648fb2e4d814df57e,
-                0x274982444157b86726c11b9a0f5e39a5cc611160a394ea460c63f0b2ffe5657e]],
-        partial_rc: [0x1a1d063e54b1e764b63e1855bff015b8cedd192f47308731499573f23597d4b5,
+                0x274982444157b86726c11b9a0f5e39a5cc611160a394ea460c63f0b2ffe5657e
+            ]
+        ],
+        partial_rc: [
+            0x1a1d063e54b1e764b63e1855bff015b8cedd192f47308731499573f23597d4b5,
             0x26abc66f3fdf8e68839d10956259063708235dccc1aa3793b91b002c5b257c37,
             0x0c7c64a9d887385381a578cfed5aed370754427aabca92a70b3c2b12ff4d7be8,
             0x1cf5998769e9fab79e17f0b6d08b2d1eba2ebac30dc386b0edd383831354b495,
@@ -146,41 +179,63 @@ pub(crate) fn x5_3_config() -> Poseidon2Bn254Config<3, 56> {
             0x1c38ec0b99b62fd4f0ef255543f50d2e27fc24db42bc910a3460613b6ef59e2f,
             0x1c89c6d9666272e8425c3ff1f4ac737b2f5d314606a297d4b1d0b254d880c53e,
             0x03326e643580356bf6d44008ae4c042a21ad4880097a5eb38b71e2311bb88f8f,
-            0x268076b0054fb73f67cee9ea0e51e3ad50f27a6434b5dceb5bdde2299910a4c9],
-        second_full_rc: [[0x1acd63c67fbc9ab1626ed93491bda32e5da18ea9d8e4f10178d04aa6f8747ad0,
+            0x268076b0054fb73f67cee9ea0e51e3ad50f27a6434b5dceb5bdde2299910a4c9
+        ],
+        second_full_rc: [
+            [
+                0x1acd63c67fbc9ab1626ed93491bda32e5da18ea9d8e4f10178d04aa6f8747ad0,
                 0x19f8a5d670e8ab66c4e3144be58ef6901bf93375e2323ec3ca8c86cd2a28b5a5,
-                0x1c0dc443519ad7a86efa40d2df10a011068193ea51f6c92ae1cfbb5f7b9b6893],
-            [0x14b39e7aa4068dbe50fe7190e421dc19fbeab33cb4f6a2c4180e4c3224987d3d,
+                0x1c0dc443519ad7a86efa40d2df10a011068193ea51f6c92ae1cfbb5f7b9b6893
+            ],
+            [
+                0x14b39e7aa4068dbe50fe7190e421dc19fbeab33cb4f6a2c4180e4c3224987d3d,
                 0x1d449b71bd826ec58f28c63ea6c561b7b820fc519f01f021afb1e35e28b0795e,
-                0x1ea2c9a89baaddbb60fa97fe60fe9d8e89de141689d1252276524dc0a9e987fc],
-            [0x0478d66d43535a8cb57e9c1c3d6a2bd7591f9a46a0e9c058134d5cefdb3c7ff1,
+                0x1ea2c9a89baaddbb60fa97fe60fe9d8e89de141689d1252276524dc0a9e987fc
+            ],
+            [
+                0x0478d66d43535a8cb57e9c1c3d6a2bd7591f9a46a0e9c058134d5cefdb3c7ff1,
                 0x19272db71eece6a6f608f3b2717f9cd2662e26ad86c400b21cde5e4a7b00bebe,
-                0x14226537335cab33c749c746f09208abb2dd1bd66a87ef75039be846af134166],
-            [0x01fd6af15956294f9dfe38c0d976a088b21c21e4a1c2e823f912f44961f9a9ce,
+                0x14226537335cab33c749c746f09208abb2dd1bd66a87ef75039be846af134166
+            ],
+            [
+                0x01fd6af15956294f9dfe38c0d976a088b21c21e4a1c2e823f912f44961f9a9ce,
                 0x18e5abedd626ec307bca190b8b2cab1aaee2e62ed229ba5a5ad8518d4e5f2a57,
-                0x0fc1bbceba0590f5abbdffa6d3b35e3297c021a3a409926d0e2d54dc1c84fda6]]
+                0x0fc1bbceba0590f5abbdffa6d3b35e3297c021a3a409926d0e2d54dc1c84fda6
+            ]
+        ]
     }
 }
 
 pub(crate) fn x5_4_config() -> Poseidon2Bn254Config<4, 56> {
     Poseidon2Bn254Config {
-        first_full_rc: [[0x19b849f69450b06848da1d39bd5e4a4302bb86744edc26238b0878e269ed23e5,
+        first_full_rc: [
+            [
+                0x19b849f69450b06848da1d39bd5e4a4302bb86744edc26238b0878e269ed23e5,
                 0x265ddfe127dd51bd7239347b758f0a1320eb2cc7450acc1dad47f80c8dcf34d6,
                 0x199750ec472f1809e0f66a545e1e51624108ac845015c2aa3dfc36bab497d8aa,
-                0x157ff3fe65ac7208110f06a5f74302b14d743ea25067f0ffd032f787c7f1cdf8],
-            [0x2e49c43c4569dd9c5fd35ac45fca33f10b15c590692f8beefe18f4896ac94902,
+                0x157ff3fe65ac7208110f06a5f74302b14d743ea25067f0ffd032f787c7f1cdf8
+            ],
+            [
+                0x2e49c43c4569dd9c5fd35ac45fca33f10b15c590692f8beefe18f4896ac94902,
                 0x0e35fb89981890520d4aef2b6d6506c3cb2f0b6973c24fa82731345ffa2d1f1e,
                 0x251ad47cb15c4f1105f109ae5e944f1ba9d9e7806d667ffec6fe723002e0b996,
-                0x13da07dc64d428369873e97160234641f8beb56fdd05e5f3563fa39d9c22df4e],
-            [0x0c009b84e650e6d23dc00c7dccef7483a553939689d350cd46e7b89055fd4738,
+                0x13da07dc64d428369873e97160234641f8beb56fdd05e5f3563fa39d9c22df4e
+            ],
+            [
+                0x0c009b84e650e6d23dc00c7dccef7483a553939689d350cd46e7b89055fd4738,
                 0x011f16b1c63a854f01992e3956f42d8b04eb650c6d535eb0203dec74befdca06,
                 0x0ed69e5e383a688f209d9a561daa79612f3f78d0467ad45485df07093f367549,
-                0x04dba94a7b0ce9e221acad41472b6bbe3aec507f5eb3d33f463672264c9f789b],
-            [0x0a3f2637d840f3a16eb094271c9d237b6036757d4bb50bf7ce732ff1d4fa28e8,
+                0x04dba94a7b0ce9e221acad41472b6bbe3aec507f5eb3d33f463672264c9f789b
+            ],
+            [
+                0x0a3f2637d840f3a16eb094271c9d237b6036757d4bb50bf7ce732ff1d4fa28e8,
                 0x259a666f129eea198f8a1c502fdb38fa39b1f075569564b6e54a485d1182323f,
                 0x28bf7459c9b2f4c6d8e7d06a4ee3a47f7745d4271038e5157a32fdf7ede0d6a1,
-                0x0a1ca941f057037526ea200f489be8d4c37c85bbcce6a2aeec91bd6941432447]],
-        partial_rc: [0x0c6f8f958be0e93053d7fd4fc54512855535ed1539f051dcb43a26fd926361cf,
+                0x0a1ca941f057037526ea200f489be8d4c37c85bbcce6a2aeec91bd6941432447
+            ]
+        ],
+        partial_rc: [
+            0x0c6f8f958be0e93053d7fd4fc54512855535ed1539f051dcb43a26fd926361cf,
             0x123106a93cd17578d426e8128ac9d90aa9e8a00708e296e084dd57e69caaf811,
             0x26e1ba52ad9285d97dd3ab52f8e840085e8fa83ff1e8f1877b074867cd2dee75,
             0x1cb55cad7bd133de18a64c5c47b9c97cbe4d8b7bf9e095864471537e6a4ae2c5,
@@ -235,61 +290,83 @@ pub(crate) fn x5_4_config() -> Poseidon2Bn254Config<4, 56> {
             0x044cb455110a8fdd531ade530234c518a7df93f7332ffd2144165374b246b43d,
             0x227808de93906d5d420246157f2e42b191fe8c90adfe118178ddc723a5319025,
             0x02fcca2934e046bc623adead873579865d03781ae090ad4a8579d2e7a6800355,
-            0x0ef915f0ac120b876abccceb344a1d36bad3f3c5ab91a8ddcbec2e060d8befac],
-        second_full_rc: [[0x1797130f4b7a3e1777eb757bc6f287f6ab0fb85f6be63b09f3b16ef2b1405d38,
+            0x0ef915f0ac120b876abccceb344a1d36bad3f3c5ab91a8ddcbec2e060d8befac
+        ],
+        second_full_rc: [
+            [
+                0x1797130f4b7a3e1777eb757bc6f287f6ab0fb85f6be63b09f3b16ef2b1405d38,
                 0x0a76225dc04170ae3306c85abab59e608c7f497c20156d4d36c668555decc6e5,
                 0x1fffb9ec1992d66ba1e77a7b93209af6f8fa76d48acb664796174b5326a31a5c,
-                0x25721c4fc15a3f2853b57c338fa538d85f8fbba6c6b9c6090611889b797b9c5f],
-            [0x0c817fd42d5f7a41215e3d07ba197216adb4c3790705da95eb63b982bfcaf75a,
+                0x25721c4fc15a3f2853b57c338fa538d85f8fbba6c6b9c6090611889b797b9c5f
+            ],
+            [
+                0x0c817fd42d5f7a41215e3d07ba197216adb4c3790705da95eb63b982bfcaf75a,
                 0x13abe3f5239915d39f7e13c2c24970b6df8cf86ce00a22002bc15866e52b5a96,
                 0x2106feea546224ea12ef7f39987a46c85c1bc3dc29bdbd7a92cd60acb4d391ce,
-                0x21ca859468a746b6aaa79474a37dab49f1ca5a28c748bc7157e1b3345bb0f959],
-            [0x05ccd6255c1e6f0c5cf1f0df934194c62911d14d0321662a8f1a48999e34185b,
+                0x21ca859468a746b6aaa79474a37dab49f1ca5a28c748bc7157e1b3345bb0f959
+            ],
+            [
+                0x05ccd6255c1e6f0c5cf1f0df934194c62911d14d0321662a8f1a48999e34185b,
                 0x0f0e34a64b70a626e464d846674c4c8816c4fb267fe44fe6ea28678cb09490a4,
                 0x0558531a4e25470c6157794ca36d0e9647dbfcfe350d64838f5b1a8a2de0d4bf,
-                0x09d3dca9173ed2faceea125157683d18924cadad3f655a60b72f5864961f1455],
-            [0x0328cbd54e8c0913493f866ed03d218bf23f92d68aaec48617d4c722e5bd4335,
+                0x09d3dca9173ed2faceea125157683d18924cadad3f655a60b72f5864961f1455
+            ],
+            [
+                0x0328cbd54e8c0913493f866ed03d218bf23f92d68aaec48617d4c722e5bd4335,
                 0x2bf07216e2aff0a223a487b1a7094e07e79e7bcc9798c648ee3347dd5329d34b,
                 0x1daf345a58006b736499c583cb76c316d6f78ed6a6dffc82111e11a63fe412df,
-                0x176563472456aaa746b694c60e1823611ef39039b2edc7ff391e6f2293d2c404]]
+                0x176563472456aaa746b694c60e1823611ef39039b2edc7ff391e6f2293d2c404
+            ]
+        ]
     }
 }
 
 pub(crate) fn x5_8_config() -> Poseidon2Bn254Config<8, 57> {
     Poseidon2Bn254Config {
-        first_full_rc: [[0x0dad22d08a6b8d81d4a5ffc34b9677a7c5254c85e953551f9eba9a0a97590c10,
+        first_full_rc: [
+            [
+                0x0dad22d08a6b8d81d4a5ffc34b9677a7c5254c85e953551f9eba9a0a97590c10,
                 0x03cfc441111f1bab6e75957b9f0274e92d17aefc2d8da460435dfaf259bd1039,
                 0x27c6d1b8a2e2ce670376cd2970192a2a08e4290883f6ca49e7976c6c447d6392,
                 0x28f2882b9abfda8efc2d121da0c871d2d5313a53c67d0407eef4e93ee23e6c2d,
                 0x0a3943390fe4939fa2e931e18094c7c93aa107ced2bfaefcfe5e613a3f1262d5,
                 0x2a8f37d8da8f2319e188f8909007408b57fba3555bb784c1ad6c7b0755805456,
                 0x0cef8658e33f20c39649528f353ef5d03198c75683f8493534add693a4ff4f0f,
-                0x1cdc2a6f0f0e7c6c62ee1c0cad4fd11363a48db7095171faaf9a7b6e01c3e52b],
-            [0x0a2e681a2db19c8d1cfb0c28f0b7b3d9830d35fca8c0b076b4e64328060139d6,
+                0x1cdc2a6f0f0e7c6c62ee1c0cad4fd11363a48db7095171faaf9a7b6e01c3e52b
+            ],
+            [
+                0x0a2e681a2db19c8d1cfb0c28f0b7b3d9830d35fca8c0b076b4e64328060139d6,
                 0x16f013cd703be7de16b4361ce5c67cc2997f858e8a808885da67fbafd30d2717,
                 0x29af57131c9cf548be669fe76c675e6d90bee17a76cccf4ddc5d35f9a936ebb8,
                 0x21807b1ec6258bb155ed159da90b815dee119eae8138b1bdf950111bf5205b3b,
                 0x07c00db8c50a8c860fbcb8ebd234a54350bdbcb8747891a4e5adab1c4abc6909,
                 0x22bc08fc054d08a3dbb6094396d0de373a4c33205c49a1254cf25ebec1747765,
                 0x2dad58bdf3e24c78f21146de084d9b8afad58956fedce67d43f7d375a813bb2e,
-                0x292cee6bc19a64dc5a8a74036e676e238f60b4577db86213ced417906f1d6e91],
-            [0x27d655ae125928ad6b48bba54593b74ca0c23002b32a0a9ef375939a22387a8c,
+                0x292cee6bc19a64dc5a8a74036e676e238f60b4577db86213ced417906f1d6e91
+            ],
+            [
+                0x27d655ae125928ad6b48bba54593b74ca0c23002b32a0a9ef375939a22387a8c,
                 0x0e0e2e781fe9ac0a97f0d961c7b359a415d1ead41c99eccee90e56b68fbfa2a8,
                 0x13fec23e678d1c9943b6daed8ed8212289116ab96344ded7ced8aac2f09f1672,
                 0x27550dd21647e37fc31640684e02cb07810669b1c1545443fd58204b2cde73c2,
                 0x1de6d5f356a92c48c7b9f6aa45c8a6216e0a6adbc799c0bec242054674cb8f09,
                 0x14c5347c4580363f74c885d1fbb378c61d953e490892b10baf84f6e1f3a3f39d,
                 0x27f2768023c4df7952ca0d967f14034e98c4ca76973ae1cddfccd212cbd78683,
-                0x1f4f499fc4853f7e189ad6d2269c467f77e15bbd28963c516b4fbf1ba7b88f95],
-            [0x0d62ba9a8de3b97c72a5425a97a7f027fbad23f299ff46bafa12dcffb0e72bf1,
+                0x1f4f499fc4853f7e189ad6d2269c467f77e15bbd28963c516b4fbf1ba7b88f95
+            ],
+            [
+                0x0d62ba9a8de3b97c72a5425a97a7f027fbad23f299ff46bafa12dcffb0e72bf1,
                 0x22b649ae468f20c7cbfb435d932ba9ba4be14ea40c0c54e6bec970ab4c513f04,
                 0x03a1aae439e47e7e14186d5513da5e263e063a3da6d042c16e55cab2e81a8e95,
                 0x25c7eee1fce422600f5b1e78323f2e99cceee803f62763217eadbd046c1e0e6c,
                 0x1c66258f103a955274ed71de56169bba34ff6aea97a2c32b98805dc3b011a383,
                 0x29403b00757a647671a3691094aef420ad830f95743d45894d6d7f40aa356e4b,
                 0x13496363ef5f7d0e91fd1319fd5dc0269c5190d05d8a0ad28a3ce0638a133e0e,
-                0x1c6a4586c15c4638a1686921d7c204e2b6e1a88c1fc49dcfb87ded2a1ed7edc5]],
-        partial_rc: [0x0da23df12d0bf47bb92f15ee189386c20f552d0bc66ae492b92d69556b2fe75a,
+                0x1c6a4586c15c4638a1686921d7c204e2b6e1a88c1fc49dcfb87ded2a1ed7edc5
+            ]
+        ],
+        partial_rc: [
+            0x0da23df12d0bf47bb92f15ee189386c20f552d0bc66ae492b92d69556b2fe75a,
             0x155be88bc5ddf8e0c6c741286cdd5ddd559279a455b9bbb61d5a0b004e545d5e,
             0x0553fbb5b32db860e0bb12cef3aab4e0dbbdb1ea8704d335a18fa8b4df112c36,
             0x12f6a3a61a3139221cb5875cf455b942580c00942499932dfcacf6f75cb80ad6,
@@ -345,45 +422,58 @@ pub(crate) fn x5_8_config() -> Poseidon2Bn254Config<8, 57> {
             0x127574a38823886d1f4841b540e29d67efe35aa8b3c685f969b6bc6cbab5064a,
             0x24751d620ed2a3db4382265b8c33b666b85beae7aa87f38e28bd2f8d637ff9d0,
             0x2e3d7208892e8a92e887fccccfe04d8d0fe994bc443641a9fc76c43da02f453d,
-            0x11c3f6719071e6810699be20e1b1858b9ed00d8166bf15434cd5e43507b9d62b],
-        second_full_rc: [[0x00b86112693a4e7f3ac4eadfcc3f04d24a7afe51a87f82d4a435ad27f30aa2f9,
+            0x11c3f6719071e6810699be20e1b1858b9ed00d8166bf15434cd5e43507b9d62b
+        ],
+        second_full_rc: [
+            [
+                0x00b86112693a4e7f3ac4eadfcc3f04d24a7afe51a87f82d4a435ad27f30aa2f9,
                 0x1a77348400a87f0180e294286a7a06c857f590e8ed17eed7a6b4cc1ca5a97929,
                 0x207feb0ffff2e419bc967dd544abbdd2dcc601316f49957f2319c9a04f56157d,
                 0x0df4aac4e6483265aa3fc462835a90380bc84004fc46d1a85e61baed3196ba48,
                 0x2f2df3db6ed0e27d3151201dfe7f57fc2e5ccc69c2458535dbdbb5d88aeabb4f,
                 0x2f51811c3568dbae396f86838c5c8b1bbf9b5bcb2ce98542e289184b95f74b7e,
                 0x1198ec466dc8c3f55b048369eac0490e835928891325d4cf4461da1d22230219,
-                0x19036827eb0714a1ee4fdd653d8667df192402e290dfdfc39bf005fdfa86c043],
-            [0x0978d774018c29f2818df365312371ce4082a6c8c52d2a965516b76436349069,
+                0x19036827eb0714a1ee4fdd653d8667df192402e290dfdfc39bf005fdfa86c043
+            ],
+            [
+                0x0978d774018c29f2818df365312371ce4082a6c8c52d2a965516b76436349069,
                 0x231ed2d94767eb9ace111af9317b233fee037214e3f6d7e366a5812c8fd1dce5,
                 0x0fbd8502ceba8ab93eb04d1db535d25f4c3be8acac4e8e0467b9d606653456c2,
                 0x20e9fac35dda464e436a4d2eae4cdd5b52c9b712d5b4bfa43334463f8478d4bb,
                 0x15ba9fc4b175278a12a5ab39ee0121b06dd09b923bdedb69a26182821445ba00,
                 0x0c3c9aec9048b10a06d062675b63417a1ae8704f2918382466bf575e22a654d3,
                 0x2795a46eb4c79595a9de2191c524f0aaf92f764153b23c357ed50bf3a91cddf0,
-                0x10ab7893c4253d861276ea30f229eb86b90c69985fb6dde4aa50e24828caa81a],
-            [0x2d4509d8159af62c44503f64fc01e953e90c6dced8ba75c58df2aa090a5fd359,
+                0x10ab7893c4253d861276ea30f229eb86b90c69985fb6dde4aa50e24828caa81a
+            ],
+            [
+                0x2d4509d8159af62c44503f64fc01e953e90c6dced8ba75c58df2aa090a5fd359,
                 0x157946957f4feb94eae09b9a6c272204d107ea7b0e31b67524a6c9ee7f04e7b9,
                 0x30464efe02b65b862f9a0b59fea6d6934b393e65cdc3d29ae67a751a0d0f136a,
                 0x0965b3a2d05666d38ffcdac4e5ed020c742ba41d760e70f74dcd8f8b1324c901,
                 0x24531c784663d57639928f0a8f152038a779eebbd70f6585dacc971668ebec55,
                 0x2202070df8f85b79bf7debf24a9cc0f2cf30370f26a9372e01718dae7cb6171d,
                 0x08282fc0baa2e9eb76167b9ab2405db9c78f1f37b168be6435d5385a806e745a,
-                0x178c3d6e47cd33e5570311ec8ad8dbca0dbf54aadd1393738d898384c57795e7],
-            [0x12ad905f9d82f33643b1fefb90dcefffeb818d1ec3f4fc3d6857203eff5ed1ea,
+                0x178c3d6e47cd33e5570311ec8ad8dbca0dbf54aadd1393738d898384c57795e7
+            ],
+            [
+                0x12ad905f9d82f33643b1fefb90dcefffeb818d1ec3f4fc3d6857203eff5ed1ea,
                 0x229682c9e4165b6ed1a2870c14a1c8bb7b1c7d3b52f42ce0228b85480666b4c4,
                 0x25190d853744dc11d155de5e479640302a333d47cf18dbf1ff241ce42c88d4c9,
                 0x00db47fadc76bf4fd8dcfe26908fe48ab42d399da939ac1f167ca8600cfbe7bc,
                 0x2ba5e88adcbe025760f2c8654935f0557d14c6d4125a838f312f2ba439e2e94c,
                 0x1376bbae85699dcc294f850c858b4b370e51ff3139bc3e0a1e52eb58d08ca41b,
                 0x1333fda1e3d58e0747f5c7361d5075526933ea283eee2ac37b6042c6083b6a42,
-                0x28bfc4dc9594e9add687744b79f4feb979e2143d742d4e4d1d5bb64bb799a02a]]
+                0x28bfc4dc9594e9add687744b79f4feb979e2143d742d4e4d1d5bb64bb799a02a
+            ]
+        ]
     }
 }
 
 pub(crate) fn x5_12_config() -> Poseidon2Bn254Config<12, 57> {
     Poseidon2Bn254Config {
-        first_full_rc: [[0x0f43621f15c4af9c4e52180b3ab6fbc9cf57863dc34e6190232841eb8b085634,
+        first_full_rc: [
+            [
+                0x0f43621f15c4af9c4e52180b3ab6fbc9cf57863dc34e6190232841eb8b085634,
                 0x1668bae54907e5387889e1d55a4d1d3b135c9a652fa7a4d70bb5146f8b14ed41,
                 0x0a87adfff46809b3ec145fb43aa86f893a109673cd24d6cf2a49a56900487642,
                 0x1e9fde940aab66670c2b1181f6df82c382ed1b5d7462fbc51c4b5e409628c80d,
@@ -394,8 +484,10 @@ pub(crate) fn x5_12_config() -> Poseidon2Bn254Config<12, 57> {
                 0x1f275665d09676b37c235095a09a20572cc9f7c560ef1bd70960531dfce0f9c9,
                 0x0a376d54e4746f30352fe60fe77549f66ca6fe9b489595c4b7f03d6fde4dc609,
                 0x0f9fb99ba9ed076b06f6a854af79956315b20c7c847afbcb82f3cc4a6319acd1,
-                0x2647fdf764202dc23974cb36f678f88acabf40a3af1efea82a25d4adba285a90],
-            [0x163d4024aa78a29e1b29d817e5a54d62c35a0cebbdf280d46da3801f7ca3aa60,
+                0x2647fdf764202dc23974cb36f678f88acabf40a3af1efea82a25d4adba285a90
+            ],
+            [
+                0x163d4024aa78a29e1b29d817e5a54d62c35a0cebbdf280d46da3801f7ca3aa60,
                 0x18d129e8e0a4e479164cdc899a2d3ebf43d974e4b09d8dba6c320946223cf182,
                 0x23ec490ac0fb5b14fb10e0fc78f0b9b6fe907eb7d5b98e6717a1dfeed2897b47,
                 0x038bb6dec1ced2b3f1616c3a3690a33905d9e9c800169848ea41525df1038a35,
@@ -406,8 +498,10 @@ pub(crate) fn x5_12_config() -> Poseidon2Bn254Config<12, 57> {
                 0x03537733ee073b87fd683776edcd014f14d7507e6ad905cfe9912f73dca53e05,
                 0x233f0272e0c4f919fb9781fe66772917ce70d5d4f07a0b45042bc308e122a8a2,
                 0x3059b9ba4ba5d9561c3db928a6bc0d0318a59b5f2dcafacd6ca08b59bb2ebddf,
-                0x2d5a9419c340cc7c51846abbe6cc73da80246ba671af65d42acd80eb26285f01],
-            [0x28cbedcf154342ee2c306dfb3090bd8616b12de61aac4ba3a90f5c84971007f8,
+                0x2d5a9419c340cc7c51846abbe6cc73da80246ba671af65d42acd80eb26285f01
+            ],
+            [
+                0x28cbedcf154342ee2c306dfb3090bd8616b12de61aac4ba3a90f5c84971007f8,
                 0x213bdf6a17afa769b5e980c33c2789198bb4e2c6d2d460c80847e083299c1378,
                 0x1856c7cf971f9cf1b9268c77b4ce1cc25e46d598e4063150f21399b1df2c9160,
                 0x16a4784c343b05327e075242bcba3b3f0a1c574b761becd3a548be7bf56c28a3,
@@ -418,8 +512,10 @@ pub(crate) fn x5_12_config() -> Poseidon2Bn254Config<12, 57> {
                 0x2407c264f39d4fea0054ee11d49ffa37bc485e6b2a56abaf474c67f519278ca4,
                 0x26d6a590d67fe597886868c5f7b112f562d005aa0108d290856c4a73ae8dc76f,
                 0x0588e0144ff3f7ac60cd6dac45470ec514e8e0b29364618b1990be43844f9c90,
-                0x1655a28817d034b981d68b72ec7917a6bf82f2a997c9d234ea988a7adc885cbf],
-            [0x194dc63b0b759bd5d2f9fff9c7d93aa659bddb581ef7fc0a377f3721284c437a,
+                0x1655a28817d034b981d68b72ec7917a6bf82f2a997c9d234ea988a7adc885cbf
+            ],
+            [
+                0x194dc63b0b759bd5d2f9fff9c7d93aa659bddb581ef7fc0a377f3721284c437a,
                 0x27f66e66bf165f89bada48e8a34cf487bb7d9574e6e30adb35a4ee99a976b259,
                 0x08c55d2b68cd123fd8566ebe8abe31bd6029bb9da9dc2a3574e927aa17b584dc,
                 0x0bddc60c6a8bc1ee5ddef1056937f8c7d0062ded8ee5c830d3235c111c4dd631,
@@ -430,8 +526,11 @@ pub(crate) fn x5_12_config() -> Poseidon2Bn254Config<12, 57> {
                 0x2e3b3ff1732fa2bbf4fe2394d3c46ac1f6cbd089598dd74e8e5f0102f35f0032,
                 0x2b8ff63f531c9f407966fca984e8470c0b89e727dc026e14ecd62801c40f5742,
                 0x26aeacadf785a14ff47435fa91e4082d28f61e6ca60d16aa5903e3ef629b5e92,
-                0x0a7017dab6dbca20961c8a03f99fa2ad051e2ed9e19ad14e8e9b2922dd43797e]],
-        partial_rc: [0x2fcd24c963827617cdce5a14014ea5af93e46190242697ea182ff72b0479d09e,
+                0x0a7017dab6dbca20961c8a03f99fa2ad051e2ed9e19ad14e8e9b2922dd43797e
+            ]
+        ],
+        partial_rc: [
+            0x2fcd24c963827617cdce5a14014ea5af93e46190242697ea182ff72b0479d09e,
             0x298413df06c60b6f56e22c4b237c9a682d01e03230c84d0149a6e704c22ad5f9,
             0x23d87025bd3f3352a2a0c2f4703c9d10d845d00be55597465b12d0fd0c80135d,
             0x25777b7dc170f1990a4537756b084a4fe6ec946b362f73995a86fd753dc5d17f,
@@ -487,8 +586,11 @@ pub(crate) fn x5_12_config() -> Poseidon2Bn254Config<12, 57> {
             0x0da359b25a62ac7c80aeff176e3c2a24f34978042ebc131e0579134bf621a5bc,
             0x2287ba9daf1365ce1ed2f9599fe95e4e19b5a6744c4cd89bd4a9f79ae45f68e5,
             0x21d1a8123d862670919a26f54370d937ff96c87eb250ea9cb542b988becd5b1b,
-            0x163cd5792b124086b78d81e70bf8765d131f05c580fd845065c23491af2648a8],
-        second_full_rc: [[0x099741234d38e4e41b57764791d6fea6e522fc1773cef3bef7e98484327e04cd,
+            0x163cd5792b124086b78d81e70bf8765d131f05c580fd845065c23491af2648a8
+        ],
+        second_full_rc: [
+            [
+                0x099741234d38e4e41b57764791d6fea6e522fc1773cef3bef7e98484327e04cd,
                 0x0d1c1f6b8e9c21bcb44467c303c9c32ee5103f2bed5a5f82fe4fce6a5e5321cb,
                 0x2b46e9453ff8796197fcf96c5e6b89eaa03101fe1f9d025573433a215c14432d,
                 0x08fa33e2e1fd049d1bd92f5fe34e2098a0f56c99097e3f822fa3616fbfa18de1,
@@ -499,8 +601,10 @@ pub(crate) fn x5_12_config() -> Poseidon2Bn254Config<12, 57> {
                 0x12575f8647b44d45e415c0c27edb5261640f50ab9cea63690ba60ddbcb9446ac,
                 0x241f071e842262bd502aadbde4e0b3da3b78e6315ded09d262c95f747d1e69c3,
                 0x0259650661345bbb098aaaaf58071b5e059731542b79f0e840e782a1b0d7c1e8,
-                0x10e5ea58bb155ad798c9fc610ed9513e72df5199e086f0325b0e383123e3e14f],
-            [0x2cb28f0c40f214ed89865255100264cf118e48e1b5c9556476560fe4015a9fb7,
+                0x10e5ea58bb155ad798c9fc610ed9513e72df5199e086f0325b0e383123e3e14f
+            ],
+            [
+                0x2cb28f0c40f214ed89865255100264cf118e48e1b5c9556476560fe4015a9fb7,
                 0x2b8c2245518ea18766d1c1f7c9cde2dd3520a7eb5a625496d58084bcd62f0853,
                 0x210c52aace3329946c769c65dca979b4fd94a3f027f32d2e2958c646e6a03c3a,
                 0x2acd7e1455ec1ba3c84ebf2bbf2d86ddaf8a12f41b3ed6f4e5ff98bca1ff4d1b,
@@ -511,8 +615,10 @@ pub(crate) fn x5_12_config() -> Poseidon2Bn254Config<12, 57> {
                 0x134e5d6245f3a0d6a1ec5a69a2291d66add1d327a16a5f4e8639b492b8f75155,
                 0x11e6ff9bf1fcdb770e96a61a4357bcafeea13b9bdfdf09e738385a36258d5224,
                 0x198b03795e8c98fc132335ed964ddebcbf1741c20cd9b10963e4b1b6a53e12a2,
-                0x27b4e6922a47ddd107c752d83ffd27eeff76b62e7232dfdfa9e9b977bb8d2b84],
-            [0x2ec91c78804ce2f0a13cfba2b164db3866beb7720f7252e908eb00966cae2668,
+                0x27b4e6922a47ddd107c752d83ffd27eeff76b62e7232dfdfa9e9b977bb8d2b84
+            ],
+            [
+                0x2ec91c78804ce2f0a13cfba2b164db3866beb7720f7252e908eb00966cae2668,
                 0x2488229bbff9d6b36f83b38d4e5372667b52ee88f727e9a715fefb6dbcdf2d53,
                 0x05ebde6c2e83d81fe05780b19506e18e93ee5e01536d77460dcdf7d1f34eb1ed,
                 0x1cd8a0cb5dc6e2b67fc32be19aef22ce977ff484f2188e603bda24ea8dc1da4d,
@@ -523,8 +629,10 @@ pub(crate) fn x5_12_config() -> Poseidon2Bn254Config<12, 57> {
                 0x0149d8755657a3e81f783350bd1671eba5c066866e118781f3d707450e773bda,
                 0x033818acbeebada683b755443046de5f65a51be2caac0bb8a1a111dab2bf2283,
                 0x10243f1cf06a2eb5d5701347b2e7ad9c088b3bf73dd8799337407c242cc8070e,
-                0x24aa143d475c356688ee0bc6e30e6e0b72587b88525fbbea1f1ac43dad42568f],
-            [0x04712cd64dcf3358e37b00bddad2a3c6e77dba77d0b19b8187e7471f1c0fabe4,
+                0x24aa143d475c356688ee0bc6e30e6e0b72587b88525fbbea1f1ac43dad42568f
+            ],
+            [
+                0x04712cd64dcf3358e37b00bddad2a3c6e77dba77d0b19b8187e7471f1c0fabe4,
                 0x22123070ab73aef7fd56d8f297599fc7078a741cdb0014a72efe31811c756318,
                 0x24a7c252fab1d28fe5cf3754dbcc02066f2054de39a0f2767579f675e52bd7fc,
                 0x09f3fd4c5e51db1531146097185d641cb1b497c96a51d7bd10313cd9e0d7bcaf,
@@ -535,13 +643,17 @@ pub(crate) fn x5_12_config() -> Poseidon2Bn254Config<12, 57> {
                 0x0d68bd594ad770fb7a82ba7905fea85c150b4b335b5000fe05aa9a0aca01b1f7,
                 0x13c9ceeee08c137064fa514c154012813053ca329fa4c8da0805a428428a0ff7,
                 0x23fad6a546ecbbbe75b25184154e6af39e7bcca2b0083b632d70fc1241f6b5a1,
-                0x11ea79fb35b1a82c8bb6a9e1a17cc058975d8953279f362fc4c64944ea6c0b3d]]
+                0x11ea79fb35b1a82c8bb6a9e1a17cc058975d8953279f362fc4c64944ea6c0b3d
+            ]
+        ]
     }
 }
 
 pub(crate) fn x5_16_config() -> Poseidon2Bn254Config<16, 57> {
     Poseidon2Bn254Config {
-        first_full_rc: [[0x11a8c50ae2baf9f5e8b3c672c7326f002cdec557448fdfa263f0adfbaaceacff,
+        first_full_rc: [
+            [
+                0x11a8c50ae2baf9f5e8b3c672c7326f002cdec557448fdfa263f0adfbaaceacff,
                 0x062af6c4373daac18754f00ee840e8920e3f715aa7d14233948e54596ac34e43,
                 0x067668742769c8dc002f62ad79b936464ee18b541f9d560a1df662a1de735099,
                 0x092566abceb5edc4fdd60f23c5c605a7b85a6282a1cf7920eaf4f34587722904,
@@ -556,8 +668,10 @@ pub(crate) fn x5_16_config() -> Poseidon2Bn254Config<16, 57> {
                 0x2ae828a9edb591d66810146f3e0efe95336e919fb8924f65807d2e20b70ffe32,
                 0x2f617fc3ddba10cfc459bef0adcb6dcf024b50924f5a9719707ea9cfaceeba86,
                 0x26034af9d21fea59b35e1edd6bc6ad24e39bb2309014f2df434b01d52360ad6a,
-                0x0861d9a9b50eda74e99bc741bab3c8d7c36e4dc3828ef88a8822ad1d97cb2dc1],
-            [0x09d307c6251380f12959318cb1b6b6bc8b5f0e87c8aaa5b9a9c02a747f82230a,
+                0x0861d9a9b50eda74e99bc741bab3c8d7c36e4dc3828ef88a8822ad1d97cb2dc1
+            ],
+            [
+                0x09d307c6251380f12959318cb1b6b6bc8b5f0e87c8aaa5b9a9c02a747f82230a,
                 0x2d7249c015893681c5b6406a5f3ed9913181fa18cf0c9cc5404d002612e5f6ee,
                 0x300c394ab0169e3579b604d3e4c8344ffa05164a7fc66d1d0fec5e1b0aba7c3c,
                 0x053246a30507749b78daca7f5e1bb40d8dd095a228d4754f587a522ae3bebc5f,
@@ -572,8 +686,10 @@ pub(crate) fn x5_16_config() -> Poseidon2Bn254Config<16, 57> {
                 0x14afa414edfcf985dc050516d4e6e6f61b32fdf2ec6faee7eae103be602c2d9d,
                 0x07fcf3ec2df0db6971c71924e8adb1f96f8d53fe7de3676a7704f621ac470f5b,
                 0x21daa5e36df00136f54419d5e4c09ec09bba58903173c55822e51d65b0779e6f,
-                0x2e324f627abadd10f08206430befea7ae4b5ed5e965ec1380af6f883eeac7d3f],
-            [0x0b5bb384cfccbd7b191e651901f6193f949a3c8a226cec1fde2a43d8829dbe86,
+                0x2e324f627abadd10f08206430befea7ae4b5ed5e965ec1380af6f883eeac7d3f
+            ],
+            [
+                0x0b5bb384cfccbd7b191e651901f6193f949a3c8a226cec1fde2a43d8829dbe86,
                 0x069ddb007faabaf73350dc4eadb907bd2d0d4a214f6654b30756e8ad18df5f18,
                 0x208b465f89b447783ea3fb14cbb235891ae8c4e5a5031365f470bab6cf86dd3c,
                 0x136297f9e831fb9640b024db98afd0a4eba714daa31944c4e7613dd78fc7e14c,
@@ -588,8 +704,10 @@ pub(crate) fn x5_16_config() -> Poseidon2Bn254Config<16, 57> {
                 0x0c6fc99e5d3a8ba836d2a51632a7efa4a2732c5be32ff1bb8988e97357cfe561,
                 0x042196cef447997203de5aa95cd5a8158ddfb11a8ae83c733cb3ce942f1e3952,
                 0x2d741b558a9a39fc48442b13f7a09394d878d41b7963105175b5eacc0762d341,
-                0x28561383e49fc55b465f9a55c56872a9da39cc1a8601c984fc142f519e01107a],
-            [0x283c11ef394149faf2dabef893843ad8afc42d8322002648b15c7a6b2f8e36da,
+                0x28561383e49fc55b465f9a55c56872a9da39cc1a8601c984fc142f519e01107a
+            ],
+            [
+                0x283c11ef394149faf2dabef893843ad8afc42d8322002648b15c7a6b2f8e36da,
                 0x16e5502b7577231018c8b8a59b3d9d60952d4e169fa38a080ce1860cd771ea5d,
                 0x1dc343ebb1999bdd849b519b6c88c25ed40fa673b44a37ae895f1ee2efa97458,
                 0x192b8afb63d8d9357b5d74136d341c2811f611336acfeb20a0e4a83fc726cb1e,
@@ -604,8 +722,11 @@ pub(crate) fn x5_16_config() -> Poseidon2Bn254Config<16, 57> {
                 0x0acb455d2f8dd661528e732ea07ef93c9e03630f51903b86bc6835afcc03a98a,
                 0x151adb5dd2d8fa77437afe73aed319d84dd546839f9d7b687e825d9b23dc1744,
                 0x25548523d039ac346af19b64d52549e24dea02ea0d5476a0395c4c438f613464,
-                0x09cc75c22a37ffa264db2540ae85d1ef6965111461eabc9fc652a879b4bdd140]],
-        partial_rc: [0x0f1139934f4fb0ff2f4bd0b7d28544a1c8938de92dcf965e1a1781c86aa8e6c2,
+                0x09cc75c22a37ffa264db2540ae85d1ef6965111461eabc9fc652a879b4bdd140
+            ]
+        ],
+        partial_rc: [
+            0x0f1139934f4fb0ff2f4bd0b7d28544a1c8938de92dcf965e1a1781c86aa8e6c2,
             0x2b6f9a7fe52ad45ae8857683ea066cdba3f7c3dc7da78411c83583070ac12d47,
             0x18fcc896be2e9edcfd06d0ef23c523956148f3abcffcb0802e57c65dfa7eb6d8,
             0x13ae7493c450aec181999c3fb9c0b4d4a5a595672b2cab4181a5b52ec2fccf68,
@@ -661,8 +782,11 @@ pub(crate) fn x5_16_config() -> Poseidon2Bn254Config<16, 57> {
             0x06191e3ff7936bd97b948b095a6bb2e458b33a4f2a731b5a06c347f1f6b46d6d,
             0x2a3d690c70b4930341afbbea186b0394a3a7dd7d911f8106db6c96476395f25b,
             0x04d39a7a0b5f372041d717d422dc3b862a8a8b6ed1a174efb24b923c9505c5b0,
-            0x083b47892d403e287bbf80d319866f50adc5a5b50f81f1708986078e64065b26] ,
-        second_full_rc: [[0x1c4b724162943f08ad657557a638bf3e7bec8e57d5db00b9767682c8213132d8,
+            0x083b47892d403e287bbf80d319866f50adc5a5b50f81f1708986078e64065b26
+        ] ,
+        second_full_rc: [
+            [
+                0x1c4b724162943f08ad657557a638bf3e7bec8e57d5db00b9767682c8213132d8,
                 0x2035614227e301894056bf197033ea74e568e22a4644da4234fad6010f9195f1,
                 0x2867e28d25a0560e620af7e734e3155528406285834db300d3f88a5c63158545,
                 0x2d9aba98839b67ae817c673f35059c574d229529650b0b718e0a89de46bc9b77,
@@ -677,8 +801,10 @@ pub(crate) fn x5_16_config() -> Poseidon2Bn254Config<16, 57> {
                 0x2c50018a609e805dd45428015180eef905c885d10f4bdc57bf822bcdbb7af7bc,
                 0x1a51c15bbedba963fb108a0b5470851f0e9896f6ebb1b3b6e51ed5c6c5e26ed4,
                 0x221a70968ceadb2b1a3949215db03d70457982d2e5bdce6edd224837ed952757,
-                0x11536753adfe665c99ccb6a38cbd9d06c3c7b7122b51dc063628a669dded0b36],
-            [0x031897f30796e50a12b212bd146ed58fb50b443ae9a2dbfdb4f6b8fe5c61479e,
+                0x11536753adfe665c99ccb6a38cbd9d06c3c7b7122b51dc063628a669dded0b36
+            ],
+            [
+                0x031897f30796e50a12b212bd146ed58fb50b443ae9a2dbfdb4f6b8fe5c61479e,
                 0x1f56af932c2012a38d77352c6ddb68fa13c1c9c14ba96fe7e6d170ffed0d759a,
                 0x1ecd95dae8cb508bcf72e6584898d2108854749c3cc686e4b02f8fe57aed95df,
                 0x02fabaa828c27c721f68c33d9d2b881210704a41d9c28f0a4af02e67fd345caf,
@@ -693,8 +819,10 @@ pub(crate) fn x5_16_config() -> Poseidon2Bn254Config<16, 57> {
                 0x2820e3357abf5aeedf9a457603a627e9bdd807df2734bd6e81051b009f13093c,
                 0x205e6b631bad8731629ac0af44645716f0f9dd549d7be0aa4ecaa82fda20276c,
                 0x1eb9ab4dd7426e30f809c9929f84ea59d6136daa5f7022847ac8e01f04ee91e2,
-                0x2d89f59253f5b9a24e0188c1ffe0fe6d1585c30c019bba8b4c13fb65441d8b0c],
-            [0x2bba2d4afc396925d03d39ea49fd7d23174a3ee023a3625b7d937936b78496f3,
+                0x2d89f59253f5b9a24e0188c1ffe0fe6d1585c30c019bba8b4c13fb65441d8b0c
+            ],
+            [
+                0x2bba2d4afc396925d03d39ea49fd7d23174a3ee023a3625b7d937936b78496f3,
                 0x0e59a58b602d4ca9e2ca2a10796a2356188a39eafa39e5525f53f560d3349cbd,
                 0x1cc183780561724fe8db9d8f8c456c32c8c29556c12c0157ef8fbc9f00e789a7,
                 0x054120821f04fd778dde8968f55ba1f8621a17aac4c0dae7fd3e19b5ffe7ed32,
@@ -709,8 +837,10 @@ pub(crate) fn x5_16_config() -> Poseidon2Bn254Config<16, 57> {
                 0x11d7a67da5230703f013ee574653d7e02dcb7fdf07f39f21410fda7ffcb09f9a,
                 0x0fee562c5444f1e094b4a6bd732b720771f9ba98db7dcf8231b8d17646843432,
                 0x0a076467e3a9603a7763d3202616302c719e0cc05870d0a8458842e30ce047d3,
-                0x1c733d34815220317facf6f54ea32006e2d3986aae8c72add1b2e1196234ddf9],
-            [0x186d4f686994b1e7790b2ecba770c373ee1d70fd63b71073e65ecad88dd5a3a9,
+                0x1c733d34815220317facf6f54ea32006e2d3986aae8c72add1b2e1196234ddf9
+            ],
+            [
+                0x186d4f686994b1e7790b2ecba770c373ee1d70fd63b71073e65ecad88dd5a3a9,
                 0x12d1d277d3ccb4997d6cd545981b73bb48fab183bf9de1db16e0d1cbcf44c313,
                 0x16169740abc733a5753234257d3189d594d1ee5b2ba7ea9445707842d6805bdd,
                 0x2566d99b2fc31cb583aa146e9dd39ccc09436a45ade8a57c9f4c2f4daf9632b1,
@@ -725,7 +855,9 @@ pub(crate) fn x5_16_config() -> Poseidon2Bn254Config<16, 57> {
                 0x148bfccbaaf2f7e951ef266b8c11a8c19bfe013749c38f5bcfe608d3282fb37c,
                 0x0a25d11a8d1ed5c87e03b684b7b6d34140063cb4f77e312ec5ac12da98911e40,
                 0x2479d850bb1a9b9143f126da89063a8a3e5d0a9d5917e2bfa5927d8eeb70c526,
-                0x115107e62902f6facbd8a1caa2a2f67a15301e5c034cb99c764f6402ca331781]]
+                0x115107e62902f6facbd8a1caa2a2f67a15301e5c034cb99c764f6402ca331781
+            ]
+        ]
     }
 }
 

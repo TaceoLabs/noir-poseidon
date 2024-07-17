@@ -17,18 +17,24 @@ struct PoseidonBn254Config<T, RP, T1> {
     w_hat: [[Field; T1]; RP],
 }
 
-fn permute_bn254<T, RP, T1>(mut state: [Field; T], config: PoseidonBn254Config<T, RP, T1>) -> [Field; T] {
+fn permute_bn254<T, RP, T1>(
+    mut state: [Field; T],
+    config: PoseidonBn254Config<T, RP, T1>
+) -> [Field; T] {
     for i in 0..4 {
         state = hash_utils::vec_add(state, config.first_full_rc[i]);
         state = poseidon::sbox(state);
         state = hash_utils::mat_mul(state, config.mds);
     }
-    state =hash_utils::vec_add(state, config.opt_rc_outer);
-    state =hash_utils::mat_mul(state, config.m_i);
+    //the 0-th round
+    state = hash_utils::vec_add(state, config.opt_rc_outer);
+    state = hash_utils::mat_mul(state, config.m_i);
 
     for r in 0..RP {
         state[0] = poseidon::sbox_e(state[0]);
+        //only one addition for round key
         state[0] = state[0] + config.opt_partial_rc[r];
+        //the cheaper mat mul with M^\prime\prime
         state = cheap_matmul(state, config.v[RP - r -1], config.w_hat[RP - r -1], config.mds[0][0]);
     }
     for r in 0..4 {
@@ -39,7 +45,12 @@ fn permute_bn254<T, RP, T1>(mut state: [Field; T], config: PoseidonBn254Config<T
     state
 }
 
-fn cheap_matmul<T, T1>(mut state: [Field; T], v: [Field; T1], w_hat: [Field; T1], mds: Field) -> [Field; T] {
+fn cheap_matmul<T, T1>(
+    mut state: [Field; T],
+    v: [Field; T1],
+    w_hat: [Field; T1],
+    mds: Field
+) -> [Field; T] {
     let mut new_state = [0; T];
     new_state[0] = mds * state[0];
     for i in 0..T1 {

@@ -9,7 +9,12 @@ struct Poseidon2Bn254Config<T, R> {
     second_full_rc: [[Field; T]; 4],
 }
 
-fn permute_bn254<T, R>(mut state: [Field; T], mm_external: fn([Field; T]) -> [Field; T], mm_internal: fn([Field; T]) -> [Field; T], config: Poseidon2Bn254Config<T,R>) -> [Field; T] {
+fn permute_bn254<T, R>(
+    mut state: [Field; T],
+    mm_external: fn([Field; T]) -> [Field; T],
+    mm_internal: fn([Field; T]) -> [Field; T],
+    config: Poseidon2Bn254Config<T,R>
+) -> [Field; T] {
     state = mm_external(state);
     for r in 0..4 {
         state = hash_utils::vec_add(state, config.first_full_rc[r]);
