@@ -1,7 +1,7 @@
 use crate::double;
 
 #[field(bn254)]
-pub fn sbox<T>(mut state: [Field; T]) -> [Field; T] {
+pub fn sbox<let T: u32>(mut state: [Field; T]) -> [Field; T] {
     state.map(|x| sbox_e(x))
 }
 
@@ -18,8 +18,8 @@ pub fn mds_2(state: [Field; 2]) -> [Field; 2] {
     [sum + state[0], sum + state[1]]
 }
 
-fn mds_3(state: [Field; 3]) -> [Field; 3] {
-    let sum = state.reduce(|a,b| a + b);
+pub fn mds_3(state: [Field; 3]) -> [Field; 3] {
+    let sum = state.reduce(|a, b| a + b);
     let mut ret_val = [0; 3];
     ret_val[0] = state[0] + sum;
     ret_val[1] = 2 * state[1] + sum;
@@ -41,4 +41,3 @@ pub fn mds_4(mut state: [Field; 4]) -> [Field; 4] {
     state[3] = t_4;
     state
 }
-

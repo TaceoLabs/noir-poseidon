@@ -6,7 +6,7 @@ mod consts;
 use dep::hash_utils;
 use dep::hash_utils::poseidon;
 
-struct PoseidonBn254Config<T, RP, T1> {
+pub struct PoseidonBn254Config<let T: u32, let RP: u32, let T1: u32> {
     first_full_rc: [[Field; T]; 4],
     opt_rc_outer: [Field; T],
     opt_partial_rc: [Field; RP],
@@ -17,9 +17,9 @@ struct PoseidonBn254Config<T, RP, T1> {
     w_hat: [[Field; T1]; RP],
 }
 
-fn permute_bn254<T, RP, T1>(
+fn permute_bn254<let T: u32, let RP: u32, let T1: u32>(
     mut state: [Field; T],
-    config: PoseidonBn254Config<T, RP, T1>
+    config: PoseidonBn254Config<T, RP, T1>,
 ) -> [Field; T] {
     for i in 0..4 {
         state = hash_utils::vec_add(state, config.first_full_rc[i]);
@@ -35,29 +35,34 @@ fn permute_bn254<T, RP, T1>(
         //only one addition for round key
         state[0] = state[0] + config.opt_partial_rc[r];
         //the cheaper mat mul with M^\prime\prime
-        state = cheap_matmul(state, config.v[RP - r -1], config.w_hat[RP - r -1], config.mds[0][0]);
+        state = cheap_matmul(
+            state,
+            config.v[RP - r - 1],
+            config.w_hat[RP - r - 1],
+            config.mds[0][0],
+        );
     }
     for r in 0..4 {
-        state =hash_utils::vec_add(state, config.second_full_rc[r]);
-        state =poseidon::sbox(state);
-        state =hash_utils::mat_mul(state, config.mds);
+        state = hash_utils::vec_add(state, config.second_full_rc[r]);
+        state = poseidon::sbox(state);
+        state = hash_utils::mat_mul(state, config.mds);
     }
     state
 }
 
-fn cheap_matmul<T, T1>(
+fn cheap_matmul<let T: u32, let T1: u32>(
     mut state: [Field; T],
     v: [Field; T1],
     w_hat: [Field; T1],
-    mds: Field
+    mds: Field,
 ) -> [Field; T] {
     let mut new_state = [0; T];
     new_state[0] = mds * state[0];
     for i in 0..T1 {
-        new_state[0] += w_hat[i] * state[i+1];
+        new_state[0] += w_hat[i] * state[i + 1];
     }
     for i in 1..T {
-        new_state[i] = state[0] * v[i-1] + state[i];
+        new_state[i] = state[0] * v[i - 1] + state[i];
     }
     new_state
 }
@@ -141,4 +146,3 @@ pub fn hash_15(input: [Field; 15]) -> Field {
 pub fn hash_16(input: [Field; 16]) -> Field {
     perm::x5_16(input)[0]
 }
-

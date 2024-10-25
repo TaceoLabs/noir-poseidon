@@ -3,17 +3,17 @@ mod perm;
 use dep::hash_utils;
 use dep::hash_utils::poseidon;
 
-struct Poseidon2Bn254Config<T, R> {
+pub struct Poseidon2Bn254Config<let T: u32, let R: u32> {
     first_full_rc: [[Field; T]; 4],
     partial_rc: [Field; R],
     second_full_rc: [[Field; T]; 4],
 }
 
-fn permute_bn254<T, R>(
+fn permute_bn254<let T: u32, let R: u32>(
     mut state: [Field; T],
     mm_external: fn([Field; T]) -> [Field; T],
     mm_internal: fn([Field; T]) -> [Field; T],
-    config: Poseidon2Bn254Config<T,R>
+    config: Poseidon2Bn254Config<T, R>,
 ) -> [Field; T] {
     state = mm_external(state);
     for r in 0..4 {

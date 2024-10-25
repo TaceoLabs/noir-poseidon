@@ -1,1 +1,1 @@
-mod bn254;
+pub mod bn254;
