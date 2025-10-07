@@ -1,5 +1,5 @@
 mod consts;
-mod perm;
+pub mod perm;
 use dep::hash_utils;
 use dep::hash_utils::poseidon;
 
