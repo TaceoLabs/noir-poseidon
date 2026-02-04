@@ -1,7 +1,6 @@
-use crate::bn254::permute_bn254;
 use crate::bn254::consts;
+use crate::bn254::permute_bn254;
 use dep::hash_utils::poseidon;
-use dep::std::collections::vec::Vec;
 
 fn internal_2(state: [Field; 2]) -> [Field; 2] {
     let sum = state[0] + state[1];
@@ -26,27 +25,27 @@ fn external_3(mut state: [Field; 3]) -> [Field; 3] {
 }
 
 fn external<let T: u32>(mut state: [Field; T]) -> [Field; T] {
-    let mut mds_parts: Vec<[Field; 4]> = Vec::new();
+    let mut mds_parts: [[Field; 4]; T / 4] = [[0; 4]; T / 4];
     for i in 0..T / 4 {
         let offset = (4 * i);
-        mds_parts.push(poseidon::mds_4([
+        mds_parts[i] = poseidon::mds_4([
             state[0 + offset],
             state[1 + offset],
             state[2 + offset],
             state[3 + offset],
-        ]))
+        ]);
     }
     for i in 0..T / 4 {
         for j in 0..4 {
-            state[i * 4 + j] = mds_parts.get(i)[j];
+            state[i * 4 + j] = mds_parts[i][j];
         }
     }
 
     let mut stored = [0; 4];
     for l in 0..4 {
-        stored[l] = mds_parts.get(0)[l];
+        stored[l] = mds_parts[0][l];
         for j in 1..T / 4 {
-            stored[l] += mds_parts.get(j)[l];
+            stored[l] += mds_parts[j][l];
         }
     }
     for i in 0..T / 4 {
@@ -84,46 +83,46 @@ fn diag_mat_mul<let T: u32>(mut state: [Field; T], diag: [Field; T]) -> [Field; 
 }
 
 #[field(bn254)]
-pub fn x5_2(input: [Field; 2]) -> [Field; 2] {
+pub fn permutation_t2(input: [Field; 2]) -> [Field; 2] {
     permute_bn254(input, poseidon::mds_2, internal_2, consts::x5_2_config())
 }
 
 #[field(bn254)]
-pub fn x5_3(input: [Field; 3]) -> [Field; 3] {
+pub fn permutation_t3(input: [Field; 3]) -> [Field; 3] {
     permute_bn254(input, external_3, internal_3, consts::x5_3_config())
 }
 
 #[field(bn254)]
-pub fn x5_4(input: [Field; 4]) -> [Field; 4] {
+pub fn permutation_t4(input: [Field; 4]) -> [Field; 4] {
     permute_bn254(input, poseidon::mds_4, internal_4, consts::x5_4_config())
 }
 
 #[field(bn254)]
-pub fn x5_8(input: [Field; 8]) -> [Field; 8] {
+pub fn permutation_t8(input: [Field; 8]) -> [Field; 8] {
     permute_bn254(input, external, internal_8, consts::x5_8_config())
 }
 
 #[field(bn254)]
-pub fn x5_12(input: [Field; 12]) -> [Field; 12] {
+pub fn permutation_t12(input: [Field; 12]) -> [Field; 12] {
     permute_bn254(input, external, internal_12, consts::x5_12_config())
 }
 
 #[field(bn254)]
-pub fn x5_16(input: [Field; 16]) -> [Field; 16] {
+pub fn permutation_t16(input: [Field; 16]) -> [Field; 16] {
     permute_bn254(input, external, internal_16, consts::x5_16_config())
 }
 
 #[test]
-fn test_x5_2() {
+fn test_2() {
     assert(
-        x5_2([0, 1])
+        permutation_t2([0, 1])
             == [
                 0x1d01e56f49579cec72319e145f06f6177f6c5253206e78c2689781452a31878b,
                 0x0d189ec589c41b8cffa88cfc523618a055abe8192c70f75aa72fc514560f6c61,
             ],
     );
     assert(
-        x5_2([
+        permutation_t2([
             0x0ae097f5ad29d8a8329dc964d961c9933a57667122baa88351719021510aadcc,
             0x1db0afb64a7847b404e509b8076ea6f113e0dc33c8d8923850288b297b366a96,
         ])
@@ -133,7 +132,7 @@ fn test_x5_2() {
             ],
     );
     assert(
-        x5_2([
+        permutation_t2([
             0x190e9f8d74c3ee7e6f9a5fc4f3e9aea43e4c636652d64732663ce4d4e9a82dfc,
             0x116d4666591fd484d3f63b2143851ecf51790d344f076703aff0ea2ae73d84c0,
         ])
@@ -143,7 +142,7 @@ fn test_x5_2() {
             ],
     );
     assert(
-        x5_2([
+        permutation_t2([
             0x0765449fba54a8f027fdfc4bba2251e13867d2999658961503e1c552eb8d30f0,
             0x2458fc60fe06af665be546da89f792db27ba8122735483b028f7945b79a0121d,
         ])
@@ -153,7 +152,7 @@ fn test_x5_2() {
             ],
     );
     assert(
-        x5_2([
+        permutation_t2([
             0x05df817f34e9cc11af435dd58951c0dc120a9637f1625dae110c900fd64fac01,
             0x165798534b555615e2d3a7c0371d7c6b37814e4816dfcbcce9a7f5134166bf95,
         ])
@@ -163,7 +162,7 @@ fn test_x5_2() {
             ],
     );
     assert(
-        x5_2([
+        permutation_t2([
             0x278ab5ceb7ccf50051df09e958a60cdc29304d5a8bc5f512e8c05e4e8344b494,
             0x0691450210975cfd5ad15ad9b7b8d2c0b0e15bc964511530830691b9bdb1deab,
         ])
@@ -173,7 +172,7 @@ fn test_x5_2() {
             ],
     );
     assert(
-        x5_2([
+        permutation_t2([
             0x0c19d1ab43ce3d913418687b4a60b758e2be814434c5310c7f0a6f5813befa40,
             0x0cff2930faece292fb8ef0447faa51eca7538b91999d308c914ffe166deae4b2,
         ])
@@ -183,7 +182,7 @@ fn test_x5_2() {
             ],
     );
     assert(
-        x5_2([
+        permutation_t2([
             0x23b96a10b3a6b5cb32a4a48ba9e2c7fd95a0381977051d377aba654ce3f46d3f,
             0x12c4411263a01236387f3ad010243a44ac532a834589d6d7a38a0149748bf187,
         ])
@@ -193,7 +192,7 @@ fn test_x5_2() {
             ],
     );
     assert(
-        x5_2([
+        permutation_t2([
             0x2f1df4234732c49ac7567c29d2e066308f807e1bbf0951136b7fccba2602ea9e,
             0x04a23083267080ae4ee1a3cb4173dbce507c86edcfdd02853b0399cdab611517,
         ])
@@ -203,7 +202,7 @@ fn test_x5_2() {
             ],
     );
     assert(
-        x5_2([
+        permutation_t2([
             0x106babe89343a47ce296eed78129b6f7af056b46ad808b2cabb66f371180dd17,
             0x2f01d999b6e58284d87640c08c49e96d538ba3ffba0c544090fe858dbb5bc28e,
         ])
@@ -213,7 +212,7 @@ fn test_x5_2() {
             ],
     );
     assert(
-        x5_2([
+        permutation_t2([
             0x299c0a40411ed9d7de7792fa299b262937b21fabfa386fa761e3f079c1d9045f,
             0x2ace2e81e39d97a8e6d83c9e50a8643f4bf01a1465177518558305e7ab254c62,
         ])
@@ -225,9 +224,9 @@ fn test_x5_2() {
 }
 
 #[test]
-fn test_x5_3() {
+fn test_3() {
     assert(
-        x5_3([0, 1, 2])
+        permutation_t3([0, 1, 2])
             == [
                 0x0bb61d24daca55eebcb1929a82650f328134334da98ea4f847f760054f4a3033,
                 0x303b6f7c86d043bfcbcc80214f26a30277a15d3f74ca654992defe7ff8d03570,
@@ -235,7 +234,7 @@ fn test_x5_3() {
             ],
     );
     assert(
-        x5_3([
+        permutation_t3([
             0x2c6422c33190d036a17bd4281738ad60a6b4544c1020da1c0c84880a0ddc71c4,
             0x245cd98e5af9a6ebb35945b092c7e877ab9549c8919940250956a0bfedb457ab,
             0x0b43c424171231016dfe2072518b825a18c759383dba4e09a47bcd8b1a55da21,
@@ -247,7 +246,7 @@ fn test_x5_3() {
             ],
     );
     assert(
-        x5_3([
+        permutation_t3([
             0x124ce2326b4a95fe09743697c1e5c9ac9f6940cab7221decfd0162a8873c63ea,
             0x167148c1014f9f1ae03bb93892ec0164c6f65f779b526c3499d7ac374e84af86,
             0x18c0badc1c5aa472c434c254786f8e1aa8b519a7ec017dfd20bc1e5dfb820caa,
@@ -259,7 +258,7 @@ fn test_x5_3() {
             ],
     );
     assert(
-        x5_3([
+        permutation_t3([
             0x034f5155557b5e85db4fba5c254882f8658baa03376a38d37ff03fef1f850cfd,
             0x23975b943c4070c2bc98ec66b4a9e1f0ca1c812b38317bdbfac98aa748b5b059,
             0x03f9ef0d827a433a679060b654b556daa963c9658f628a3522dee7e839ab3615,
@@ -271,7 +270,7 @@ fn test_x5_3() {
             ],
     );
     assert(
-        x5_3([
+        permutation_t3([
             0x184561698ba999c39dcd5effd2f073e95345fb74f023ba25e162995a206ba79e,
             0x294e74e9b2f87eb7f5e00a350a22ff02e22397c278d48cecae04a4a83085a9ce,
             0x2840b008f9dd0379037622060b97bbe9fb5ffcf3e765c0a7feb5be13405ad2d8,
@@ -283,7 +282,7 @@ fn test_x5_3() {
             ],
     );
     assert(
-        x5_3([
+        permutation_t3([
             0x1c3c047ca883688ca6b6ddec715eef99a40282a4dc1d1b33910f59f30074e8f4,
             0x0a3aed04e3acb73a0f74d42f0d304f1afeefc00859a77d956120638d9007fbc5,
             0x07d9e5a9a2ac225871d7616f13a7a0185731fa679d931762ce1ef7767a3e63df,
@@ -295,7 +294,7 @@ fn test_x5_3() {
             ],
     );
     assert(
-        x5_3([
+        permutation_t3([
             0x1e7cb866b31dc33c91585591e7c82530ef2a25c3feef3273b1c4fc382790ab2b,
             0x2781a330739b20aff560c61207ac9a3dd0f74b78dd9d4ec97a3db650c4d05ae6,
             0x275dc90993858ee8bcee5a94d1010f30c9731a49eb799e3aa0dfe94c73d1d28a,
@@ -307,7 +306,7 @@ fn test_x5_3() {
             ],
     );
     assert(
-        x5_3([
+        permutation_t3([
             0x276d519f50629d7ab7b0362da8e532da858c989c37765d77e56d570ef67037d1,
             0x2b7cd64f3fdb10e2006a924c051cd3ea53dfa82e75993bad8d0eb4ca8f3756b4,
             0x07dc1f509cb68ec98ce1c9d18a89fa75a28a300ea58769a5fdc5ae19b4459c24,
@@ -319,7 +318,7 @@ fn test_x5_3() {
             ],
     );
     assert(
-        x5_3([
+        permutation_t3([
             0x0c6c15f4368f09bdaa7e7f4bc63d65d597eafe75764d82cb4d774e1982fce517,
             0x2e250d17689425c849b6d94bf822783c14086e5b5a145f6bd67d61d227e5dfa5,
             0x18693f449496390c0d6daa3f03170629b987b27c832c9e2aa586e3e36c6eac8e,
@@ -331,7 +330,7 @@ fn test_x5_3() {
             ],
     );
     assert(
-        x5_3([
+        permutation_t3([
             0x2fb3cd143630e3dd1a1eda75a9e8e698ee7a3a877ec6ecd7a77de97a1e0b6657,
             0x0c525ee6e5674c991dd70bd04a00bc62119d0ae97a1f1ec89cbdd34ac139edb4,
             0x2b6d256970b78cda94586db4eb7db119b10ee087b9ba107afe8c64e7b34625b1,
@@ -344,9 +343,9 @@ fn test_x5_3() {
     );
 }
 #[test]
-fn test_x5_4() {
+fn test_4() {
     assert(
-        x5_4([
+        permutation_t4([
             0x0000000000000000000000000000000000000000000000000000000000000000,
             0x0000000000000000000000000000000000000000000000000000000000000001,
             0x0000000000000000000000000000000000000000000000000000000000000002,
@@ -360,7 +359,7 @@ fn test_x5_4() {
             ],
     );
     assert(
-        x5_4([
+        permutation_t4([
             0x0c8c9889597488008e2e96985b843092fa78004ac3406c9df51ed2b6cf1165cd,
             0x20519dc2e54103607f781cb4c3e0728db3c0183b0d8e32b7a18b3ee7226d1866,
             0x17f6e0269a9439e0cbafb92fb6a33448460becc662da31786bf22935ca8734ed,
@@ -374,7 +373,7 @@ fn test_x5_4() {
             ],
     );
     assert(
-        x5_4([
+        permutation_t4([
             0x1854b7992ec5a1349e9ed40970bbae67373bf98cac98055c7baf28d664384085,
             0x12d3bf93b4c656e57eb1f4e1fe74f4dc5dacd2b95f27a12f0cc51c8aad9b4ceb,
             0x26c5ff636e75996c5d4953e2f44fc31403710c59e017cc0c68d7f7b547e5e12d,
@@ -388,7 +387,7 @@ fn test_x5_4() {
             ],
     );
     assert(
-        x5_4([
+        permutation_t4([
             0x24ad6b688e5398429ffb1e3ba8ab3cd798f9909155b45812325cba5a16d2d220,
             0x300687b9652aa54e7cae4137d9408e3ddf88a869428998d30b86f788ce92e1d1,
             0x2aaff3037bd20cd938462fbf41dac988afe9104d7794016c017a29aa411912d0,
@@ -402,7 +401,7 @@ fn test_x5_4() {
             ],
     );
     assert(
-        x5_4([
+        permutation_t4([
             0x16e6e596105e785a3e0bc02bb15398a4b08c55b9cba3536877ff40b7de1f2a38,
             0x2530d6ae25e495a3ccf8d51121e0d7134825264c630c9aacb0f78c380498e5eb,
             0x1586aaed4606463b8d7ebd287062d9128df99c8cebb06d8ddaac95e258e5a804,
@@ -416,7 +415,7 @@ fn test_x5_4() {
             ],
     );
     assert(
-        x5_4([
+        permutation_t4([
             0x1e0efaac6c6acea57222f9161313ec9579cda0c85e22f180345af12abc70b5a1,
             0x0d0f3071f2e4fc48d9dd9f37367de2ec12260ab9a8729269fa1510e9d093a5b3,
             0x26b2e5123ade4de33a0185d7ee08bb10ab217d8cf44227673904ed9ba7d6d0bf,
@@ -430,7 +429,7 @@ fn test_x5_4() {
             ],
     );
     assert(
-        x5_4([
+        permutation_t4([
             0x1420cb6e80553413972d39a0e2aa1b0fce8e1759e8955b9d0b4183bfe7cd2577,
             0x0e0bed978ef7b27a34d0fc3f4db4dd6a62eb2a89deacde38ab43d23b5001d9ec,
             0x1f52d011ec77d06560315f14de37b7e6af34fa77c8689f82b5cec53a6f731a8f,
@@ -444,7 +443,7 @@ fn test_x5_4() {
             ],
     );
     assert(
-        x5_4([
+        permutation_t4([
             0x02ed7335766c6990f8c4c07e406dbe441efe9fe3f8a3b3c36efcf8d5b2466a78,
             0x2e1b45eb605cde0d22d13f244108dc47d45c395a1854afee35822424b6cc022d,
             0x2f26a4bd4c1472f8fb3d475c64647acb9371432589214dba81a90cef7e84c3f3,
@@ -458,7 +457,7 @@ fn test_x5_4() {
             ],
     );
     assert(
-        x5_4([
+        permutation_t4([
             0x2668dc5c24a61ba1ea716788ca323027411c67114fcf8d3037ec85cf04f9ab49,
             0x2ff5ef931ab5091bbc32352e20b9971475f2096cdec6a2540897bf383b3f491e,
             0x269edac091156e2f0b78bf1bda18b4bc0fa57c5da2d9223c0af89e7e32360079,
@@ -472,7 +471,7 @@ fn test_x5_4() {
             ],
     );
     assert(
-        x5_4([
+        permutation_t4([
             0x0b714049d73a453d12fd8d29b6d3827fca2e9bdb2b81700f91a99af577c7fe7b,
             0x2f0f7fed2d8dfcd4abb28e3622eae01279c61d4256a6be4cb3b1fd51b8d723bb,
             0x305e7764e1a84dee8dc9a1f80d850ad02302840f301590f274789f97c8c1f2d1,
@@ -486,7 +485,7 @@ fn test_x5_4() {
             ],
     );
     assert(
-        x5_4([
+        permutation_t4([
             0x044d9089d0d731e323eb08218c16222676b1b170bd13d06ce96759a21ebe3279,
             0x120b8825613c5d3d12545a5806743e5234cc1586f1d1bae59bbde22eb973178d,
             0x2b5a57fce5f044b2e8b26f6f669b88eb1880183e7bfa2903a16ef0236f2f3faa,
@@ -502,9 +501,9 @@ fn test_x5_4() {
 }
 
 #[test]
-fn test_x5_8() {
+fn test_8() {
     assert(
-        x5_8([0, 1, 2, 3, 4, 5, 6, 7])
+        permutation_t8([0, 1, 2, 3, 4, 5, 6, 7])
             == [
                 0x1d1a50bcde871247856df135d56a4ca61af575f1140ed9b1503c77528cf345df,
                 0x2d3943cf476ed49fd8a636660d8a76c83b55f07d06bc082005ad7eb1a21791c5,
@@ -517,7 +516,7 @@ fn test_x5_8() {
             ],
     );
     assert(
-        x5_8([
+        permutation_t8([
             0x11e027e38a43d36a72be06d524c0856d027363f604c347937fd91acdd47e04f7,
             0x28b51285afdea43557ffd2b5ad3ec85c08e1f718e263bf9e8709889d6bb9a745,
             0x290a6954438d96f11db1a59092c454379c233b5a07bd0b70f29ea12c03a3b729,
@@ -539,7 +538,7 @@ fn test_x5_8() {
             ],
     );
     assert(
-        x5_8([
+        permutation_t8([
             0x25776de965f9e74ee70f66a4aa501b2e5bdd7f1dc2910bf1a060cc5fd746ed1e,
             0x2b5b27c3c2f2f6991ce700ba074c7cb8bad876e2a8f09e712310c50f77af22b0,
             0x2f43305136fcb3ef1d0fa9347702dbcdddd8475ebb01d617a598add5b0d62aca,
@@ -561,7 +560,7 @@ fn test_x5_8() {
             ],
     );
     assert(
-        x5_8([
+        permutation_t8([
             0x03cab88b5d93ab657ab738c39575c2812e61f87d188d787ec9c920da592c2243,
             0x1657057a76dc5a0846c28c33fbfcdfed94a3baea5daf495df4aa61ed4bad34d5,
             0x050fc77fea82eb8ae11537eeeeee6cb66ad4f77810df293cb0ceb614fa86328a,
@@ -583,7 +582,7 @@ fn test_x5_8() {
             ],
     );
     assert(
-        x5_8([
+        permutation_t8([
             0x01b7c953d757d279f1e4b8b29b70cdb5b181807c1952fe7ad9cc88e441ef4f65,
             0x09891fea0252d6f9b61c944b994f28f6dccd6f8a3965f8b7b796aec3d81182b2,
             0x014790065d8a6de104535d6aa5977dca5ef04320eadd4186b590fa810decb825,
@@ -605,7 +604,7 @@ fn test_x5_8() {
             ],
     );
     assert(
-        x5_8([
+        permutation_t8([
             0x1a9c3fa290fa302f24a32fc7196e3fbad886e55f0416fc05a0c4ea5f92cac771,
             0x071a29de76b7de4cf5d077d2ffa826b3bf8fab45f1becafa8eef4173b8c1693b,
             0x0cd670e01cf5d1f3f45324fcd78776e60a113a7d804cb370cfcb9ab480e47fa6,
@@ -627,7 +626,7 @@ fn test_x5_8() {
             ],
     );
     assert(
-        x5_8([
+        permutation_t8([
             0x05af85a2a83bbf0c8e1745d32f821fd445e7f0e16e3efca09f7b670a7d1b3303,
             0x2db863f54326e5338ac73f56d5c93d591241489cc2a21faf87385c13dcb73de6,
             0x04f20a97ec43ba9ab2595f72f6806be8cf6defbf2c5a62338992310c82f3f4b5,
@@ -649,7 +648,7 @@ fn test_x5_8() {
             ],
     );
     assert(
-        x5_8([
+        permutation_t8([
             0x2c8ef342682e4a13c4471f202bd59b9e1a3a89a4f58f456d279c73e92653364f,
             0x1180875747bff92f8ec8e698a513965c142bb3c2d9d60276a9f3c37f4181fb4a,
             0x27c395d2f21b9f73aca6fac113a2623cc015c5ebdf87ac3581022a5d55065931,
@@ -671,7 +670,7 @@ fn test_x5_8() {
             ],
     );
     assert(
-        x5_8([
+        permutation_t8([
             0x032227d5200a7a32ea6e15021e3e0eec3381e3ed9eba437657422ecd23e7fe53,
             0x23043016d0bd81048340c78dc7a30339fbf5d6e1a2ff320869af5ad4ecda70cd,
             0x05f4fb3ae740d37ca96cebd4e5f8b4f115f74793885cbc318f6b15c8666d7cf3,
@@ -693,7 +692,7 @@ fn test_x5_8() {
             ],
     );
     assert(
-        x5_8([
+        permutation_t8([
             0x2b38c44e6d922f1916c6fe209b60f11d79690da00dfdfc688b083a84e2226575,
             0x28ffe5213d9d33b4152a2f9df1cbe5be036519f9931371568d3675ddcaf0513e,
             0x12f3dc47fa9ecd2c8471c8921797ffd99a647b0e0a7f053fac7d20cfd4e7c45e,
@@ -715,7 +714,7 @@ fn test_x5_8() {
             ],
     );
     assert(
-        x5_8([
+        permutation_t8([
             0x16e42b1b9957861119562d0f04fec5050762947b381e0578367260b083327887,
             0x1ab2141e8e0a746272d9af6699d4e82d5674c69d25d11dd6b5be1725a3beb451,
             0x1acb3bcff3b760b884bdc302d3003dc62559cb9461f037ae65ed8f625d115f22,
@@ -739,9 +738,9 @@ fn test_x5_8() {
 }
 
 #[test]
-fn test_x5_12() {
+fn test_12() {
     assert(
-        x5_12([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
+        permutation_t12([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
             == [
                 0x3014e0ec17029f7e4f5cfe8c7c54fc3df6a5f7539f6aa304b2f3c747a9105618,
                 0x2f90753e7aaf46c158cd12346da7dd37c3136353ec51525cabbaaf2b2350f9b2,
@@ -758,7 +757,7 @@ fn test_x5_12() {
             ],
     );
     assert(
-        x5_12([
+        permutation_t12([
             0x2954cb9ff6347d5c499f1fc52db830ea8fa29f01e77c979c5611ae2aaae0e3de,
             0x2e12b253c9034b6cc304cb4420dd4bf63c9216a8db85b157b55f45570fafbaa5,
             0x2de62fca9606e83d76d60bd222c14d4413e9fff2d15f8864a18586b76b32a632,
@@ -788,7 +787,7 @@ fn test_x5_12() {
             ],
     );
     assert(
-        x5_12([
+        permutation_t12([
             0x2668dc335384b37562764a5a19c9e518210e99df10eaadfd8234582773424edc,
             0x1547f370a3afc9e04397c85b7a3c4fcb4a1a9a82c496f97a24586ddb2899991e,
             0x301401729a06d886a0e6994e5eeb05df0f132f1e296c7c27ede1ae6e635badb8,
@@ -818,7 +817,7 @@ fn test_x5_12() {
             ],
     );
     assert(
-        x5_12([
+        permutation_t12([
             0x12b0aa3d80398d5a38e8bd25d2e0deafd716d06d5b81226951fb503441fd05b0,
             0x1b9dffbb066e42c5e5fe85e5850f542afb97ff19d0d9e336e13c342b1d856b00,
             0x2feda7e3978df56ba8ff3b2f922c1dc14b1eeec68c5b4439c48fcb588dab04d4,
@@ -848,7 +847,7 @@ fn test_x5_12() {
             ],
     );
     assert(
-        x5_12([
+        permutation_t12([
             0x06f913e735c17444995621ccb42a892f5793b5bd46bdf03a98b6eee8c982541f,
             0x0574c7bd5902a962ed3077ff2e512248814d80d4ab986a333e61501ab784d116,
             0x156f483ead068aeea616b0207af754c9d196ccde6a4cbf3c065a4a0d6cf8336f,
@@ -878,7 +877,7 @@ fn test_x5_12() {
             ],
     );
     assert(
-        x5_12([
+        permutation_t12([
             0x177a260bc01e2206326dad4ae268443ea9f9705eb56166656d4282182e48956a,
             0x13a9fcfe422c32519591d2a702cea14eea6e86d596cf540f74e6e46288bd53af,
             0x091fe67afb9b11c527c44796558c13948377689f5a0287ef66bc03c5cf5e7057,
@@ -908,7 +907,7 @@ fn test_x5_12() {
             ],
     );
     assert(
-        x5_12([
+        permutation_t12([
             0x0a354297f59aa014f9204280e96ca66b80d72a39a338c65aef8673cd113015eb,
             0x2241a377f9b8ae774bf59d6d48b1035da05bc0095f63cc88045b4a6150327191,
             0x096d075a1c648963c8422186bc33cc4b4312bdd7af67e10ff5ad88a3c6ca7afe,
@@ -938,7 +937,7 @@ fn test_x5_12() {
             ],
     );
     assert(
-        x5_12([
+        permutation_t12([
             0x038c3a316e56fbfcbe9cf422c1563a0551b6f6fb6ca764db2cad53ee63c06c86,
             0x15c3f186965de711887fcd8ef5b395e97f924941134119e21d204a4e1ebc687d,
             0x26989306c28e62da14bfe4b08459b27483e6522eca75b0938080048d3d34daf4,
@@ -968,7 +967,7 @@ fn test_x5_12() {
             ],
     );
     assert(
-        x5_12([
+        permutation_t12([
             0x2cb1a7dc7f386ebc390c83c64eb12d23d6ce767d27d96935a9247e32812fb7f9,
             0x0cf7df2f03aa0771560d176d3e1805c34873c5a7fc00c872f5102ef7ab5bd550,
             0x28b52e69a1ffd2df7f6812a11207f1543c7aa0e40c565f051a721175cfb8dc03,
@@ -998,7 +997,7 @@ fn test_x5_12() {
             ],
     );
     assert(
-        x5_12([
+        permutation_t12([
             0x27dea82d8f6011df0fb78da7e82e2a13a22f566bb125274842ee68c942ef7553,
             0x2c7efbf12d19e481fe927c5cedc2ea0ad4e7f3a461501e5b8cd2d559b7d848b4,
             0x23c963940566be144921a594c3fb1f65068f8ca74fd2102b4475a06328c6e9ec,
@@ -1028,7 +1027,7 @@ fn test_x5_12() {
             ],
     );
     assert(
-        x5_12([
+        permutation_t12([
             0x26e19349657f94d69ef38f895ef34f6cd3dfa6677b8f083b158491bc9d019325,
             0x10a908d07457a6b73175c274fac62205da9696826a4d2ae29c7d95896c74d4c1,
             0x1a5b072d9790d06ec111e6220a1505f7a7bf604325634738da0c17abf980b4da,
@@ -1060,9 +1059,9 @@ fn test_x5_12() {
 }
 
 #[test]
-fn test_x5_16() {
+fn test_16() {
     assert(
-        x5_16([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
+        permutation_t16([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
             == [
                 0x0fc2e6b758f493969e1d860f9a44ee3bdffdf796f382aa4ffb16fa4e9bcc333f,
                 0x0c118155a0dfeca3f91faf14a350511228ac33743be91249c6e0b3a635a50de4,
@@ -1083,7 +1082,7 @@ fn test_x5_16() {
             ],
     );
     assert(
-        x5_16([
+        permutation_t16([
             0x2ef5bd70482d1d5bce16a04a5220175878dc715c51070672fd79df2f36fb719d,
             0x015425a96665c5004e9210cf6828d8019c057cd587408a27347d951d9dffc2d9,
             0x1551585c9c4cd84962ce750509aa7c10f6070167cf02f413b1ebb99b46070f9d,
@@ -1121,7 +1120,7 @@ fn test_x5_16() {
             ],
     );
     assert(
-        x5_16([
+        permutation_t16([
             0x06b55384dd1f8432d7a1c51b5a6233347e1a01d6ccf71e4df8a97e6acfea494b,
             0x1fb69c58f691a3f1a356ff552ff6472e1159c39eca1298ff6692ebf1221f21c0,
             0x1b57c97bd134be1d2ad6ee333fe8f0edb31fd49777b62b78f8ae06c9fda9e4c0,
@@ -1159,7 +1158,7 @@ fn test_x5_16() {
             ],
     );
     assert(
-        x5_16([
+        permutation_t16([
             0x1cbaec6b27c2ebc5fdb69e1333798b981dcba6b38391557b7ac7b9b58d0f66c2,
             0x189851071e8428ff3c8a96ac2ddb17ed0880c59988c3fee8dbfb62e195867fbd,
             0x154f46875dfe815d037f8c06b2067e2b5cce8b77a9464a65ef2f6e665652b293,
@@ -1197,7 +1196,7 @@ fn test_x5_16() {
             ],
     );
     assert(
-        x5_16([
+        permutation_t16([
             0x0aa86dccef554a9a7f6c92f6c0165a13f7a8be302163322a6d5f711eb9e3845d,
             0x0a190cad0005aa2ce4a7cf7fa9a62653d3f3a43827fff30110fd020402c53905,
             0x164cbb52ddfd371ffa882dcb7439e0ecb65f82252436ae949192267587120c4d,
@@ -1235,7 +1234,7 @@ fn test_x5_16() {
             ],
     );
     assert(
-        x5_16([
+        permutation_t16([
             0x1f215d88b7e0d178c8fb74da91021f394ca93b27c8492a2864916ded48b7d7f4,
             0x031a1f5e05f55ef8abeef5ad6441e6dd3216715223dbcd72b81c4f8bad05c7b4,
             0x1e7f0b196954bf7434714f11608fb1bb75442a19baba47a538815c8094a4a13f,
@@ -1273,7 +1272,7 @@ fn test_x5_16() {
             ],
     );
     assert(
-        x5_16([
+        permutation_t16([
             0x2d68b06ac8a6c173e6c3973ba865a74dffe3294bff9d0a000f0e48c743f7e5b6,
             0x11a9b30e033e2e4f6d9953273ea2b0c334dc0d3f0548ee1480ddb8089cecab4d,
             0x2c8863dd10933bfe3670a9f4626056b32d12c85064b06f69ac6f20b8fd2c3160,
@@ -1311,7 +1310,7 @@ fn test_x5_16() {
             ],
     );
     assert(
-        x5_16([
+        permutation_t16([
             0x26fcf669c5d648ed59490ddca7bbe354b02b4b3ce3413abf45bcc763632216ad,
             0x217c47cd62feb6c1858beb1af22a9520f7e7dbcef978235471c0255f789fdc63,
             0x0c9847f7f873b8730c65861cc42a77de4d2a863b853b146c7ee7e3241d9e9f09,
@@ -1349,7 +1348,7 @@ fn test_x5_16() {
             ],
     );
     assert(
-        x5_16([
+        permutation_t16([
             0x1f30f9fbd02de3245ffa2a842a35c503836cdf7bd91b7bc81eef191c0ed00d91,
             0x23ef9c7a64ae98919c4aebd890beef09ff5d1b450e3ed7a690a3e6067755101c,
             0x0a941ca919639269ce0f274572c3bd82ab586684c14f46d648d7ebeb98795354,
@@ -1387,7 +1386,7 @@ fn test_x5_16() {
             ],
     );
     assert(
-        x5_16([
+        permutation_t16([
             0x102aaf737cf6e4eded17a778873de94a33432c19f78c93ff6a438b54503073e6,
             0x010ccff329d1680eb37dc0a14d1df9ecb51b563fbbe8e02f4b973a6d7c5a3ad9,
             0x1c80734fefdf741d96d23dd5c9494a69eca35ad4c52e6781fe64fec042a39034,
@@ -1425,7 +1424,7 @@ fn test_x5_16() {
             ],
     );
     assert(
-        x5_16([
+        permutation_t16([
             0x2c8251563bf2daf3832f54b41e1019e416f097fff0185b8972a24baab0041945,
             0x1c5af36107dd27a50ed1b7be11fecc96955c940f7d1e8d85c73b55d2a72636cd,
             0x0c2745de6e816df7564b63085fb2bbfac5b7901f3bea6c06527fc367886f25ff,

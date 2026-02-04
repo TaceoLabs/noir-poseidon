@@ -23,7 +23,7 @@ fn compute_merkle_root() {
         } else {
             (current, hash_path[i])
         };
-        current = bn254::hash_3([hash_left, hash_right, 0]);
+        current = bn254::perm::permutation_t3([hash_left, hash_right, 0])[0];
     }
     assert(current == root);
 }
