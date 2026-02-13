@@ -1,5 +1,5 @@
 mod consts;
-pub(crate) mod perm;
+pub mod permutation;
 use dep::hash_utils;
 use dep::hash_utils::poseidon;
 

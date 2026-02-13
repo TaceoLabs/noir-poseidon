@@ -1,6 +1,6 @@
 // Instantiations of Poseidon constants, permutations and sponge for prime field of the same order as BN254
 mod default_perm;
-mod perm;
+pub mod permutation;
 mod consts;
 
 use dep::hash_utils;
@@ -65,84 +65,4 @@ fn cheap_matmul<let T: u32, let T1: u32>(
         new_state[i] = state[0] * v[i - 1] + state[i];
     }
     new_state
-}
-
-#[field(bn254)]
-pub fn hash_1(input: [Field; 1]) -> Field {
-    perm::x5_2([input[0], 1])[0]
-}
-
-#[field(bn254)]
-pub fn hash_2(input: [Field; 2]) -> Field {
-    perm::x5_2(input)[0]
-}
-
-#[field(bn254)]
-pub fn hash_3(input: [Field; 3]) -> Field {
-    perm::x5_3(input)[0]
-}
-
-#[field(bn254)]
-pub fn hash_4(input: [Field; 4]) -> Field {
-    perm::x5_4(input)[0]
-}
-
-#[field(bn254)]
-pub fn hash_5(input: [Field; 5]) -> Field {
-    perm::x5_5(input)[0]
-}
-
-#[field(bn254)]
-pub fn hash_6(input: [Field; 6]) -> Field {
-    perm::x5_6(input)[0]
-}
-
-#[field(bn254)]
-pub fn hash_7(input: [Field; 7]) -> Field {
-    perm::x5_7(input)[0]
-}
-
-#[field(bn254)]
-pub fn hash_8(input: [Field; 8]) -> Field {
-    perm::x5_8(input)[0]
-}
-
-#[field(bn254)]
-pub fn hash_9(input: [Field; 9]) -> Field {
-    perm::x5_9(input)[0]
-}
-
-#[field(bn254)]
-pub fn hash_10(input: [Field; 10]) -> Field {
-    perm::x5_10(input)[0]
-}
-
-#[field(bn254)]
-pub fn hash_11(input: [Field; 11]) -> Field {
-    perm::x5_11(input)[0]
-}
-
-#[field(bn254)]
-pub fn hash_12(input: [Field; 12]) -> Field {
-    perm::x5_12(input)[0]
-}
-
-#[field(bn254)]
-pub fn hash_13(input: [Field; 13]) -> Field {
-    perm::x5_13(input)[0]
-}
-
-#[field(bn254)]
-pub fn hash_14(input: [Field; 14]) -> Field {
-    perm::x5_14(input)[0]
-}
-
-#[field(bn254)]
-pub fn hash_15(input: [Field; 15]) -> Field {
-    perm::x5_15(input)[0]
-}
-
-#[field(bn254)]
-pub fn hash_16(input: [Field; 16]) -> Field {
-    perm::x5_16(input)[0]
 }
