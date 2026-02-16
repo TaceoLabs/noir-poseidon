@@ -42,19 +42,28 @@ poseidon = { tag = "v0.1.0", git = "https://github.com/TaceoLabs/noir-poseidon",
 
 ## Examples
 
-To compute a hash from eight Field elements, write:
+To compute the permutation for state size $8$, write: 
 
 ```Rust
 use dep::poseidon;
 
 fn main(plains: [Field; 8]) -> pub Field {
-    poseidon::bn254::hash_8(plains)
+    poseidon::bn254::permutation::t_8(plains)
 }
 ```
 
-As already mentioned, we also provide function calls for state sizes $t \in [2..16]$, with the respective functions `poseidon::bn254::hash_2([..])`, `poseidon::bn254::hash_3([..])`, etc.
+As already mentioned, we also provide function calls for state sizes $t \in [2..16]$, with the respective functions `poseidon::bn254::permutation::t_2([..])`, `poseidon::bn254::permutation::t_3([..])`, etc.
 
-For further examples on how to use the Poseidon crate, have a look at the [tests](src/bn254/perm.nr).
+The following is an example of hashing using a compression function with state size $2$, feed-forward and domain separator $DS$:
+
+```Rust
+use dep::poseidon;
+
+fn hash2(plains: [Field; 2]) -> pub Field {
+    let state = poseidon::bn254::permutation::t_2([plains[0] + DS, plains[1]]);
+    state + plains[0]
+}
+```
 
 ## Round Constants
 
