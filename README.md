@@ -28,6 +28,7 @@ fn poseidon2::bn254::permutation::t_x(input: [Field; x]) -> [Field; x];
 ```
 
 That is, these are **permutations only**, not complete hash functions. To use them as hash functions, apply appropriate construction techniques such as sponge constructions or compression functions. For examples see the respective READMEs for [Poseidon](poseidon/README.md) and [Poseidon2](poseidon2/README.md).
+Have a look in the respective sub-folders for further instructions on how to use the libraries and installation.
 
 ## Performance
 
@@ -50,10 +51,6 @@ The following table shows the constraints obtained by `nargo info` for our imple
 | 14  | 6388              | 5131     | -         |
 | 15  | 5813              | 5495     | -         |
 | 16  | 6581              | 5875     | 4883      |
-
-## Usage
-
-Have a look in the respective sub-folders for instructions on how to use the libraries and installation.
 
 ## Testing
 
