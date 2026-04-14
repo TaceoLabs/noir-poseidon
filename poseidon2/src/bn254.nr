@@ -1,7 +1,7 @@
 mod consts;
 pub mod permutation;
-use dep::hash_utils;
-use dep::hash_utils::poseidon;
+use hash_utils;
+use hash_utils::poseidon;
 
 pub struct Poseidon2Bn254Config<let T: u32, let R: u32> {
     first_full_rc: [[Field; T]; 4],
