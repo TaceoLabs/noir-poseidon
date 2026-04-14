@@ -1,6 +1,6 @@
 use crate::bn254::consts;
 use crate::bn254::permute_bn254;
-use dep::hash_utils::poseidon;
+use hash_utils::poseidon;
 
 fn internal_2(state: [Field; 2]) -> [Field; 2] {
     let sum = state[0] + state[1];
