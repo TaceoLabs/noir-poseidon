@@ -3,84 +3,84 @@ use crate::bn254::default_perm;
 use crate::bn254::permute_bn254;
 
 #[field(bn254)]
-pub fn t_2(input: [Field; 2]) -> [Field; 2] {
+pub fn t2(input: [Field; 2]) -> [Field; 2] {
     default_perm::x5_2(input)
 }
 
 #[field(bn254)]
-pub fn t_3(input: [Field; 3]) -> [Field; 3] {
+pub fn t3(input: [Field; 3]) -> [Field; 3] {
     default_perm::x5_3(input)
 }
 
 #[field(bn254)]
-pub fn t_4(input: [Field; 4]) -> [Field; 4] {
+pub fn t4(input: [Field; 4]) -> [Field; 4] {
     default_perm::x5_4(input)
 }
 
 #[field(bn254)]
-pub fn t_5(input: [Field; 5]) -> [Field; 5] {
+pub fn t5(input: [Field; 5]) -> [Field; 5] {
     permute_bn254(input, consts::x5_5_config())
 }
 
 #[field(bn254)]
-pub fn t_6(input: [Field; 6]) -> [Field; 6] {
+pub fn t6(input: [Field; 6]) -> [Field; 6] {
     permute_bn254(input, consts::x5_6_config())
 }
 
 #[field(bn254)]
-pub fn t_7(input: [Field; 7]) -> [Field; 7] {
+pub fn t7(input: [Field; 7]) -> [Field; 7] {
     permute_bn254(input, consts::x5_7_config())
 }
 
 #[field(bn254)]
-pub fn t_8(input: [Field; 8]) -> [Field; 8] {
+pub fn t8(input: [Field; 8]) -> [Field; 8] {
     permute_bn254(input, consts::x5_8_config())
 }
 
 #[field(bn254)]
-pub fn t_9(input: [Field; 9]) -> [Field; 9] {
+pub fn t9(input: [Field; 9]) -> [Field; 9] {
     permute_bn254(input, consts::x5_9_config())
 }
 
 #[field(bn254)]
-pub fn t_10(input: [Field; 10]) -> [Field; 10] {
+pub fn t10(input: [Field; 10]) -> [Field; 10] {
     permute_bn254(input, consts::x5_10_config())
 }
 
 #[field(bn254)]
-pub fn t_11(input: [Field; 11]) -> [Field; 11] {
+pub fn t11(input: [Field; 11]) -> [Field; 11] {
     permute_bn254(input, consts::x5_11_config())
 }
 
 #[field(bn254)]
-pub fn t_12(input: [Field; 12]) -> [Field; 12] {
+pub fn t12(input: [Field; 12]) -> [Field; 12] {
     permute_bn254(input, consts::x5_12_config())
 }
 
 #[field(bn254)]
-pub fn t_13(input: [Field; 13]) -> [Field; 13] {
+pub fn t13(input: [Field; 13]) -> [Field; 13] {
     permute_bn254(input, consts::x5_13_config())
 }
 
 #[field(bn254)]
-pub fn t_14(input: [Field; 14]) -> [Field; 14] {
+pub fn t14(input: [Field; 14]) -> [Field; 14] {
     permute_bn254(input, consts::x5_14_config())
 }
 
 #[field(bn254)]
-pub fn t_15(input: [Field; 15]) -> [Field; 15] {
+pub fn t15(input: [Field; 15]) -> [Field; 15] {
     permute_bn254(input, consts::x5_15_config())
 }
 
 #[field(bn254)]
-pub fn t_16(input: [Field; 16]) -> [Field; 16] {
+pub fn t16(input: [Field; 16]) -> [Field; 16] {
     permute_bn254(input, consts::x5_16_config())
 }
 
 #[test]
 fn test_perm_5() {
     assert(
-        t_5([
+        t5([
             0x0d1dbd21b6da2e17e837f4ca542f7da081cf88696e33c32dcdc1ca3a020fc4d6,
             0x18e5e573b6d716426b443b7cd5764bf14580891d2a7830d09070299013e8b73e,
             0x08c04072a8a5bfbcc34f1974496f2e9fa3bcf6894600625dae1b11452fa5178f,
@@ -96,7 +96,7 @@ fn test_perm_5() {
             ],
     );
     assert(
-        t_5([
+        t5([
             0x300244e8cec84c9149de940e03eed51e005650e1f69f344108792083aa8fe7ef,
             0x0fe04d65dd549672e983986da5a4f6c54b4763bc5f3d1faf26f66cb4b1db7750,
             0x0dd4a4cf93781cd8c069b19e8a82e0e11acee215857210f21d67bb5990d5ebe4,
@@ -112,7 +112,7 @@ fn test_perm_5() {
             ],
     );
     assert(
-        t_5([
+        t5([
             0x24bdf88b02057c1000c76c2a2bbd10c6bd9669a7da623eb17a79d476dffd97d3,
             0x2f378a295a9b826537c3d933f058a9341a789e07ed2b6ac91a978c98a0c0a02f,
             0x17241b2db615cf03c927677b7a3d0edbe1743f2383ba67b818a6ea532c1095c6,
@@ -128,7 +128,7 @@ fn test_perm_5() {
             ],
     );
     assert(
-        t_5([
+        t5([
             0x0f0b62dd0e3aad525562ca87eb85cc25238a5151d5243f90e4ea4e7540a1accd,
             0x0cc4f2fd0283e4de45b6e69aac9a4d2add9f31b0746838370ec37db41b5bb0e1,
             0x2aa742f2da4efb72520147f123f33efd48215fa951c8f71ad4554cb7a012eaa0,
@@ -144,7 +144,7 @@ fn test_perm_5() {
             ],
     );
     assert(
-        t_5([
+        t5([
             0x2d039396b34fce73fa216223da3c19bc626a94ffc8189a9bac012d5c90c5fd3f,
             0x01d981299eb54cdf2677b2b520ba366eb37040fa9886e77c8fdc8acbd8f84310,
             0x146f653ffa90148c11583eaca00654cd29df3d4bd524cd558af229420a3098dc,
@@ -160,7 +160,7 @@ fn test_perm_5() {
             ],
     );
     assert(
-        t_5([
+        t5([
             0x1941a855e86fd846a65dd393df006b35f692e4f3e239437b39c6c2fc44b1d5cb,
             0x1340ae5798519dc532cf0ce482bcdd8d3c52c028a8f81a6fa28a1e94669f2417,
             0x0dc150eafafc4317763a2ee77ed60614e70ec10a72ba0c953c6633e767b13c13,
@@ -176,7 +176,7 @@ fn test_perm_5() {
             ],
     );
     assert(
-        t_5([
+        t5([
             0x0fe3620e7a6dbf618fb990e6be7651faf8f8ff99593f7d51d7f4738d4787e480,
             0x12015945282abb6e1dd9afe463dd8a88039e8cbfc3777fff29b5148ee397440e,
             0x1ff77897def669a3bbef33e5defb60cb91fbb675a8fd43b8ad2f22d12c282e7a,
@@ -192,7 +192,7 @@ fn test_perm_5() {
             ],
     );
     assert(
-        t_5([
+        t5([
             0x1f474bc250f0e255a0b4a1f1cb3d12fcbc7e2a298d90832b200c276f453058c8,
             0x154b28a734dccc5c05e5cab2f1bf3e011ec0df50640ec86b35534a2cd97ee8ef,
             0x22ac1a622fbfe9ecd6998c11408a7526d373269b6a1c4b26b0f634774d4c6d16,
@@ -208,7 +208,7 @@ fn test_perm_5() {
             ],
     );
     assert(
-        t_5([
+        t5([
             0x23e8a9092e89020a6aa25f308c8f12d8cc0922bf97d25d529666d630763ac747,
             0x2ba6c1ceb7d1d7755bf50db172830876bfc971be0235dc03ec5b12e63bf1738f,
             0x19668cc091d151bdc65b2505e093371af37b1aebd6e1662cbff9386d5237a077,
@@ -224,7 +224,7 @@ fn test_perm_5() {
             ],
     );
     assert(
-        t_5([
+        t5([
             0x0b1a203b0da3e5fc0cc1df0fbe0af3ea24c5849dbcacbc5ce28278ebf84f6595,
             0x24f5a1f39924b52bff007d4a8ebeb59f0c5b0aba8349121cce06b13b0446835c,
             0x1fe5ee7ff77bfb03c531d0c14b6c1d1cc7a59aaa77f39f907698452da4ac9131,
@@ -244,7 +244,7 @@ fn test_perm_5() {
 #[test]
 fn test_perm_6() {
     assert(
-        t_6([
+        t6([
             0x11f25968e22616243d379601cba1e681471dba56026553572cac9b1124babef1,
             0x07361dcd5155ce203708ebdabad50cc63d44151a0cf6ce2de0ec0e21de101711,
             0x11ce4d48dee37f52fc022301496ddbe7a5a3ac60cb2e6fe7cc1108cb0d853254,
@@ -262,7 +262,7 @@ fn test_perm_6() {
             ],
     );
     assert(
-        t_6([
+        t6([
             0x0897c50ed1660c9bd81e9223289a1b60593b371f0640f8007df60bbcb1d86ead,
             0x3009832259562128334455acd8ed3718e35c2de7c2879e9ab1b54ec0dba05635,
             0x2dac0d0c886b31f34f08d75a3a1297e23635f960208ce3f375abfd6730c54dab,
@@ -280,7 +280,7 @@ fn test_perm_6() {
             ],
     );
     assert(
-        t_6([
+        t6([
             0x182873a2b03c977bffd1de86bf2aa2b63d94f348f741708cac67e35a98b39ae6,
             0x2145322fa7824d72c5ba83f7fae761fdf13b36e1c808a04f8506729def248670,
             0x1a18c1070f8c65a6e25e480043dceb15c1eb5bf980c4b6741ca197d435aeeb97,
@@ -298,7 +298,7 @@ fn test_perm_6() {
             ],
     );
     assert(
-        t_6([
+        t6([
             0x2efd7412526d2c41df55103b8aaabe45f425fdbd6cc68a292ae341f09c4f2075,
             0x162024221243acdf3fe2a7d4ee2dc3158ce2497b429b718fa8d4e3771b399c24,
             0x0f2e48f8b7f8cccdeae9de675807a7632d56cee67fbf5cc9595ba16affe68642,
@@ -316,7 +316,7 @@ fn test_perm_6() {
             ],
     );
     assert(
-        t_6([
+        t6([
             0x153e8eceb61249e52b58faa8f861417b0939e6f1fb6d891a16ca9cc5d4254094,
             0x156d44b871bc2e87eb65caea5c214648029d7c6a2ce020e26e6cc9d3262d2b77,
             0x26713738cd3184c84ad29b290a40ffdf741f2795307047b8a492cb1927ebcb12,
@@ -334,7 +334,7 @@ fn test_perm_6() {
             ],
     );
     assert(
-        t_6([
+        t6([
             0x1b815a5e43c417bc81f148a9919cdf15eed225650e65d95adc30b9e839fca0fd,
             0x0a4e3ada7e58e9d0377bb79c7997542533530113aa2edffc51782d848dcb335a,
             0x18d367a1af1f1f711ec889ba70c4406a9e0e7fc3749eced0c95b0f49c9a550ea,
@@ -352,7 +352,7 @@ fn test_perm_6() {
             ],
     );
     assert(
-        t_6([
+        t6([
             0x253ffc0ff9a5eedf7fb2075d7e92dfea9ff230a54a4f0b9381f179260d3aa7c2,
             0x093de18c2198f91ee4d5fea38bcf7e3506581d90b5aaa17091a27aedf1610040,
             0x1ed39d55499e768b51f497ef462345f33d328499735470ad060d6758efffe14f,
@@ -370,7 +370,7 @@ fn test_perm_6() {
             ],
     );
     assert(
-        t_6([
+        t6([
             0x0dd2a3a5c6b6910d9d880df34d4531dc19893dce88c33f6b60b4996a5ca633cd,
             0x03075df845a8eecb719a4f09da2db08218a1f0eabf60fdcb8ef2d591c99ccbc1,
             0x019a9aa1faec45c4f89f13f8645a29c47d0233c74a43bf8e3a90a23e9468cba8,
@@ -388,7 +388,7 @@ fn test_perm_6() {
             ],
     );
     assert(
-        t_6([
+        t6([
             0x2b843ccfcf0d6ae92f802e712aa731d24eaf6880fdaea468d425256cefb800da,
             0x06d8f18b1404a79801b7a296a2980156008ccad6b8f42adaafb2311d78dff2bb,
             0x0b5dbc6b08d8707e0e734cafddc849fae80bcd8e39271b486fdbac2b6e8a247c,
@@ -406,7 +406,7 @@ fn test_perm_6() {
             ],
     );
     assert(
-        t_6([
+        t6([
             0x17a6b57307c6eef3e622f1d4e1d6eb75a3c0c4d8debeee17adeabfbb1fb80cc1,
             0x2fbb7c30da808b024a67c9d1a22c71ff1be65903bf42b65f0aa1314f0bcd59d5,
             0x14817f8f2ea3b15e1ef858bd4b51f23d1f11d2f8b1c0378d581c963a725ebf74,
@@ -428,7 +428,7 @@ fn test_perm_6() {
 #[test]
 fn test_perm_7() {
     assert(
-        t_7([
+        t7([
             0x1bc8bf3468796105bf80de92e550c422ddf260a31dbe4e332d325f43cf73a21f,
             0x0ef295bdc03e4f42adc8ef503028747a57f5ad74420d04ab78268b793da871ff,
             0x2115e258a0d083d8bc94774d28c9746e8ec7b3b34fdf9277fc4a6b0da55e7d1f,
@@ -448,7 +448,7 @@ fn test_perm_7() {
             ],
     );
     assert(
-        t_7([
+        t7([
             0x1d31818dd09a179827cdc37c8f4ec16385ac66cefb7a68c163c850b73dc7a9b9,
             0x2b3915b0a9442c3659c281be1395aa059ddef9f7eeca2acca14d005c150b8ccd,
             0x2ca79bec292bdc1f99cec6dd03d4cc76a86548f365c2e35f694e0fd61c07c974,
@@ -468,7 +468,7 @@ fn test_perm_7() {
             ],
     );
     assert(
-        t_7([
+        t7([
             0x2ae0b34371d0568be3b4a38cdf5681aaabe107b0b1e5cfa061037fd4a29df72d,
             0x06b79802c55f7530f2132c671ffd315d6b679c6eda0b5ed4c07325d8197d4e2c,
             0x1c533ef84a4c1264c8331bb5db20cddd6bb36c10fb95e7dc7d44170813b9766e,
@@ -488,7 +488,7 @@ fn test_perm_7() {
             ],
     );
     assert(
-        t_7([
+        t7([
             0x1a4b4d74d5883a79349397ae161bf31699cec4af484051e7c60233ca6dbe5af9,
             0x1b56763561730f61b8f10453ee5b1ee5bb4583eb8402c02993b2233b41c058f5,
             0x05fe3561270b7ff0af124915b53e0146ff41488b35117d21fce0fb87f6ba07f0,
@@ -508,7 +508,7 @@ fn test_perm_7() {
             ],
     );
     assert(
-        t_7([
+        t7([
             0x18935db109b79bd8973a46705925eaaab988a8e938c35b75a659847389df8a03,
             0x037f6c2998b4257ddcdec2c75282fb64b8cea33be937c5bf2bc98b9b8c829223,
             0x267b31106815d6e73f113185c69e299410560a68951cadd917c4b8615a024286,
@@ -528,7 +528,7 @@ fn test_perm_7() {
             ],
     );
     assert(
-        t_7([
+        t7([
             0x0545a89104c68c7468a80392a1114ea08e5c548b0c5b77d36e35bcebd9f46616,
             0x02596e2df2306bc8c366d41fe9996f895e4dff6b2b6cae7d8a73bea905059775,
             0x08f8b602b35156744e98b71aa3cf7ca0289119c2fd199ccd790b136d7f449aa7,
@@ -548,7 +548,7 @@ fn test_perm_7() {
             ],
     );
     assert(
-        t_7([
+        t7([
             0x236213c9576374c87e309fe9297f94f328dd86e106452e66e4d0403f38a5797c,
             0x0db485f39ecd9ae8f7e664abe02fc936d6d95bd8060befa380b589203cb51904,
             0x1dc17f56cb365b3cbbb6c6da7c8aba19b4c2cddb19dfb1e1f8a0a24d7b0d32ef,
@@ -568,7 +568,7 @@ fn test_perm_7() {
             ],
     );
     assert(
-        t_7([
+        t7([
             0x0e9bc1f346e6a9c180674b96c128dda03ea4e75a9a14c8e2aa430f2e6713e6a6,
             0x2969e518914ae80353ee579e1dcb870462cba3f7000afa755b26b57a50ec5d68,
             0x000f06862d9bfb0ff5e7683386a5926805503ac7eeaefebad10e6fca758960fe,
@@ -588,7 +588,7 @@ fn test_perm_7() {
             ],
     );
     assert(
-        t_7([
+        t7([
             0x0b89507bd036f52fb47a9c2c663f5fde9dbe9bf490cdc8bf4a6d8ba2be9ce7cb,
             0x1d2ae040ee0419208d6cbb92461c838888f153c0fd76897b68e4e7a18179c0d7,
             0x299509166496f4bd738af5da25135a8e86d84e8da1b2cd8ce7ce5af91802b47e,
@@ -608,7 +608,7 @@ fn test_perm_7() {
             ],
     );
     assert(
-        t_7([
+        t7([
             0x24afcc6f11895fe386bb598b74a56ab14ab89b60c722a6ca4a3872f39c0160f7,
             0x18a8d8fcc0d10870934b4efb652574ab22793fbcccc29a51ffbb000514e1e688,
             0x2de734c8b2c962a162a1b48e802227775475bb88105596492b8b8a33238464d2,
@@ -632,7 +632,7 @@ fn test_perm_7() {
 #[test]
 fn test_perm_8() {
     assert(
-        t_8([
+        t8([
             0x03a5faa78be5ff9a520f33ce613924200d1de4fd0f638211cbf1ca45403721e9,
             0x10d6c1847f622c762f50206fcab0fc6ab0ac6e276ab2457e6168ff70039b9108,
             0x2fd51fa4354fe7fb3a173dafd01fa931f6ea73cfe721805ce46b223649bf86cf,
@@ -654,7 +654,7 @@ fn test_perm_8() {
             ],
     );
     assert(
-        t_8([
+        t8([
             0x19f24df7c2996205d4831030413f9299590ec1cd14cd45d6d373b4d564f4fa43,
             0x1e94b9b42cba40d16de3b15d8afc3f998bc73345e4e6f810ce8f36f2ec90f1e8,
             0x26e0345af420b5ce0b84ecc4b30f73a4343eeae0acbec7429f626a3674f27ebf,
@@ -676,7 +676,7 @@ fn test_perm_8() {
             ],
     );
     assert(
-        t_8([
+        t8([
             0x2ec443151e46caa58a4050e9db9112bf28556ef6153c02d682f162935861f671,
             0x0cd5ab337939b97f8b1844716f62ee9f318b5761ba254fbfe9484928acb638f4,
             0x054c9a756e708ca63ea8e4cf2e4feca564d1158d5a1e2f08a47bba1a347d5d87,
@@ -698,7 +698,7 @@ fn test_perm_8() {
             ],
     );
     assert(
-        t_8([
+        t8([
             0x0012e5182b50ab5eb8c36366be68c1872d494784731b3ed1ec18212553bdf8d2,
             0x117609ffea2679c87603640e41eb9da012323477c77c7eeefc454c2644ba3739,
             0x1bf0c95e3a850990a74e771a47fbc1b6f3309c17b98bfaf3d06c7fc55b3e5e8c,
@@ -720,7 +720,7 @@ fn test_perm_8() {
             ],
     );
     assert(
-        t_8([
+        t8([
             0x2e45361c3853359850abddf8ab0a1a00fd717e82896b419d0ce596cc79f0bedc,
             0x10d5e42376f96bad41c753b95391c264e2e855d8a9eea1eeba5a72109c3b2ae4,
             0x236201d3b35f22c2ef84a63b62b528815188820e6a1a1c471150cabc4a27b745,
@@ -742,7 +742,7 @@ fn test_perm_8() {
             ],
     );
     assert(
-        t_8([
+        t8([
             0x2c7ae68055c21b20dc821a33f0b9a5edabc22b717a36dfdff77b2552d3c64ecd,
             0x22d9e1a05170d19862d7c73bc432c1ed4eed2351389c8cdfb14671215abe5407,
             0x1324ac87047f68e8a4fe40eb6092041c961411f59f7ebe38b0cb6ef04c2e7a65,
@@ -764,7 +764,7 @@ fn test_perm_8() {
             ],
     );
     assert(
-        t_8([
+        t8([
             0x26e8000f53d4f70208af300f4a91fba8f54c8673e8cff1ed7ce6642f6e8a0a66,
             0x01aa35449706f0350480d1eee18f98aab9191e95a4f1f5d8f796f53a10f6f832,
             0x1abf40b23352d33b7328fcd4fada964f5d8441fdaf2c217ddc528f0ac2f6c352,
@@ -786,7 +786,7 @@ fn test_perm_8() {
             ],
     );
     assert(
-        t_8([
+        t8([
             0x24c4ff45ef844aa36cfe7ff67b81e816f686d07c68dde8023d73cdbc861e39ff,
             0x2685e4892a0e51cab8c5e2af4c566da92509acb00a155f25de9d584c9f534bfb,
             0x1cb0ca596dea7fae46fe0025b6288eff8be9b076c35d1eecda7b9dd8531909a0,
@@ -808,7 +808,7 @@ fn test_perm_8() {
             ],
     );
     assert(
-        t_8([
+        t8([
             0x25bb272366696fa15729d41341f7f475a8ad6163e8dd88dfd083b5c061819f83,
             0x1f3b2f02b5fdb05c24f0a6935541d7d130c74e3681d4103e0e0e6dd167f8864e,
             0x2deceeb7b647df43795bf71368ac6a8fc8fa6d18e38c7063bb25c13986a7b1e1,
@@ -830,7 +830,7 @@ fn test_perm_8() {
             ],
     );
     assert(
-        t_8([
+        t8([
             0x15c684d20bd9e39cec92e37587de8d4eded7e1b48dace9c82fb0146ca2811917,
             0x2ec193bf0aa2245e721524b10022bb98132f0d27ed8a28f1dce179d0e76c8f80,
             0x0c32b697a56fb216f0fec32372c618addff39877c9d8cc99ae655d78d93df609,
@@ -856,7 +856,7 @@ fn test_perm_8() {
 #[test]
 fn test_perm_9() {
     assert(
-        t_9([
+        t9([
             0x0456b5a1d3273ffd2cd8e781a922a62dcc3869c8523831c9c27105fa7414d902,
             0x2feb98eff629fb90ae1677aa3cf1b42d098ce2351f88c17cd27e69fcc457dab8,
             0x29fa696514173f07e501ac70ddf8bc2ee1cd366f4dfeb8112d43cfb0eb465e35,
@@ -880,7 +880,7 @@ fn test_perm_9() {
             ],
     );
     assert(
-        t_9([
+        t9([
             0x0656b371e0d7db75aceec293e86d774e0f15330dc265cccca9b46c5c8357e014,
             0x011c0c8e8f23174f27401d51bb0256499a6b2ea2e1983d68e69a78b1155a9603,
             0x209d8559227ad968e481d7d04715ce35796400669d7d8df3ef4b6e10f11ca14a,
@@ -904,7 +904,7 @@ fn test_perm_9() {
             ],
     );
     assert(
-        t_9([
+        t9([
             0x2447260fac4666e44239fc1c67f5f2cd89e78c7f4a1d4a6ada203a7df47e4959,
             0x26de42f65e0d30617cb55880b5cbbaa7e82cd138de3fd284c92ef6537c8b29a3,
             0x241881158ea1c91af1d29283ddec6b4d6297ba84e85051f47061494ba7f5f590,
@@ -928,7 +928,7 @@ fn test_perm_9() {
             ],
     );
     assert(
-        t_9([
+        t9([
             0x2f66fa3bca09f3f81b33503701b2dd4890ff9c26329dadfa5b157e2072f1f46c,
             0x0bac195d8901b3b3d4a399fa03103251b34f44e166dba7a0fe06cee0d9a8c7a2,
             0x247e9fbe6f086ac0450afe85b0cba9a4a9059da90d0fbe0edc1b42011a9c26c4,
@@ -952,7 +952,7 @@ fn test_perm_9() {
             ],
     );
     assert(
-        t_9([
+        t9([
             0x302cbf002c3f980637709172beae1142f3def1b23ee79e3c41c2491cd256d427,
             0x1b67bbf9ce58b75db8d554d1059b89315660dc72474129f757aba8df6106a20d,
             0x0e6e661c3b528aa69e3ee1ec0c33c8574a3a4d7176d2527498f2c9b750f22e23,
@@ -976,7 +976,7 @@ fn test_perm_9() {
             ],
     );
     assert(
-        t_9([
+        t9([
             0x2cf36f2231a52ebe5725004622b48a35505610c3bc9327be1a432ca37f961278,
             0x28dcdd71bfd998f0351b18005d2f158b3e9a4a3c316f4fd069277cf72a1a5867,
             0x17dd7e0de787d57156d2f74128f9a796f0cb3b9dd108af6f06f3e168f724faa6,
@@ -1000,7 +1000,7 @@ fn test_perm_9() {
             ],
     );
     assert(
-        t_9([
+        t9([
             0x2cb4a9c4fffec98363423c440db09f29e56b8d59743b426bf490379ea17502d8,
             0x0b44c3a3c083e52c918e6c9fb379914c81075153985167b87393017ae00214c0,
             0x2428639b1251c52889919f403db1f002bc82d294d4646f5f459b54b470442d4c,
@@ -1024,7 +1024,7 @@ fn test_perm_9() {
             ],
     );
     assert(
-        t_9([
+        t9([
             0x1c026badafc798b2e78182bdeca0ddec2e5179658e7b5e92c28f8cb147ab283c,
             0x0d5ab8b291036e777521a69f1b44f4fd2a152568e4f54bc59212690996138eb1,
             0x301fc6c8721ef9b13264374be9eea812d00135d01135a1d89671d9a45efe57a7,
@@ -1048,7 +1048,7 @@ fn test_perm_9() {
             ],
     );
     assert(
-        t_9([
+        t9([
             0x0102b80bfa86456221d4d5a1cd17c3e6771a59785a7c01b0bdf8f46103eeebbc,
             0x18d0e2342d841c9aaf754b39028075a6110821e50e591889faa0b8cd3df32ab9,
             0x1d4c11b8bc07a87a90443b71305662f5e3b4b09ddcc11a2b4d546c99803dcae7,
@@ -1072,7 +1072,7 @@ fn test_perm_9() {
             ],
     );
     assert(
-        t_9([
+        t9([
             0x0ead8085fb27ebbd53d5868eb28e78d12f2e079eef86b8f81686714562136033,
             0x033dc7854c43b0a34b8a4c08d526813566ce9d7677267e9ea478bd17b6a9c43d,
             0x2e4713ed826ba5f622ba2ce21ae08576ba2f2789af692dae3daaf47d963d4b63,
@@ -1100,7 +1100,7 @@ fn test_perm_9() {
 #[test]
 fn test_perm_10() {
     assert(
-        t_10([
+        t10([
             0x178d646523ca8dc35dda7eb3ea630cdfcfe2f044824bd16f9be461f4c29f78dd,
             0x151d3894b73a4bce85232626a448ce1b0b87c8d94432fc1867b026214952f340,
             0x18440225e7524c3c4c74b4dfce1e7fa1bec655cb2cbf668bd2a155b2647c60af,
@@ -1126,7 +1126,7 @@ fn test_perm_10() {
             ],
     );
     assert(
-        t_10([
+        t10([
             0x1d2e54d4a6f47ae48e9234e7cab44d559035d1afc6d4985d22c0c7f11d8ceb30,
             0x0ec275dd56b0c61d4fafa2e16bad18ec4d64cfa7fe7f9c7369a9dca18ea17db3,
             0x23244e8e789b3954be919746afd2881bc2b5653f6d1c6bc041eee610f9907074,
@@ -1152,7 +1152,7 @@ fn test_perm_10() {
             ],
     );
     assert(
-        t_10([
+        t10([
             0x2970897cb21922e0ea0fbd2ac4f130a09136a040f49f9d478b4e59189c166e89,
             0x12a3988d670c1c20d0b2312fe748cbf920fe690cdd53a63eb5397c2ee803a0d8,
             0x1c99f13cd70a1ac2f77396efd451ad2529ea1fa732bf132c028a79133d7572e0,
@@ -1178,7 +1178,7 @@ fn test_perm_10() {
             ],
     );
     assert(
-        t_10([
+        t10([
             0x149ed7ccb0de00b25263e202c2130c65b719df12c51394478c9446a9c8ee60c5,
             0x127bb0d871776ae1f5903d5037200f85b4a9e7d9fb3804eb5e093a24759525af,
             0x0e24db97b7481c4354984e4aa8800b747d8fea374f0300840ca0e02bedd12ad6,
@@ -1204,7 +1204,7 @@ fn test_perm_10() {
             ],
     );
     assert(
-        t_10([
+        t10([
             0x03ad5779b113f0387428f07eb36df98b8108617af527f15c2808708af6177ceb,
             0x232ce8a551cbd888052445accd585aa327fdd7089ade15c912ea88e68dd65fd8,
             0x14103fd01fea498cb51df3f416eadd35a76a44f7aad36964ea3c8afde7cba39d,
@@ -1230,7 +1230,7 @@ fn test_perm_10() {
             ],
     );
     assert(
-        t_10([
+        t10([
             0x2ce58b9fc5e3ff2677d1ef6d13b17daff3cfe27378973a8b63e39e32d8639261,
             0x280b03ce5292c9ad0e52f1d3582ccf3f2f73a2bf411acfb38d7a34c8b4ba19a5,
             0x095ea8598acb27cddee1fc7e5382451e46789ed7a1165fbe4d69485fa0c508a2,
@@ -1256,7 +1256,7 @@ fn test_perm_10() {
             ],
     );
     assert(
-        t_10([
+        t10([
             0x2af7493f7233b6419b77383491883f6346fab26c7e18fa38ff55a02899e2be7b,
             0x2b805fa751af00f2f0195f1dd3f1b57192e5018804883e752a86161159671878,
             0x0c98fbcebb6063183805053402ebeb8e9e8dd4e26b544c09cdd0e9310d96a83a,
@@ -1282,7 +1282,7 @@ fn test_perm_10() {
             ],
     );
     assert(
-        t_10([
+        t10([
             0x2a3f82f7df01d62440d58d8cc4f451e4ff8a91b242d5c75970179befe2b457ea,
             0x11228b6fd579d21a642cc8787fada15de0e1e94b1825c7cc7e7e75a3b4844552,
             0x24d2d50e4a6c0df17a6376b32184323b7efc55add2b9d1e1326bb2776760e152,
@@ -1308,7 +1308,7 @@ fn test_perm_10() {
             ],
     );
     assert(
-        t_10([
+        t10([
             0x2c9b967fc7b81e5045e71c960da08a1cf1fa4b12a7d0a878ab7591e037d1e794,
             0x0db6f1666b12ed3b0d6ff50b11cc252d44ce21b86a5cde1999e83a4213375168,
             0x14b7d84e2abc7209e08750f699505be979a7a1579e2476576475166b8aa0ab4f,
@@ -1334,7 +1334,7 @@ fn test_perm_10() {
             ],
     );
     assert(
-        t_10([
+        t10([
             0x1564da35bbd3b63946f76576b36d676e598d3f8c6c0b6b68d145b620bcde7317,
             0x062f244976d4457140f2bc6d068e5c1e87488f86ab163944682c7f4e6c020598,
             0x1a13452303c1b36d9d395e03ecb6ec217e20f91ba96e8a8bb37da5e0163d78ef,
@@ -1364,7 +1364,7 @@ fn test_perm_10() {
 #[test]
 fn test_perm_11() {
     assert(
-        t_11([
+        t11([
             0x240d28f8980017f78fdfec8745e19284bef8852cc3828491339d4a0da2015ea6,
             0x0b00679761805f0bbc356e36765bb25b823b038f1d74c0e820068e9d7b3bc652,
             0x0d4449b8399942cad4efbb4425d8396fd2c379c83eeb1761b3430f71bbf12911,
@@ -1392,7 +1392,7 @@ fn test_perm_11() {
             ],
     );
     assert(
-        t_11([
+        t11([
             0x2c267d5a3c61e0ec1480ede90fd717b81213a3cb355e6fe55ed07a858fe990b8,
             0x211695da7f4be2006a99feaa0eee9e360868b34a27fa93f8ba19a499da1ff3a5,
             0x045b475a73c9b9da4b50426874c12b1f394e31387effee67c3e2aa16fdd1e5ca,
@@ -1420,7 +1420,7 @@ fn test_perm_11() {
             ],
     );
     assert(
-        t_11([
+        t11([
             0x17c73e36c0695f72533ac2673db96f9cbde75cdeb3318c306740aaa4f62a927b,
             0x01d2115e243877cd711e04ebb61f0580d8d223c3be46064ba4201d92581b6aae,
             0x30124a4f7ebe65b5dd16d22c8de63efc9577152dea2c4ebcb490c45aeb99d0fd,
@@ -1448,7 +1448,7 @@ fn test_perm_11() {
             ],
     );
     assert(
-        t_11([
+        t11([
             0x0034d94bbfc32afb7118ad555df6ede12bfd202222dd26a1a981537ebfb02751,
             0x2751ebe151febc8432fc8bed78a2efe0916f4770ed3fb6222f52fb66fdd05700,
             0x25345f0627515e7869345194c9273df33968e40289bf4eaab3f943c48db17abd,
@@ -1476,7 +1476,7 @@ fn test_perm_11() {
             ],
     );
     assert(
-        t_11([
+        t11([
             0x2611b65ec70c7cbc692d9f20b6f41eee18567c9f0534154505682a7620885821,
             0x1ab15d92efae0077be2dba93e770ea963c84c76c63696cf36a2737e8e1119255,
             0x1787fcadcc789e7d73600a236c63ae35b316be7b3a680f27f7144f2ddf2f64c9,
@@ -1504,7 +1504,7 @@ fn test_perm_11() {
             ],
     );
     assert(
-        t_11([
+        t11([
             0x290496935fdca3bbe7bf3b813c844983ac35184bb26713c53bc4300ac0d1d913,
             0x090e7c0be3c5bfd6adada7e931d052db66f4884c591e275160f44e651718e07b,
             0x2b992bac35ea9f0faf5ffa5fe89e491f2444bac153aac7679c8a638ed1882680,
@@ -1532,7 +1532,7 @@ fn test_perm_11() {
             ],
     );
     assert(
-        t_11([
+        t11([
             0x2246c70629b4ea944101e24241dd26cecd81e9626d8f7c8e796a70449bc7a4c2,
             0x1f050e438c741447503323409e998212d0501f4d1c6bea51ff68b8932e8779a6,
             0x2fbcc179942791987cb3f93346ce999e972eef2e462913c04da70b21472bfac8,
@@ -1560,7 +1560,7 @@ fn test_perm_11() {
             ],
     );
     assert(
-        t_11([
+        t11([
             0x23306e1cfd9a58562acbf322c6f7ffb0d89803792a59d59c18fc2cef9b04c42f,
             0x102f5817051e3a971e9faf721a7e083e5fddef20a86f11bd64e66c2e66513234,
             0x0dd5aad86dff1758bd0fe4407f1d3871ec1fa568ddd5aa07b7b536ee8d72bf8a,
@@ -1588,7 +1588,7 @@ fn test_perm_11() {
             ],
     );
     assert(
-        t_11([
+        t11([
             0x070e5b1de84aa97306ebd056e5cfc302927b6fa13dd8032b0b5042ca300ee763,
             0x0593f5269029d2aab9671b172b70a7746b5ea25f4cdd48f45be03768426b5a98,
             0x2deb998dc7584db1ca2e61ed12de133f37867c86fb60ca337d972d58d2d5c94e,
@@ -1616,7 +1616,7 @@ fn test_perm_11() {
             ],
     );
     assert(
-        t_11([
+        t11([
             0x1804806ccaae7fd079ad2ad025d3c04063230decf79d971c540bd1def99e7445,
             0x2da2c97d52b2992c89335f89b922441ec5839d57395a4058fedd0c48c65afffa,
             0x085475f877f54fb3e9d743ff9b4ec9aca75a5474495bd5ebe1eca21be7a409d8,
@@ -1647,7 +1647,7 @@ fn test_perm_11() {
 #[test]
 fn test_perm_12() {
     assert(
-        t_12([
+        t12([
             0x0824b8eec397223e43fa3ba7fa44d46c7e68aeff1264dbdf79fe516f02f1c97c,
             0x0eed81e07a452186ae5a36baf61fd0ae9f1ed0e1468c1f39515276c00da7dcdf,
             0x10ffcc2c4813117cfff25fbe1f1362d2c9516948c5342a65c54eff4f0e1110e1,
@@ -1677,7 +1677,7 @@ fn test_perm_12() {
             ],
     );
     assert(
-        t_12([
+        t12([
             0x01406b68ad118b5665893756494268f0eeff4eaae9dd84e900553f713e68f6d8,
             0x22d1d11f4e910eea32a5a8e0ce880f58077e41e4fcb841c1d9c06916dd51914d,
             0x05170cd76a2ee4163821c5c407509b80a87ae91479e944aa1cbe8f7404fd0da8,
@@ -1707,7 +1707,7 @@ fn test_perm_12() {
             ],
     );
     assert(
-        t_12([
+        t12([
             0x0f289b5e3d7e0e260e925dca3f103cbb3d1b5b9c8efa1318e0e1d0742a2946fa,
             0x0698b2ae4bb9b43ea324e93ee474bc093da71dd1eff90cf8a54dfd17ad26921b,
             0x22625d7627997ec501290d371c9f71a017911793ec34a279c25b94c981699c7b,
@@ -1737,7 +1737,7 @@ fn test_perm_12() {
             ],
     );
     assert(
-        t_12([
+        t12([
             0x183e075974c31df0a551cbced45333ef61551c3f9307d8c776217f47c061c6f1,
             0x157c2463891d3ad1eebe88dff8185394d8a754389760ffb2608955556a84ba4e,
             0x08e3747f665cb6d2b2e3146901d377ad9f6cc7d7e1f609c7a88bb24f70fad290,
@@ -1767,7 +1767,7 @@ fn test_perm_12() {
             ],
     );
     assert(
-        t_12([
+        t12([
             0x1e2f23f845030bd5d0c88e71821c1cd4fe25c42659133208c8f2ae855175cca0,
             0x128f45747d401aa895d59633b4eaef1c4016c4e73f6da268d9623e1e3edb61be,
             0x05e46e4fa991f0ec4bc8de5e71a75d2a511f8081d7dd1e3bac2fa4d087e65fcc,
@@ -1797,7 +1797,7 @@ fn test_perm_12() {
             ],
     );
     assert(
-        t_12([
+        t12([
             0x02c96b23bd0e7d41cde963187fe93ec5b78918571f9eb238b9e275c1bd6d634f,
             0x22578370fde0c861756280de0618dbc831b5d2a27f722baba51817dd999d3b69,
             0x2ee676d3bb506ff758c03f4e4f51bfaba31b9bed8b039e858d94f8c28f1f3635,
@@ -1827,7 +1827,7 @@ fn test_perm_12() {
             ],
     );
     assert(
-        t_12([
+        t12([
             0x199560ba87c6406c6a99df37ed8cabc7a07896d139f44a41386249c7df57d882,
             0x1a0fb65dd2af96085c291c8d7fecdb900c7dc5323300dd822da956144e8b7b9a,
             0x1dce9edd2f72f1f841a939dd7ad19306826442403b35108f8fa987854c48123a,
@@ -1857,7 +1857,7 @@ fn test_perm_12() {
             ],
     );
     assert(
-        t_12([
+        t12([
             0x1a15bde7eac4c6a96a4b033b8424676c17dd9b488daa7cdd1e26c0e2ca074a5a,
             0x186c8c4957e7e0cf619b40030f58b9cf989f56507e171b3325285234f4d6a8e5,
             0x184659351241744556b4327b544de596b7a93cedc7722cfd36d8a2c556e14d26,
@@ -1887,7 +1887,7 @@ fn test_perm_12() {
             ],
     );
     assert(
-        t_12([
+        t12([
             0x15bc6d38d6e6cf12dda0900764aba17a520fbcfdd2d74f402880295e68206ffd,
             0x1df9b568c7d4dbe02fef1e44fcad514abb4b5ac8c0f6da829cfd8e0c3457899b,
             0x21e26fa7c648174b7874550a3ba2bd04f5a653ba75c8996912c93575a9fa0670,
@@ -1917,7 +1917,7 @@ fn test_perm_12() {
             ],
     );
     assert(
-        t_12([
+        t12([
             0x22fa05ec18d372272bf2bca8765ad982db86745a83471ae79cc82a5e9a096591,
             0x08c18e5ab7ae35d1ddb44c6a77fd94d375279ca77e4009ae0b96727b42c889ea,
             0x1fb0a57d3f7ffb2aec1e3c347bdcfcb423ca1a43a9973d91bcf97828c71b7774,
@@ -1950,7 +1950,7 @@ fn test_perm_12() {
 #[test]
 fn test_perm_13() {
     assert(
-        t_13([
+        t13([
             0x1b94e98a4e1ea9c6c93e3812a5e47430b9b2f225b34d0b02b8eae83106db42dd,
             0x28e56fca72027d0e8651863c0a228214be3744f0db1b2a7c4e80e29a3d12b262,
             0x206e3c35c7a17dd1c9552f8064343a8f9e2a4ed73ed1ae0f44d6a0b5093269de,
@@ -1982,7 +1982,7 @@ fn test_perm_13() {
             ],
     );
     assert(
-        t_13([
+        t13([
             0x01e335f09ee4674b0265159737a95db9e61f1bd03b31ceedeacfbcdb1ac3e034,
             0x26597dafcb47bf485818c8d57d5a292062917339abd3fadd94ffbb65fdf3fe1c,
             0x1b64a36e55bf3653fc3c5641fb1cbe316cd8c8e26f179b4c94adefd55537d41d,
@@ -2014,7 +2014,7 @@ fn test_perm_13() {
             ],
     );
     assert(
-        t_13([
+        t13([
             0x1fa9976622e47f8ac9eef973e5c7a4e7f99c246b771ffe4d93a1fe2f9c8967ce,
             0x1e26edb5d31fc5bf79bb2149352b7ca1a30516807d8cbbecead36d777fe9a424,
             0x1fb2192c23639467a4b070098c4777d91fec4b4ccbfdfc624b0422b761b59cd0,
@@ -2046,7 +2046,7 @@ fn test_perm_13() {
             ],
     );
     assert(
-        t_13([
+        t13([
             0x082ce91628658e25679478f34c433f8184dacb793809a432ca9ec372adc16c46,
             0x238d3aab9c8879cd8d5bec08515a0e9d63ae6df2d63c32898b330ea1e0d23615,
             0x1b6049cc77cb8018388be43adc4d65aa848136955d0e99fdb5c934be798128fd,
@@ -2078,7 +2078,7 @@ fn test_perm_13() {
             ],
     );
     assert(
-        t_13([
+        t13([
             0x119e39b74f65c97b952dde823a2cf0e422a06e13881ffba6ca7b4d8c14543e26,
             0x0f80146853960073a32ae2c69d014aa65b104f5e601f9abdfa4ff413928e6b51,
             0x2b5ce714ffbd868013e1233d5f7f0aa41096f7ca2302d62ee76afceccf95fcee,
@@ -2110,7 +2110,7 @@ fn test_perm_13() {
             ],
     );
     assert(
-        t_13([
+        t13([
             0x0bd29650593e114590a70a93032c447699f2adb5aec70f6adac24f074d806eaf,
             0x22ca8b999b3e2638c99e374a7bdfa9b4a274c99918e239cbaf3ceaa4b0cec8c3,
             0x28e875c95650051d8636affc57e5dfdfa77771ffcd10032aa4f7bcf6272b2c72,
@@ -2142,7 +2142,7 @@ fn test_perm_13() {
             ],
     );
     assert(
-        t_13([
+        t13([
             0x12af93a633a3959e59a49a392dcd24e777a66bef813cbae0362b6dde6803d259,
             0x060b7e37d0911f877d1b72a25b46710922bfdd42311801c9a3afbfc42c24016b,
             0x1152881a38ac52c8a70dba0280b6b627b1628a747d42e95a1abb8797b89d779e,
@@ -2174,7 +2174,7 @@ fn test_perm_13() {
             ],
     );
     assert(
-        t_13([
+        t13([
             0x0df04eb2c87c83a25d64e2bafe5262708d3f855b250be47ff4a1d8b8b5412e05,
             0x084b5795c94c68a2598a03ab912894afe66ebd6e01821290656b22336955630f,
             0x218a20a4ffe0618739ff082b12f368e1e5d86e84ffb2fdc13217b729301c0358,
@@ -2206,7 +2206,7 @@ fn test_perm_13() {
             ],
     );
     assert(
-        t_13([
+        t13([
             0x11f49bb6fef2ce2fff6451a9065ef0d6cbed7dc7ea285b8de8f755672e016fc9,
             0x0b8fb3695216f4a5baf0e00d5e17ba7e3a98d2bea3ab592290cb2dec94dc6404,
             0x21339bb75c3d9d3caac9e063db94009981d3f94ebd6c5edb6361a2d44ebd042b,
@@ -2238,7 +2238,7 @@ fn test_perm_13() {
             ],
     );
     assert(
-        t_13([
+        t13([
             0x0c4ce1dea71c7988d10456dde6f7584b5275a72279b4ee8f33e26801be18afa7,
             0x2aab4ba3c4f684396062c902457acaa6849ce3a5fff29e6131ff7dbea5c76fec,
             0x0a4e709d8ede00a4e04c4131135f82752c51e695acd79837b63452971082b75a,
@@ -2273,7 +2273,7 @@ fn test_perm_13() {
 #[test]
 fn test_perm_14() {
     assert(
-        t_14([
+        t14([
             0x0b375490bbca162632420bfdbf8e8e9e654f30d763d41d3bccfba822fe5036a8,
             0x1d01dfbb1e74c443e02455c3c76e1b008329c60747d6f2b162b863f6638be386,
             0x2004a5758b11eed378fdd3391966ac99f32fe11b5f8bfe96ed62a4ede958997b,
@@ -2307,7 +2307,7 @@ fn test_perm_14() {
             ],
     );
     assert(
-        t_14([
+        t14([
             0x212f3394440a0e05154d509eda87fff856546fb9760df55364af9d69607bacc5,
             0x1ac0f643782cca6fcbd2742f919ea5f9194309cbb8228b82427f0f91492f627c,
             0x1856bd638531dea7a6813e10084f66e7bfbbdf7f217df81fa284ca3a25776537,
@@ -2341,7 +2341,7 @@ fn test_perm_14() {
             ],
     );
     assert(
-        t_14([
+        t14([
             0x03d1924391bacf506ef14ca239b05e025249da6fbd87be927ff9be8de64f31de,
             0x2c55bf9a700bb14b259c1076af4e6806ad30ed6703a52ad3724cedd6187847e9,
             0x04e5a587a0bd07cc640e98752b2c9362518db69951ca2263c88b34c4c224eb11,
@@ -2375,7 +2375,7 @@ fn test_perm_14() {
             ],
     );
     assert(
-        t_14([
+        t14([
             0x1d9cd3e515b9e634ccb3f58a1f0004ce4cf1fc4ff1460b3b0a501f114d1a8d08,
             0x0345735bce1008bcd1a16a9e57b5983f3015a56b10cbb3a37b6cecc013475210,
             0x2a709de7f538eeb76d0321ad41e6ff615547171ea5592ad3fca5d071bc0a9314,
@@ -2409,7 +2409,7 @@ fn test_perm_14() {
             ],
     );
     assert(
-        t_14([
+        t14([
             0x2c508da9199a9386c1f7e0c991e6b55c3f524156fe88a92daa0b3f7f8a92f3e9,
             0x1f2a228f73111b4cde7c1caeb0e86ecb1c525400571479a5ebc7710dafcba413,
             0x04c5cc431fc2b4c7c49dd099af60ca04efd1144e051986a0bc139265ea055c7f,
@@ -2443,7 +2443,7 @@ fn test_perm_14() {
             ],
     );
     assert(
-        t_14([
+        t14([
             0x13df68237f0ad55ffa30ca4c0eb5cc7b696a8a3650b50c227ef28282d9e69e2c,
             0x26ab914b5d1c26fd54b157033f9e9c26b16d62aca32bc56a81f12b3ee9c02ca4,
             0x05969bf7a344f420b087dcb17fb89a8ec94b4749aff6a0c3ef3f3ae62cc5c6d3,
@@ -2477,7 +2477,7 @@ fn test_perm_14() {
             ],
     );
     assert(
-        t_14([
+        t14([
             0x0f078d828190f8b8cb28a1fe11f554dbcd058b6033953ff4aee92ef9cc881459,
             0x051c53147dca45f9fa3fb9d601efabab5a33214ac7ab538294f57a617fbc8200,
             0x0b67e677377cbb7ef0ae6e8d51c72419412c4aab50a0ecd387606c1100952309,
@@ -2511,7 +2511,7 @@ fn test_perm_14() {
             ],
     );
     assert(
-        t_14([
+        t14([
             0x2de6c3f5835d21bbaa7b133c499a2235ede8bc0d27f9bdf4bfba77259f5471db,
             0x18ca1d212d6e72c1d37c8fe9677ceee7bf042ed4f19d6be9ee06383afc7b693d,
             0x2f2b8c886885cd798218afce26f2641f868b4c71167a5bbec0622d771b701df4,
@@ -2545,7 +2545,7 @@ fn test_perm_14() {
             ],
     );
     assert(
-        t_14([
+        t14([
             0x0df9d5a50cbdafcbb582bfb2a63dfaaf45db758991620337d84967d538236b7c,
             0x1bc7a73f4e456d70fbed9f6f0863b7d0a8466bcd8c82fca73cd484b70593f0d8,
             0x22437d5e1430c5f593a2e54ef785bc22a0d96f6b4b0d277fae8fe0428613facf,
@@ -2579,7 +2579,7 @@ fn test_perm_14() {
             ],
     );
     assert(
-        t_14([
+        t14([
             0x18b7a7c5f5ecb11f273497927a56cb50b1ebea65d55606cc02bc0bd16ddafac7,
             0x1e4cf600287bf1191efb1897ee92722cddd9254fac94ecb28eb6d513bf2ed737,
             0x2aa8f6004b2706304c73c8e523cf572d4f6ab0ecca75adaa8e80ab51dcd3982a,
@@ -2616,7 +2616,7 @@ fn test_perm_14() {
 #[test]
 fn test_perm_15() {
     assert(
-        t_15([
+        t15([
             0x2567f3d8d6c4540d4d6b74997d78934a5d25b4a844056ae4cc58b223ade2d4fe,
             0x073b70e8d78724d03c799bdb5a15e59c4faf7e88dde57861e1ffa913dc79d81c,
             0x239c05f2e756069d1e807b5f82a11115c71ea44334082ba57f7c0b2d859bb9c3,
@@ -2652,7 +2652,7 @@ fn test_perm_15() {
             ],
     );
     assert(
-        t_15([
+        t15([
             0x21c24df0254309ce3b3129aa29346baf23bf114418548addcb3cab4e23e81e3b,
             0x2441b7906a74b4badf7ce0280750d9ec0d59a0ee254050ad07bfe4372a589073,
             0x0ae2ef9b8260c7079a2460d6a4dff1a1c5b41f01511160be9171f65b907da079,
@@ -2688,7 +2688,7 @@ fn test_perm_15() {
             ],
     );
     assert(
-        t_15([
+        t15([
             0x25ba3bebb629615cc9d76d63739a31bc6960d042e760a7e0de74e36e74b8ec37,
             0x11c62ffc7282d4abe0e3226a32004faf963393cc128ec9ef9ad52acbd0132392,
             0x168d203fbf26b12416faa53a81117f0eff0cbd7641ba4ad0ee2ed87229c2d4c2,
@@ -2724,7 +2724,7 @@ fn test_perm_15() {
             ],
     );
     assert(
-        t_15([
+        t15([
             0x142673569454ad7980f60fd31bf574a4ba03db0a3c50063a0bc570b049c03c9c,
             0x083cbad9eded786f5876013beb58c93af9e83e6b10f8747a3561b266bf3b9a99,
             0x20e7fb1b49fd4fceb817b3e0803ba67fb52a70e8981e394730da4c4fe860a69f,
@@ -2760,7 +2760,7 @@ fn test_perm_15() {
             ],
     );
     assert(
-        t_15([
+        t15([
             0x0b80171704814d72aa2b61063db25c42210ecdcb433d5910dab352d168052f04,
             0x0940e63394fc442acc86645859fbc8e6f89ed76a1e7f022394a37252131f015f,
             0x0117221ddc599b3c307bb98ad4e41893aafee6bb8dd29b5a103e415f298867f3,
@@ -2796,7 +2796,7 @@ fn test_perm_15() {
             ],
     );
     assert(
-        t_15([
+        t15([
             0x2a0ed890959961c3340975bfe8709fc3aa5fae1994e64944494b55f5a92162ad,
             0x10d0c7ce1a0c0c50506cd721ac1f9a74e0b5a3364d8349e7b0b8f9da4fe26c8a,
             0x2d7fb4e601252f7acd40ddfa119a9a72963164e16037b091f94c0e7745beff0b,
@@ -2832,7 +2832,7 @@ fn test_perm_15() {
             ],
     );
     assert(
-        t_15([
+        t15([
             0x288b9e3c4b039d90b70915dab4fd91374b0761a6783fad6b257c5ba96116ae13,
             0x2a2b685608295a01d7433b6490bcce4c8d0b38e8573a0bb1f01bfd57a9784690,
             0x0e03d05c4f502b096741c8796731b009f89a4568b4bb10646b9428f2d9821b0d,
@@ -2868,7 +2868,7 @@ fn test_perm_15() {
             ],
     );
     assert(
-        t_15([
+        t15([
             0x2cb17f5531fe30149ca7a80f9c28cb2dc0d9fcdad41b67fbbd7bdaf8321274d9,
             0x0f772795297c5b429d33d5cbd16621a1a8fe163be6dec214eb39b68f9963fbf6,
             0x0de1f229ce0d2bfc0f727e1a851c51ab27c2e8b30f20f7552535ef3ae0a32ae8,
@@ -2904,7 +2904,7 @@ fn test_perm_15() {
             ],
     );
     assert(
-        t_15([
+        t15([
             0x209d6a6be5bd7b654571ba18643f9391753ea7b1a2bab149dccd205faca65f19,
             0x1e568de508b984f6405ff5c19986a2a0f84c276d8d856c203c339791d0af49ed,
             0x1a0bd5af8fdcf8dc5ad8c24910d0d2fa6d8c3c654587ebbaaf81a2e10fb1f5d7,
@@ -2940,7 +2940,7 @@ fn test_perm_15() {
             ],
     );
     assert(
-        t_15([
+        t15([
             0x11402d4cf74d3591be9c0ddbfad45a673ddd083cfe04ae0d9a874a587f63835e,
             0x2e71a64bdeb36c670a93bf87a919ca057016dd73fb2a0aa27362c437f1780269,
             0x1343c0d1bd311a27dc5d4ffa7c1e444ef46d7be8f2405ee8c819b3388aaef3d8,
@@ -2979,7 +2979,7 @@ fn test_perm_15() {
 #[test]
 fn test_perm_16() {
     assert(
-        t_16([
+        t16([
             0x11dce89e777e4cb2e8bb37a2164f63dcb763e31bdded23728e3295a39af7203e,
             0x0bbf842d96e1f75232de7e68975ffa5eae5d04d2fb6add58ea15dce3f992a5c0,
             0x2bc2b14c6f20bd8353c3e564907a4cb9cdc89611dd2386ea53fb6f61799f5412,
@@ -3017,7 +3017,7 @@ fn test_perm_16() {
             ],
     );
     assert(
-        t_16([
+        t16([
             0x06868dd156a1b747764a29bfe9cd1dff1212abfb52554e609f1083142eb3eefd,
             0x2f9adc5cfe1097c4b19a9d11f2506f68e428ef57bd3795146989e068f5f0ab82,
             0x2abc8a2c608bce9e79a74bf0b49398cf4635331f23b78f9b0b52e289cf99a43b,
@@ -3055,7 +3055,7 @@ fn test_perm_16() {
             ],
     );
     assert(
-        t_16([
+        t16([
             0x09af2705410b38fc43a5b224c92c47546faedf77e2d26daa37099c2378497f7e,
             0x25928f373c04e8c50115be9c6f6598bb6a17bd00b2bc25b1ac9dde764afad2e9,
             0x0db38e77b58c0dae5a39f9ec287bf64eac855b942e489c9e82e72cf11bb94d02,
@@ -3093,7 +3093,7 @@ fn test_perm_16() {
             ],
     );
     assert(
-        t_16([
+        t16([
             0x25cf6836ecd36e5b2a808153f06d8e24f65e679561d3eba97d6934c2250c6970,
             0x0f74e64955c66bfb11fc98b7b86e8ed3c951aab54a2097f5f878c899031b7e25,
             0x16b0fafa02c9fa646cfa764cb1e8e19bd39f9eb45798e39dc3f4efaacc4ec39d,
@@ -3131,7 +3131,7 @@ fn test_perm_16() {
             ],
     );
     assert(
-        t_16([
+        t16([
             0x07469e0d4e3a027898ce140905a0a09312dde351fb797ef6cc160ee840ff1947,
             0x0f9091d3437b25c3570cd929c120fe8e789622d4501da454e27371f56ace7139,
             0x04b2f886de08b4f5d717753d3b902c8d013afae81020b0e6d39f514f6c472216,
@@ -3169,7 +3169,7 @@ fn test_perm_16() {
             ],
     );
     assert(
-        t_16([
+        t16([
             0x06d5a2f438b691f28d73c1ff7c4abfc6909776efbd6c549e8171699fb1dfbc3e,
             0x2e9af5d82b8c3c3747a00021a8115775bba23873a2397c8b4feb0ec6000c7991,
             0x039124b57650e11fced91045298aadf4217d9b3938ceb4a45200d66441b1b242,
@@ -3207,7 +3207,7 @@ fn test_perm_16() {
             ],
     );
     assert(
-        t_16([
+        t16([
             0x2416c1142d953a3ddfd003c2d0a0fd56a68eeaddbcfeb4e01ea58b54d1be265a,
             0x19a58dbb178c68145e838a4c550edd156b90f74881357efb6e3bd2c45fcd7e1b,
             0x2a619e06b950c718a6e9ae23a74aeca8f76e2a7500d4e919b1efbadd90715c8b,
@@ -3245,7 +3245,7 @@ fn test_perm_16() {
             ],
     );
     assert(
-        t_16([
+        t16([
             0x0987df2c8ff05a0a1ef25a0dca171d2970390329ed56162f16fb45e61bd7cebf,
             0x1fca2b7c47b2eca32be5b14e482f5fc7435497d907aff5e45a0a40197ba87505,
             0x278147e96bffbdb2f9f448447584d81ba3b48133f699c2722884b1898ca2a8f9,
@@ -3283,7 +3283,7 @@ fn test_perm_16() {
             ],
     );
     assert(
-        t_16([
+        t16([
             0x2538682c85c79789574ee3b4e5dc8164083af5dee059ec6e34414cf71fb4e411,
             0x278550862a62c1cf865f4923e07833e8a0927dc87879f09951498234c6c83213,
             0x2294b2c1adb4786054ff589ad786487bf80a91160cf43bcabe10414d702e1cef,
@@ -3321,7 +3321,7 @@ fn test_perm_16() {
             ],
     );
     assert(
-        t_16([
+        t16([
             0x2b69e16b676c88c3cc9644f40cc8fcaebb8ee3692968d2073e8e011f589a86f2,
             0x2ab37352e89bd6bd8623047a0319187bd64472e99be9434b55681f88008ce235,
             0x2cc582a95a8e8350b19fac25e27dc169fd2c9dcf69e4bf889c639d17c9d92348,

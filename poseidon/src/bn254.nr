@@ -3,8 +3,8 @@ mod default_perm;
 pub mod permutation;
 mod consts;
 
-use dep::hash_utils;
-use dep::hash_utils::poseidon;
+use ::hash_utils;
+use ::hash_utils::poseidon;
 
 pub struct PoseidonBn254Config<let T: u32, let RP: u32, let T1: u32> {
     first_full_rc: [[Field; T]; 4],

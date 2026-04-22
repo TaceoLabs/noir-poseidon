@@ -1,5 +1,5 @@
-use dep::hash_utils;
-use dep::hash_utils::poseidon;
+use ::hash_utils;
+use ::hash_utils::poseidon;
 
 use crate::bn254::consts;
 
