@@ -17,7 +17,7 @@ fn compute_merkle_root() {
     let index_bits = index.to_le_bits::<3>();
     let mut current = leaf;
     for i in 0..n {
-        let (hash_left, hash_right) = if index_bits[i] {
+        let (hash_left, hash_right) = if (index_bits[i] as Field) == 1 {
             (hash_path[i], current)
         } else {
             (current, hash_path[i])
