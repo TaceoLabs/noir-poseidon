@@ -1,6 +1,6 @@
 # EdDSA over Poseidon2 for Noir
 
-This folder contains a Noir crate implementing EdDSA signature verification over the [BabyJubJub](https://github.com/TaceoLabs/oprf-nr/tree/main/babyjubjub) twisted Edwards curve, using the [Poseidon2](../poseidon2) permutation as the signature hash. This mirrors the widely used Circom/EIP-2494 EdDSA-Poseidon construction, but with Poseidon2 instead of the original Poseidon hash.
+This folder contains a Noir crate implementing EdDSA signature verification over the [BabyJubJub](https://github.com/TaceoLabs/oprf-nr/tree/main/babyjubjub) twisted Edwards curve, using the [Poseidon2](../poseidon2) permutation as the signature hash. This mirrors the widely used Circom/EIP-2494 EdDSA-Poseidon construction, but with Poseidon2 instead of the original Poseidon hash. The library re-exports [the BabyJubJub library](https://github.com/TaceoLabs/oprf-nr/blob/6c74828b32d2cdb8a557acb29c2509ecb73a2330/babyjubjub/Nargo.toml) for point construction and validation.
 
 The crate exposes a single verification function that checks the **cofactored** EdDSA verification equation:
 
