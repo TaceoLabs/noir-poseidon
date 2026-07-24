@@ -1,0 +1,8 @@
+[package]
+name = "eddsa_poseidon2"
+type = "lib"
+authors = ["TACEO"]
+
+[dependencies]
+poseidon2 = { path = "../poseidon2" }
+babyjubjub = { tag = "v2.0.0", git = "https://github.com/TaceoLabs/oprf-nr", directory = "babyjubjub" }

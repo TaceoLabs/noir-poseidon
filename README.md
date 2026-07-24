@@ -7,6 +7,7 @@ This repository contains the following Noir crates in the respective folders:
 - [poseidon](poseidon): An implementation of the zk-friendly hash function [Poseidon](https://eprint.iacr.org/2019/458.pdf)
 - [poseidon2](poseidon2): An implementation of Poseidon's successor, [Poseidon2](https://eprint.iacr.org/2023/323.pdf)
 - [hash_utils](hash_utils): A library crate that implements helper functions for cryptographic primitives
+- [eddsa_poseidon2](eddsa_poseidon2): An implementation of EdDSA signature verification over the BabyJubJub curve, using Poseidon2 as the signature hash
 
 Poseidon and Poseidon2, in contrast to traditional hash constructions like SHA-256, utilize low-degree round functions with the $x^d$ S-box to minimize the necessary constraints inside a zk-circuit. In the case of Noir's native curve BN254, the exponent in the round function is $d=5$. The implementations utilize modern optimizations (in contrast to the existing Poseidon implementation in Noir's standard library) with all advances in cryptanalysis in mind.
 
@@ -29,6 +30,8 @@ fn poseidon2::bn254::permutation::t_x(input: [Field; x]) -> [Field; x];
 
 That is, these are **permutations only**, not complete hash functions. To use them as hash functions, apply appropriate construction techniques such as sponge constructions or compression functions. For examples see the respective READMEs for [Poseidon](poseidon/README.md) and [Poseidon2](poseidon2/README.md).
 Have a look in the respective sub-folders for further instructions on how to use the libraries and installation.
+
+On top of the permutations, [eddsa_poseidon2](eddsa_poseidon2) provides a complete EdDSA signature verifier over the BabyJubJub curve that uses Poseidon2 as its signature hash. It builds on [poseidon2](poseidon2) from this repository and pulls in the BabyJubJub curve implementation from [TaceoLabs/oprf-nr](https://github.com/TaceoLabs/oprf-nr/tree/main/babyjubjub) as a git dependency. See [its README](eddsa_poseidon2/README.md) for details and installation instructions.
 
 ## Performance
 
