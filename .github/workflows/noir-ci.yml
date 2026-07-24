@@ -34,8 +34,9 @@ jobs:
       - name: Test poseidon2
         run: nargo test
         working-directory: poseidon2
+  # EdDSA-Poseidon2 doesn't work on beta.11
   test-eddsa-poseidon2:
-    name: nargo test (${{ matrix.toolchain }})
+    name: nargo test EdDSA-Poseidon2
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false

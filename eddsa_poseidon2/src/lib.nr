@@ -37,7 +37,10 @@ pub fn verify_eddsa_poseidon2(
     // the subgroup, making an explicit subgroup check on R redundant.
     let signature_r = BabyJubJubPointInSubgroup::new_unchecked(signature_r.x(), signature_r.y());
 
-    // Step 1 - Compute h = Poseidon2(domain_separator, Rx, Ry, Ax, Ay, M, 0, 0)
+    // Step 1 - Check that pub_key is not the identity element
+    assert(pub_key.is_not_identity(), "Public key cannot be identity");
+
+    // Step 2 - Compute h = Poseidon2(domain_separator, Rx, Ry, Ax, Ay, M, 0, 0)
     let hash_state = permutation::t8([
         DOMAIN_SEPARATOR,
         signature_r.x(),
@@ -51,19 +54,19 @@ pub fn verify_eddsa_poseidon2(
 
     let hash = hash_state[1];
 
-    // Step 2 - Compute right side: R + h*A
+    // Step 3 - Compute right side: R + h*A
     // Calculate h*A (h is in base field Fq, so use scalar_mul_base_field)
     let right2 = pub_key.scalar_mul_base_field(hash);
 
     // Calculate R + h*A
     let right = signature_r.add(right2);
 
-    // Step 3 - Compute left side: S*G
+    // Step 4 - Compute left side: S*G
     let left = BabyJubJubPointInSubgroup::generator_scalar_mul(signature_s);
 
-    // Step 4 - Compute v = S*G - R - h*A = S*G - (R + h*A)
+    // Step 5 - Compute v = S*G - R - h*A = S*G - (R + h*A)
     let v = left.subtract(right);
 
-    // Step 5 - Check if v is the identity
+    // Step 6 - Check if v is the identity
     v.double().double().double().is_identity()
 }

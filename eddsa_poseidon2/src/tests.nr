@@ -82,4 +82,21 @@ mod tests {
 
         let _ = verify_eddsa_poseidon2(pub_key, signature_s, signature, message);
     }
+
+    #[test(should_fail_with = "Public key cannot be identity")]
+    fn test_pub_key_cannot_be_identity() {
+        let signature = [
+            19090079173373584153996824137084726661643725553797485823319088208683554498717,
+            3643574957097202527589616469273298197083911730855228311907034680488748021268,
+        ];
+        let signature_s =
+            2128104906629434075529508057546284580247227319347477887390422344724817923329;
+        let message = 3126080974277891902445700130528654565374341115115698716199527644337840721369;
+
+        let pub_key = BabyJubJubPointInSubgroup::identity();
+        let signature_s = BabyJubJubScalarFieldElement::new(signature_s);
+        let signature = BabyJubJubPoint::new_unchecked(signature[0], signature[1]);
+
+        let _ = verify_eddsa_poseidon2(pub_key, signature_s, signature, message);
+    }
 }
