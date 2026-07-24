@@ -34,3 +34,21 @@ jobs:
       - name: Test poseidon2
         run: nargo test
         working-directory: poseidon2
+  test-eddsa-poseidon2:
+    name: nargo test (${{ matrix.toolchain }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        toolchain:
+          - v1.0.0-beta.20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: noir-lang/noirup@7dbe69ccc78877f0200ffa5a40836c953d2cfd8f # v0.1.4
+        with:
+          toolchain: ${{ matrix.toolchain }}
+      - name: Test EdDSA-Poseidon2
+        run: nargo test
+        working-directory: eddsa_poseidon2
