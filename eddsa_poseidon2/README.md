@@ -49,8 +49,8 @@ eddsa_poseidon2 = { tag = "v0.7.0", git = "https://github.com/TaceoLabs/noir-pos
 ## Examples
 
 ```Rust
-use dep::babyjubjub::{BabyJubJubPoint, BabyJubJubPointInSubgroup, BabyJubJubScalarFieldElement};
-use dep::eddsa_poseidon2;
+use eddsa_poseidon2;
+use eddsa_poseidon2::babyjubjub::{BabyJubJubPoint, BabyJubJubPointInSubgroup, BabyJubJubScalarFieldElement};
 
 fn main(
     pub_key_x: Field,
