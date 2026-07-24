@@ -22,6 +22,14 @@ Before computing the equation, the function validates that:
 - $A$ lies on the curve, is in the prime-order subgroup, and is not the identity
 - $R$ lies on the curve
 
+Note that $R$ is **not** checked for prime-order subgroup membership, unlike $A$. This is
+sound because the verification equation is cofactored: any curve point decomposes uniquely
+as $R = R' + T$, where $R'$ lies in the prime-order subgroup and $T$ is a torsion point whose
+order divides the cofactor 8. Since the equation multiplies through by 8 and $8 \cdot T =
+\mathcal{O}$, the torsion component of $R$ cancels out and the outcome is identical whether
+or not $R$ was in the subgroup. An explicit subgroup check on $R$ would therefore be
+redundant.
+
 ## Dependencies
 
 This crate depends on:
@@ -41,6 +49,7 @@ eddsa_poseidon2 = { tag = "v0.7.0", git = "https://github.com/TaceoLabs/noir-pos
 ## Examples
 
 ```Rust
+use dep::babyjubjub::{BabyJubJubPoint, BabyJubJubPointInSubgroup, BabyJubJubScalarFieldElement};
 use dep::eddsa_poseidon2;
 
 fn main(
@@ -50,7 +59,11 @@ fn main(
     signature_r: [Field; 2],
     message: Field,
 ) -> pub bool {
-    eddsa_poseidon2::verify_eddsa_poseidon2(pub_key_x, pub_key_y, signature_s, signature_r, message)
+    let pub_key = BabyJubJubPointInSubgroup::new(pub_key_x, pub_key_y);
+    let signature_s = BabyJubJubScalarFieldElement::new(signature_s);
+    let signature_r = BabyJubJubPoint::new(signature_r[0], signature_r[1]);
+
+    eddsa_poseidon2::verify_eddsa_poseidon2(pub_key, signature_s, signature_r, message)
 }
 ```
 
