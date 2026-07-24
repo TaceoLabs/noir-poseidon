@@ -14,9 +14,9 @@ mod tests {
             2128104906629434075529508057546284580247227319347477887390422344724817923329;
         let message = 3126080974277891902445700130528654565374341115115698716199527644337840721369;
 
-        let pub_key = BabyJubJubPointInSubgroup::new_unchecked(x, y);
+        let pub_key = BabyJubJubPointInSubgroup::new(x, y);
         let signature_s = BabyJubJubScalarFieldElement::new(signature_s);
-        let signature = BabyJubJubPoint::new_unchecked(signature[0], signature[1]);
+        let signature = BabyJubJubPoint::new(signature[0], signature[1]);
 
         let is_valid = verify_eddsa_poseidon2(pub_key, signature_s, signature, message);
         assert(is_valid, "Valid signature should verify successfully");
@@ -35,9 +35,9 @@ mod tests {
         let signature_s = 9145191237582650454380099957761658105575586283663674279318986596761559773;
         let message = 2915128568691568051790179173058040565240368703618887264694651479943038317157;
 
-        let pub_key = BabyJubJubPointInSubgroup::new_unchecked(x, y);
+        let pub_key = BabyJubJubPointInSubgroup::new(x, y);
         let signature_s = BabyJubJubScalarFieldElement::new(signature_s);
-        let signature = BabyJubJubPoint::new_unchecked(signature[0], signature[1]);
+        let signature = BabyJubJubPoint::new(signature[0], signature[1]);
 
         let is_valid = verify_eddsa_poseidon2(pub_key, signature_s, signature, message);
         assert(is_valid, "Valid signature should verify successfully");
@@ -55,9 +55,9 @@ mod tests {
             2028104906629434075529508057546284580247227319347477887390422344724817923329;
         let message = 3126080974277891902445700130528654565374341115115698716199527644337840721369;
 
-        let pub_key = BabyJubJubPointInSubgroup::new_unchecked(x, y);
+        let pub_key = BabyJubJubPointInSubgroup::new(x, y);
         let signature_s = BabyJubJubScalarFieldElement::new(signature_s);
-        let signature = BabyJubJubPoint::new_unchecked(signature[0], signature[1]);
+        let signature = BabyJubJubPoint::new(signature[0], signature[1]);
 
         let is_valid = verify_eddsa_poseidon2(pub_key, signature_s, signature, message);
         assert(!is_valid, "Invalid signature should not verify successfully");
@@ -75,10 +75,10 @@ mod tests {
             4864135265609343478310308775703443966324041291506045146590638005673265296370;
         let message = 3126080974277891902445700130528654565374341115115698716199527644337840721369;
 
-        let pub_key = BabyJubJubPointInSubgroup::new_unchecked(x, y);
+        let pub_key = BabyJubJubPointInSubgroup::new(x, y);
         // should fail because signature_s too large
         let signature_s = BabyJubJubScalarFieldElement::new(signature_s);
-        let signature = BabyJubJubPoint::new_unchecked(signature[0], signature[1]);
+        let signature = BabyJubJubPoint::new(signature[0], signature[1]);
 
         let _ = verify_eddsa_poseidon2(pub_key, signature_s, signature, message);
     }
@@ -95,7 +95,7 @@ mod tests {
 
         let pub_key = BabyJubJubPointInSubgroup::identity();
         let signature_s = BabyJubJubScalarFieldElement::new(signature_s);
-        let signature = BabyJubJubPoint::new_unchecked(signature[0], signature[1]);
+        let signature = BabyJubJubPoint::new(signature[0], signature[1]);
 
         let _ = verify_eddsa_poseidon2(pub_key, signature_s, signature, message);
     }
