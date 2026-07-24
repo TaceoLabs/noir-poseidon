@@ -1,7 +1,7 @@
 // EdDSA Poseidon2 Verifier for Noir
 // Complete implementation of EdDSA signature verification using Poseidon2 hash
 
-use babyjubjub::{BabyJubJubPoint, BabyJubJubPointInSubgroup, BabyJubJubScalarFieldElement};
+pub use babyjubjub::{BabyJubJubPoint, BabyJubJubPointInSubgroup, BabyJubJubScalarFieldElement};
 use poseidon2::bn254::permutation;
 mod tests;
 
