@@ -1,12 +1,12 @@
 use crate::double;
 
 #[field(bn254)]
-pub fn sbox<let T: u32>(mut state: [Field; T]) -> [Field; T] {
+pub fn sbox<let T: u32>(state: [Field; T]) -> [Field; T] {
     state.map(|x| sbox_e(x))
 }
 
 #[field(bn254)]
-pub fn sbox_e(mut x: Field) -> Field {
+pub fn sbox_e(x: Field) -> Field {
     let mut result = x * x;
     result *= result;
     result * x

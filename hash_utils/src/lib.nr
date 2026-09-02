@@ -1,6 +1,6 @@
 pub mod poseidon;
 
-pub fn mat_mul<let T: u32>(mut state: [Field; T], mat: [[Field; T]; T]) -> [Field; T] {
+pub fn mat_mul<let T: u32>(state: [Field; T], mat: [[Field; T]; T]) -> [Field; T] {
     let mut result = [0; T];
     for i in 0..T {
         for j in 0..T {

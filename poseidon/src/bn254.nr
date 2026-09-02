@@ -51,7 +51,7 @@ fn permute_bn254<let T: u32, let RP: u32, let T1: u32>(
 }
 
 fn cheap_matmul<let T: u32, let T1: u32>(
-    mut state: [Field; T],
+    state: [Field; T],
     v: [Field; T1],
     w_hat: [Field; T1],
     mds: Field,
