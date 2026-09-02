@@ -57,19 +57,19 @@ fn external<let T: u32>(mut state: [Field; T]) -> [Field; T] {
     state
 }
 
-fn internal_4(mut state: [Field; 4]) -> [Field; 4] {
+fn internal_4(state: [Field; 4]) -> [Field; 4] {
     diag_mat_mul(state, consts::internal_diag4)
 }
 
-fn internal_8(mut state: [Field; 8]) -> [Field; 8] {
+fn internal_8(state: [Field; 8]) -> [Field; 8] {
     diag_mat_mul(state, consts::internal_diag8)
 }
 
-fn internal_12(mut state: [Field; 12]) -> [Field; 12] {
+fn internal_12(state: [Field; 12]) -> [Field; 12] {
     diag_mat_mul(state, consts::internal_diag12)
 }
 
-fn internal_16(mut state: [Field; 16]) -> [Field; 16] {
+fn internal_16(state: [Field; 16]) -> [Field; 16] {
     diag_mat_mul(state, consts::internal_diag16)
 }
 
