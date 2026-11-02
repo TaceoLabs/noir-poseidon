@@ -21,7 +21,8 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - uses: noir-lang/noirup@bedac8fbe6a059177c35e565f9f76db54a795976 # v0.1.5
+      # TODO: switch to a tagged noirup release once one includes the actions/cache SHA pin
+      - uses: noir-lang/noirup@b6d3d6164977586b8338ff23a32a6a77bbb4510a # master
         with:
           toolchain: ${{ matrix.toolchain }}
       - name: Test hash_utils
