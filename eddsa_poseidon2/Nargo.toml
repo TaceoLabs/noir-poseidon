@@ -2,6 +2,7 @@
 name = "eddsa_poseidon2"
 type = "lib"
 authors = ["TACEO"]
+compiler_version = ">=1.0.0"
 
 [dependencies]
 poseidon2 = { path = "../poseidon2" }
